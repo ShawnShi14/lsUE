@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>组件兼容性解决方法</title>
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="site.ico" />
+	<link rel="stylesheet" type="text/css" href="dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="dist/skin/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="demo/prettify.css" />
+	<style type="text/css">
+    	body{
+			position: relative;
+		}
+		ul.nav-pills{
+			width: 200px;
+		}
+		.affix-top {
+			margin-top: 30px;
+		}
+		.affix{
+		    top: 30px;         
+		} 
+		.affix-bottom {
+		    position: absolute;
+		}
+		 .nav .nav {
+		    display: none;
+		} 
+		p {
+			line-height: 25px;
+		}
+	</style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body data-spy="scroll" data-target="#myScrollspy">
+	<!-- 页面结构 -->
+	 <div class="container">
+	    <div class="row">
+	        <div class="col-xs-3" id="myScrollspy">
+	            <ul class="ue-affix nav hidden-xs hidden-sm" id="myNav">
+	                <li class="active"><a href="#placeholder">IE placeloder</a></li>
+                    <li><a href="#border-radius">IE border-radius</a></li>
+                    <li><a href="#background-size">IE background-size: cover</a></li>
+                    <li><a href="#filter-blur">IE filter blur</a></li>
+                    <li><a href="#opacity">IE rgba及透明度</a></li>
+                    <li><a href="#transform">IE transform</a></li>
+                    <li><a href="#pseudo-element">IE ::before ::after</a></li>
+                    <li><a href="#css3-nth">IE :nth-child(odd)</a></li>
+                    <li><a href="#min-width">IE min-width</a></li>
+                    <li><a href="#last-child">IE last-child</a></li>
+                    <li><a href="#chacked">IE 复选框/单选按钮与文本位置水平问题</a></li>
+                    <li><a href="#prettify">IE8 prettify.js代码高亮排版问题</a></li>
+                    <li><a href="#responsive">IE支持HTNL5元素及CSS3的条件</a></li>
+                    <li><a href="#pseudo-classes">firefox 伪类</a></li>
+                    <li><a href="#vetically">IE8 input文本框内容垂直居中</a></li>                   
+	            </ul>
+	        </div>
+	        <div class="col-xs-9">
+            	<section id="placeholder">
+	            	<h1>placeloder</h1>
+	           		<hr/>
+	            	<p><em>placeholder</em>是HTML5中的新属性，提供可描述输入字段预期值的提示信息（hint），该提示会在输入字段为空时显示，并会在字段获得焦点时消失，为页面的设计带来极大的方便。
+	            	但是，众所周知，IE6~IE9都不支持HTML5 placeholder，我们要想渐进使用placeholder, 对于IE浏览器，必须要借助JavaScript交互了。</p>
+	            	<p>在组件中我们使用了jQuery placeholder插件对ie8、ie9的占位符进行处理，下面是我们处理的初始源代码：</p>
+	            	<pre>
+	            	
+var JPlaceHolder = {
+	//检测input中是否支持placeholder属性
+	_check : function(){
+        return 'placeholder' in document.createElement('input');
+    },
+    //初始化
+    init : function(){
+        if(!this._check()){
+            this.fix();
+        }
+    },
+    //修复
+    fix : function(){
+    	//遍历
+        $(':input[placeholder]').each(function(index, element) {
+            var self = $(this), 
+            	txt = self.attr('placeholder');
+            //在input标签外面包一层div
+            self.wrap($('<div></div>').css({position:'relative', zoom:'1', border:'none', background:'none', padding:'none', margin:'none'}));
+            var pos = self.position(), 
+            	h = self.outerHeight(true), 
+            	paddingleft = self.css('padding-left');
+            //创建span元素，.text()：设置占位符内容，zIndex：设置层级
+            var holder = $('<span></span>').text(txt).css({position:'absolute', zIndex:'3', left:pos.left, top:pos.top, height:h, lineHeight:h+'px', paddingLeft:paddingleft, color:'#ccc'}).appendTo(self.parent());
+            //获得焦点，隐藏占位符
+            self.focusin(function(e) {
+                holder.hide();
+            //失焦判断为空后显示占位符
+            }).focusout(function(e) {
+                if(!self.val()){
+                    holder.show();
+                }
+            }).change(function(e){
+            	if(!self.val()){
+            		holder.show();
+            	}else{
+            		holder.hide();
+            	}
+            });
+            //span元素被单击时，隐藏span元素，input获取焦点
+            holder.click(function(e) {
+                holder.hide();
+                self.focus();
+            });
+        });
+    }
+};
+//初始化
+$(function(){
+    JPlaceHolder.init();
+});  
+	            	</pre>
+	            	<p style="font-size:20px">如何使用？</p>
+	            	<p>在组件中我们将这段初始源代码封装在ui.js（解决ie8兼容性扩展方法的js文件）里面，当在ie浏览器中遇到此类问题的时候，我们可以直接在需要的组件页面中中引入ui.js这个文件。</p>
+               </section>
+               <!-- end of placeholder -->
+               <br/>
+               <br/>
+                   
+               <section id="border-radius">
+                   <h1>border-radius</h1>
+                   <hr/>
+                   <p>圆角问题在ie8中也是一个很重要的问题。我们都知道IE浏览器暂不支持CSS3的一些属性，除了圆角问题还有盒阴影(box-shadow)，背景渐变(gradient)，多图片背景(multiple background images)
+                   	等的问题，都是ie8浏览器下的疑难杂症。这里主要说一下圆角问题。</p>
+                   <p>解决ie8圆角问题的方法有多种，但是我们这里主要说的是用pie的方式解决圆角问题。<br/>
+                   pie的解决方式有两种，一个是pie.htc（不建议使用），另外一个是pie.js。</p>
+                   <h3>1. pie.htc</h3>
+                   <p>使用方法：<br>（1）首先在和html同文件夹下加载pie.htc文件。<br>（2）css 中使用  behavior 来加载即可自动实现效果:</p>
+                   <pre>
+                   
+#test {
+    border-radius: 3px;
+    behavior: url(PIE.htc);
+}
+                   </pre>
+                   <p>注意：<br/>（1）IE浏览器的behavior 属性是相对于HTML文档而言的，与CSS其他的属性不一样，不是相对于CSS文档而言的。这使得使用pie.htc文件不怎么方便。
+                   	如果绝对路径于根目录，则CSS文件不方便移动；如果相对路径与HTML文档，则pie.htc文件在不同HTML页面见的重用性大大降低。同时，诸如border-image后面的URL属性路径也不好处理。
+                   	<br/>（2）提供正确的Content-Type<br/>要想让IE浏览器支持htc文件，需要一个有着"text/x-component" 字样的content-type 头部，否则，会忽视behavior。绝大数web服务器提供了正确的content-type，但是还有一部分则有问题。例如的我的空间域名商就没有"text/x-component"字样的content-type，可能是出于安全的考虑。</p>
+                   	<p>我们并不提倡使用这种方法，因为pie.htc与页面的耦合性太高。在组件中我们使用另外一种很有效的方法：pie.js。</p>
+                   	<br/>
+                   	<h3>2. pie.js</h3>
+                   	<p><code>若不使用js模块化加载：</code></p>
+                   	<p>使用方法：<br/>（1）在组件中加载pie.js，我们将pie.js放在在dist（存放组件所有js文件的文件夹）文件夹里。<br/>（2）在需要解决圆角问题页面的head里面加如下代码：</p>
+                   	<pre>
+                   	
+<!--[if lt IE 9]>
+   <script type="text/javascript" src="../../dist/js/PIE.js"></script>
+<![endif]-->
+                   	</pre>
+                   	<p>（3）在javascript源代码中添加如下代码：</p>
+                   	<pre>
+                   	
+$(function() {
+    if (window.PIE) {
+        $('.ue-pie').each(function() {
+            PIE.attach(this);
+        });
+    }
+});
+                   	</pre>
+                   	<p>其中，ue-pie是我们自己定义的一个类。在组件中我们将这段代码放在ui.js中，在需要解决ie8圆角问题的部分加上ue-pie这个类，并且在页面加载ui.js这个文件。</p>
+                   	<br/>
+                   	<p><code>若使用js模块化加载：</code></p>
+                   	<p>使用方法：<br />（1）将页面的头部信息换成以下方式：</p>
+                   	<pre>
+                   	
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie lt-ie10 lt-ie9" lang="zh-CN"> <![endif]-->
+<!--[if IE 9]><html class="ie lt-ie10" lang="zh-CN"><![endif]-->
+<!--[if !IE]><!--><html lang="zh-CN"><!--<![endif]-->
+                   	</pre>
+                   	<br/>
+                   	<p>2.在js中添加加载PIE.js的代码，如下所示：</p>
+                   	<pre>
+                   	
+if ($('html.lt-ie9').size()) {
+    require(['PIE','ui'],function(){
+        $('.ue-pie').each(function() {
+            PIE.attach(this);
+        });
+    });
+}
+                   	</pre>
+                   	<p>在所需改变圆角的元素上加载<code>.ue-pie</code></p>
+                   	<br/>
+                   	<p><b>需要注意的地方：</b></p>
+                   	<p>（1）z-index相关问题</p>
+                   	<p>&nbsp;&nbsp;&nbsp;&nbsp;IE下这些CSS3效果实现是借助于VML，由VML绘制圆角或是投影效果的容器元素，然后这个容器元素作为目标元素的后兄弟节点插入，如果目标元素position:absolute 或是 position:relative，则这个css3-container元素将会设置与之一样的z-index值，在DOM tree中，同级的元素总是后面的覆盖前面的，所以这样就实现了覆盖，又避免了可能有其他元素正好插入其中。
+						所以，问题来了，如果目前元素的position属性为static，也就是默认属性，则z-index属性是没有用的，无覆盖可言，所以此时IE浏览器下CSS3的渲染是不会成功的。要解决也很简单，<em>设置目标元素position:relative或是设置祖先元素position:relative并赋予一个z-index值（不可为-1）</em>。</p>
+                    <p>（2）缩写的问题</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;使用PIE实现IE下的CSS3渲染（其他方法也是一样），只能使用缩写的形式，例如圆角效果，我们可以设置border-top-left-radius表示左上圆角，但是PIE确实不支持这种写法的，只能是老老实实的缩写。</p>
+                </section>
+                   <!-- end of border-radius-->
+                   <br/>
+                   <br/>
+                   
+                <section id="background-size">
+                   <h1>background-size: cover</h1>
+                   <hr/>
+                   <p>如果你想使用background-size: cover设置全屏背景，很遗憾IE8办不到...但可以使用IE独有的AlphaImageLoader滤镜来实现，添加一条如下的CSS样式：</p>
+                   <pre>
+                   
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=Enabled, sizingMethod=Size , src=URL);
+                   </pre>
+                   <p>将sizingMethod设置为scale就OK了。</p>
+                   <p>还没完，如果你在此背景之上放置了链接，那这个链接是无法点击的。一般情况下的解决办法是为链接或按钮添加position:relative使其相对浮动。</p>
+                </section>
+                <!-- end of background-size -->
+                <br/>
+                <br/>
+                
+                <section id="filter-blur">
+                   <h1>filter blur</h1>
+                   <hr/>
+                   <p>CSS3中提供支持滤镜效果的属性filter，比如支持高斯模糊效果的blur（类似iOS7的效果）：</p>
+                   <pre>
+                   
+filter: blur(10px);
+-webkit-filter: blur(10px);
+-moz-filter: blur(10px);
+                   </pre>
+                   <p>IE8对filter: blur(10px)的显示效果是对HTML元素进行小范围的模糊处理，这个效果并不是高斯模糊，要想支持高斯模糊，需要如下设置：</p>
+                   <pre>
+                   
+filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='10');
+                   </pre>
+                   <p>在实践中发现一个坑就是，所有position: relative的元素都不会生效。</p>
+                   <p>其他的发现是，IE9对filter: blur(10px)无效，而对filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='10');是针对元素小范围的模糊效果。IE11对两种写法好像都无感</p>
+                </section>
+                <!-- end of filter blur -->
+                <br/>
+                <br/>
+   
+                <section id="opacity">
+                    <h1>rgba及透明度</h1>
+                    <hr/>
+                    <p>我们平时使用最多的设置透明度方法是：rgba和opacity。</p>
+                    <p>而RGBA颜色归为CSS3属性，其余RGB的区别在于多了个A，也就是Alpha透明度，使用rgba无论是背景，边框，文字颜色等都可以用半透明实现了，然而rgba与opacity都属于CSS3属性，ie8并不支持。</p>
+                    <p>我们以下面代码为例：</p>
+                    <pre>
+                    
+background: rgba(200, 54, 54, 0.5);
+或
+background: rgb(200, 54, 54);
+opacity: 0.5;
+                    </pre>
+                    <p>这时候我们可能会想起IE的半透明滤镜：</p>
+                    <pre>
+                    
+filter: alpha(opacity=50);
+                    </pre>
+                    <p>但是加上这个半透明滤镜的话你会发现没有什么效果，因为filter:alpha(opacity=50);并不是设置背景透明度的，<b>但它可以设置边框，字体等的透明度</b>。其中opacity的值取0~100之间。</p>
+                    <p>如何使背景透明？</p>
+                    <p>我们在组件中使用的是IE渐变滤镜，最简单是使用如下：</p>
+                    <pre>
+                    
+filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr = #AARRGGBB,endColorStr = #AARRGGBB)
+                    </pre>
+                    <p>startColorStr:可选项。字符串(String)。设置或检索色彩渐变的开始颜色和透明度。</p>
+                    <p>其格式为 #AARRGGBB 。 AA 、 RR 、 GG 、 BB 为十六进制正整数。取值范围为 00 – FF 。 RR 指定红色值， GG 指定绿色值， BB 指定蓝色值，
+                    	 AA 指定透明度。 00 是完全透明。 FF 是完全不透明。超出取值范围的值将被恢复为默认值。</p>
+                   	<p>取值范围为 #FF000000 – #FFFFFFFF 。默认值为 #FF0000FF 。不透明蓝色。</p>
+                   	<p>EndColorStr:可选项。字符串(String)。设置或检索色彩渐变的结束颜色和透明度。默认值为 #FF000000 。不透明黑色。</p>
+                   	<p>所以rgba+filter设置背景透明度如下：</p>
+                   	<pre>
+                   
+background: rgba(0,0,0,0.5);
+filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr = #7F000000,endcolorstr = #7F000000);
+                   	</pre>
+                   	<p>如下为opacity的值所对应的IEfilter值（AA的值）：</p>
+                   	<table class="table table-bordered">
+                   		<thead>
+                   			<th>opacity</th>
+                   			<th>IEfilter值</th>
+                   		</thead>
+                   		<tbody>
+                   			<tr>
+                   				<td>0.1</td>
+                   				<td>19</td>
+                   			</tr>
+                   			<tr>
+                   				<td>0.2</td>
+                   				<td>33</td>
+                   			</tr>
+                   			<tr>
+                   				<td>0.3</td>
+                   				<td>4C</td>
+                   			</tr>
+                   			<tr>
+                   				<td>0.4</td>
+                   				<td>66</td>
+                   			</tr>
+                   			<tr>
+                   				<td>0.5</td>
+                   				<td>7F</td>
+                   			</tr>
+                   			<tr>
+                   				<td>0.6</td>
+                   				<td>99</td>
+                   			</tr>
+                   			<tr>
+                   				<td>0.7</td>
+                   				<td>B2</td>
+                   			</tr>
+                   			<tr>
+                   				<td>0.8</td>
+                   				<td>C8</td>
+                   			</tr>
+                   			<tr>
+                   				<td>0.9</td>
+                   				<td>E5</td>
+                   			</tr>
+                   		</tbody>
+                   	</table>
+                </section>
+                <!-- end of opacity -->  
+                <br/>
+                <br/>
+                
+                <section id="transform">
+                   <h1>transform</h1>
+                   <hr/>
+                   <p>中所周知，transform属于css3中的属性，所以说此属性在ie8中并没有什么作用。transform的功能是使图片之类的元素具有旋转功能，比如：</p>
+                   <pre>
+                   
+-webkit-transform: rotate(-90deg);
+-moz-transform: rotate(-90deg);
+-o-transform: rotate(-90deg);
+-ms-transform: rotate(-90deg);
+transform: rotate(-90deg);
+                   </pre>
+                   <p>这段代码的功能是将所选元素逆时针旋转90度。但是怎么才能让ie8也支持这种功能呢，这时候就必须想到filter了。</p>
+                   <pre>
+                   
+filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+                   </pre>
+                   <p>这句话是处理ie8不支持css3中的transform属性。其中rotation=3是关键，这里的参数可以是0,1,2,3旋转的角度只要将这些数值乘以90(π/2)就可以了，所以呢"rotation=3"表示顺时针旋转270度，与transform:rotate(270deg);
+                   		是一个意思。所以，这里，就会有些小小的局限——不能实现任意角度的旋转，只能是90度，180度以及270度。但是，IE浏览器不是个简单的罗罗，要实现任意角度的旋转，它还是有办法的，只是要比上面的麻烦些，难理解些，要用到矩阵变换滤镜</p>
+                	<p>IE8浏览器（在非标准模式下），在CSS中，要使用“-ms-filter”代替“filter”。要注意只是在非标准模式下。</p>
+                	<p>以下代码将实现图片顺指针旋转60度的效果：</p>
+                	<pre>
+           
+filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.5,M12=-0.866,M21=0.866,M22=0.5,SizingMethod='auto expand');     	
+                	</pre>
+                	<p>M11=0.5,M12=-0.866,M21=0.866,M22=0.5计算方法：</p>
+                	<p>假设我们要旋转的角度是rotation，则计算过程如下：</p>
+                	<pre>
+                	
+sin = sin(roation);cos = cos(roation);
+M11 = cos;M12 = -sin;M21 = sin;M22 = cos;
+                	</pre>
+                	<p>例如这里要旋转60度，即rotation=60，所以sin = sin(60) = 0.866, cos = cos(60) = 0.5，于是就有了"M11=0.5,M12=-0.866,M21=0.866,M22=0.5"。
+                		所以呢，要实现IE下任意角度图片的旋转记住下面的式子就可以了：filter:progid:DXImageTransform.Microsoft.Matrix(M11=cos(roation),M12=-sin(roation),M21=sin(roation),M22=cos(roation),SizingMethod='auto expand');</p>
+                	<p>但是需要注意的是：<br/>
+						如果filter想写在:after中的话，可能会不产生任何效果，所以应该尽量避免将filter写在:after，:before等伪元素下。</p>
+                </section>
+                <!-- end of transform --> 
+                <br/>
+                <br/>
+                
+                <section id="pseudo-element">
+                	<h1>::before ::after</h1>
+                	<p>::after是一个CSS伪元素，使用::after，你可以从CSS里往页面上新增内容(不再要在HTML里有相应的东西)。虽然最终生成的东西并不是真正的DOM里的内容，但这些内容能像普通内容一样显示。
+                		</p>
+                	<p>双冒号(::)和单冒号(:)的区别</p>
+                	<p>所有支持CSS3的双冒号(::)语法的浏览器都会支持单冒号(:)语法，但IE8只支持单冒号。建议只使用单冒号，以获得最佳的浏览器支持。双冒号(::)是一种新语法，是用来将伪元素选择器和伪元素区别开。如果不需要IE8支持，就用双冒号(::)吧。</p>
+                </section>
+                <!-- end of pseudo-element-->
+                <br/>
+                <br/>
+               
+               <section id="css3-nth">
+               		<h1>:nth-child()</h1>
+               		<hr/>
+               		<p>ie8不支持CSS3:btn-child()选择器，有以下几种解决办法：</p>
+               		<p>使用CSS3时，一般写法如下：</p>
+               		<pre>
+             
+ul.menu li:nth-child(3){}
+               		</pre>
+               		<p>遇到ie7、ie8时可以这样做：</p>
+               		<pre>
+               		
+ul.menu>li + li + li {}
+               		</pre>
+               		<p>或这样：</p>
+               		<pre>
+               		
+ul.menu>li:first-child + li +li
+               		</pre>
+               		<p>除了这种写法，还可以使用JQuery解决IE8不支持CSS3的:nth-child()问题</p>
+               		<p>JQuery :nth-child()选择器的使用方法和CSS3的 :nth-child()没什么两样，不必担心IE兼容性问题。</p>
+               		<p>:nth-child(odd)用于匹配奇数子元素 </p>
+               		<p>:nth-child(even)用于匹配偶数子元素 </p>
+               		<p>:nth-child(n)用于匹配第n个元素 </p>
+               		<p>:nth-child(an)用于匹配倍数为a的元素，如3n、5n…</p>
+               		<p>可以是一个公式，如:nth-child(3n+1)匹配第1、第4、第7…个元素 </p>
+               		<p>:nth-child(-n+3)匹配前3个元素 </p>
+               		<p>:nth-child(-3n+8)匹配第8、第5、第2个元素 </p>
+               		<pre>
+               		
+if($.browser.msie && parseInt($.brower.version) == 8){
+    $('.timeline .timeline-row:nth-child(odd)').css({
+        "padding-left": '0',
+        "padding-right": '50%'
+    });
+}
+               		</pre>
+               </section>
+                 <!-- end of css3-nth-->
+               <br/>
+               <br/>
+               <section id="min-width">
+                   <h1>min-width</h1>
+                   <hr/>
+                   <p>在页面设计过程中，我们通常使用min-width来设置页面最小宽度，但是IE浏览器却办不到，但是CSS中使用expression完美设置页面最小宽度，并且兼容IE浏览器。CSS中使用expression只有ie才能识别，其把CSS属性和Javascript表达式关联起来，效果相当于min-width，即实现了兼容ie。</p>
+                   <p>如下为解决IE兼容min-width的方法：</p>
+                   <pre>
+                   
+body { 
+    min-width: 1138px; 
+    width: expression((documentElement.clientWidth > 1138) ? "1138px" : "auto" ); 
+} 
+                   </pre>
+                   <p>上面例子中min-width是只页面的最小宽度，而ie不支持这种方法，只能用只有ie才识别的expression来解决。</p>
+               </section>
+               <!-- end of min-width -->
+               <br/>
+               <br/>
+               
+               <section id="last-child">
+                   <h1>last-child</h1>
+                   <hr/>
+                   <p>first-child是CSS2的内容，但是last-child就不是了，所以IE8不买账。推荐的做法不是使用last-child，而是给最后一个元素设置一个.last的class，然后对此进行样式设置，这样就全部兼容了。</p>
+               </section>
+               <!-- end of last-child -->
+               <br/>
+               <br/>
+               
+               <section id="chacked">
+                   <h1>复选框/单选按钮与文本位置水平问题</h1>
+                   <hr/>
+                   <p>在三个登陆页面中，登陆框中在ie9及以下浏览器中出现复选框与文本不在同一水平线上的现象。因为在bootstrap.css中有“margin-top: 4px\9;”属性及属性值，“\9”的意思是只有ie9及ie9以下的浏览器才能识别的符号。所以会造成复选框相对“记住我”文字偏下。</p>
+                   <p>怎样解决？</p>
+                   <p>既然是bootstrap.css的原因而且只针对ie9及ie9以下的浏览器，我们可以重写bootstrap.css中有关文本框margin-top的属性值。</p>
+                   <p>我们在组件库中采取同样的解决方式，如下为重写源代码：</p>
+                   <pre>
+                   
+.checkbox input[type='checkbox'], .checkbox-inline input[type='checkbox'], 
+.radio input[type='radio'], .radio-inline input[type='radio'] {
+	margin-top: 0px\9;
+}
+                   </pre>
+               </section>
+               <!-- end of chacked -->
+               <br/>
+               <br/>
+               
+               <section id="prettify">
+                   <h1>IE8 prettify.js代码高亮排版问题</h1>
+                   <hr/>
+                   <p>使用ie8浏览器查看组件代码高亮时，你可能会发现代码行与行之间不分段的现象，这就是我们接下来要说的ie8下代码高亮问题。</p>
+                   <p>我们在用prettify.js的时候，会使用以下代码：</p>
+                   <pre>
+                   
+$(document).ready(function() {                   
+    $('pre').each(function() {
+        var element = $(this);
+        var html = element.html().replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        element.html(html);
+    });
+    $("pre").addClass("prettyprint");
+    prettyPrint();
+}
+                   </pre>
+                   <p>在这段代码中忽略了ie8不支持.html()事件，所以会造成一开始说的代码行与行之间不分段的现象。所以在使用.html()之前先对浏览器进行判断：</p>
+                   <pre>
+                   
+$(document).ready(function() {
+    if(!$.support.leadingWhitespace) {
+        $('pre').each(function() { 
+            var element = $(this);
+            element.text(element.html());
+        });
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    }else {
+        $('pre').each(function() {
+            var element = $(this);
+            var html = element.html().replace(/</g,'&lt;').replace(/>/g,'&gt;');
+            element.html(html);
+        });
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    }
+});
+                   </pre>
+                   <p>if(!$.support.leadingWhitespace) {} 意思是判断是否是ie6~ie8。</p>
+               </section>
+               <!-- end of prettify -->
+               <br/>
+               <br/>
+                   
+               <section id="responsive">
+                   <h1>IE支持HTNL5元素及CSS3的条件</h1>
+                   <hr/>
+                   <p>随着移动互联网的盛行，bootstap的使用很广泛，而且为解决如今各式各样的浏览器分辨率以及不同移动设备的显示效果， 设计师提出了响应式布局的设计方案。但是怎么样才能让ie8也支持响应式布局，
+                   		接下来我们就说说解决办法。</p>
+                   <p><b>解决方法</b><br/>在DOM结构head中添加如下代码：</p>
+                   <pre>
+                   
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+                   </pre>
+               </section>
+               <!-- end of responsive -->
+               <br/>
+               <br/>
+               
+                <section id="pseudo-classes">
+                   <h1>firefox 伪类</h1>
+                   <hr/>
+                   <p>被点击访问的超链接样式不再具有hover和active了，很多人都应该遇见过这个问题，我们组件在火狐浏览器上就出现这种现象，解决技巧是改变css
+                    	属性的排列顺序：L-V-H-A 即：</p>
+                   <pre>
+            
+a: link {}
+a: visited {}
+a: hover {}
+a: active {}
+                   </pre>
+                </section>
+  				<section id="vetically">
+                   <h1>IE8 input文本框内容垂直居中</h1>
+                   <hr/>
+                   <p>当给input文本框设置height值时，在IE8下，文本框内显示的数据会显示在input文本框顶部；解决此问题的方法为同时给input文本框添加等值的行高（line-height）即可。</p>
+                   <pre>
+            
+input {
+  height: 36px;
+  line-height: 36px;
+}
+                   </pre>
+                </section>
+                <!-- end of pseudo-classes -->
+            </div>
+	    </div>
+    </div>
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="dist/js/jquery.js"></script>
+    <script type="text/javascript" src="dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="demo/prettify.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#myNav").affix({
+        	 offset: {
+                 top: $("#myNav").offset().top,
+                 bottom: $('#hdisplay').outerHeight(true) + 40 
+             }
+        });
+    });
+    </script>
+    
+</html>

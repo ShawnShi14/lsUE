@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>滑块</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	<style type="text/css">
+	#scrollWrap,#scrollWrap1 {
+		width: 80%;
+	}
+	.user-select{
+		-moz-user-select: none; /*火狐*/
+		-webkit-user-select: none; /*webkit浏览器*/
+		-ms-user-select: none;   /*IE10*/
+		-khtml-user-select: none; /*早期浏览器*/
+		user-select: none;
+	}
+	</style>
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	 <div class="ue-container user-select" >
+      	 <div id="scrollWrap"></div>
+      	 <input type="text" class="form-control ue-form" id="memory" style="margin-top: 15px; width: 30px;">
+     </div>
+     <div class="ue-container user-select" >
+      	 <div id="scrollWrap1"></div>
+      	 <input type="text" class="form-control ue-form" id="memory1" style="margin-top: 15px; width: 30px;">
+     </div>
+     
+     
+     <!-- 代码高亮 -->
+     <div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:10px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<div id="scrollWrap"></div>
+<input type="text" id="memory">
+				</pre>
+			</div>
+		</div>
+		<br />
+		<h4>js非模块化加载：</h4>
+		<p style="line-height:25px">需要引用的js文件及加载顺序：</p> 
+		<p><code>jquery.js</code>，<code>bootstrap.js</code>，<code>form.js</code></p>
+		<p>引用方式：</p>
+		<p>正常js引用方式 <code>&lt;script type="text/javascript" src="jquery.js路径"&gt;&lt;/script&gt;</code></p>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+			<div class="tab-pane active" id="JS_format">
+				<pre>
+				
+$(function() {
+    $('#scrollWrap').scrollbar({
+        // 初始数值
+        value: 30,
+        // 最小数值
+        minValue: 20,
+        // 最大数值
+        maxValue: 100,
+        // 关联域
+        bindField: "#memory",
+        // 提示信息显示位置
+        errorTip: 'right',
+        // 值改变回调
+        callback: function(value) {
+        }
+    });
+});
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<h4>js模块化加载：</h4>
+		<p>在require之前需要引用的js文件：</p>
+		<p><code>require.js</code>，<code>main.js</code></p>
+		<p>引用方式：</p>
+		<p><code>&lt;script src="require.js路径"&gt;&lt;/script&gt;</code></p>
+		<p><code>&lt;script src="main.js路径"&gt;&lt;/script&gt;</code></p>
+		<p>之后在require中加载组件所需要的js文件，<code>jquery</code>，<code>form/scrollbar</code></p>
+		<p>将js文件放在数组里面，js的引用在非模块化中是无序的，注意文件不要加.js后缀，因为RequireJS会自动加载。</p>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="JS_require">
+				<pre>
+				
+require(['jquery','form/scrollbar'], function($){
+    $(function() {
+        $('#scrollWrap').scrollbar({
+            // 初始数值
+            value: 30,
+            // 最小数值
+            minValue: 20,
+            // 最大数值
+            maxValue: 100,
+            // 关联域
+            bindField: "#memory",
+            // 提示信息显示位置
+            errorTip: 'right',
+            // 值改变回调
+            callback: function(value) {
+            }
+        });
+    });
+});
+				</pre>
+			</div>
+		</div>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>ui.css</code>，<code>form.css</code></p>
+		<br/>
+		<h3>参数说明</h3>
+		<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>名称</th>
+							<th>类型</th>
+							<th>默认值</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>value</td>
+							<td>Number</td>
+							<td>20</td>
+							<td>滑块初始值。</td>
+						</tr>
+						<tr>
+							<td>minValue</td>
+							<td>Number</td>
+							<td>0</td>
+							<td>滑块可拖动获取到的最小值。</td>
+						</tr>
+						<tr>
+							<td>maxValue</td>
+							<td>Number</td>
+							<td>100</td>
+							<td>滑块可拖动获取到的最大值。</td>
+						</tr>
+						<tr>
+							<td>bindField</td>
+							<td>String</td>
+							<td>""</td>
+							<td>关联域，滑块拖动获取到的数据所关联显示到的<code>input</code>输入框选择器，也可以反向在该关联域里输入数值改变滑块位置，例如"#demo"。</td>
+						</tr>
+						<tr>
+							<td>errorTip</td>
+							<td>String</td>
+							<td>"top"</td>
+							<td>校验信息相对于<code>关联域</code>显示的位置，还可以选“left”、“right”和“bottom”。</td>
+						</tr>
+						<tr>
+							<td>callback</td>
+							<td>function</td>
+							<td>NULL</td>
+							<td>回调函数，可返回滑块滑动到位置所对应的值<code>value</code>。</td>
+						</tr>
+					</tbody>
+				</table>
+ 
+	</div>
+    <!-- 需要引用的JS -->
+  <!--   <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script> -->
+    <script src="../require.js"></script>
+    <script src="../main.js"></script>
+    <script type="text/javascript">
+    require(['jquery','form/scrollbar','demo/prettify'], function($){
+    	$(function() {
+    		$('#scrollWrap').scrollbar({
+    			// 初始数值
+    			value: 30,
+    			// 最小数值
+    			minValue: 20,
+    			// 最大数值
+            	maxValue: 100,
+            	// 关联域
+           	 	bindField: "#memory",
+            	// 提示信息显示位置
+            	errorTip: 'right',
+         		// 值改变回调
+            	callback: function(value) {
+            	}
+    		});
+    		$('#scrollWrap1').scrollbar({
+    			// 初始数值
+    			value: 30,
+    			// 最小数值
+    			minValue: 20,
+    			// 最大数值
+            	maxValue: 100,
+            	// 关联域
+            	bindField: "#memory1",
+            	// 提示信息显示位置
+            	errorTip: 'right',
+         		// 值改变回调
+            	callback: function(value) {
+            	}
+    		});
+    	});
+    });
+    </script>
+  </body>
+</html>

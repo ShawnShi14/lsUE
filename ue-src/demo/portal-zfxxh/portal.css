@@ -1,0 +1,199 @@
+body {
+	min-width: 1132px; 
+	width: expression((documentElement.clientWidth > 1132) ? "1132px" : "auto" );
+	font: 14px arial,microsoft yahei,simsun,simhei,sans-serif;
+}
+a, a:hover, a:active {
+	color: #fff;
+}
+.navbar {
+	margin-bottom: 0;
+	background-color: #3d99fe;
+	border: none;
+}
+.navbar-header {
+	width: 20%;
+	background-color: #2189ea;	
+}
+.navbar-brand {
+	width: 100%;
+	height: 60px;
+	background-image: url(images/logo.png);
+	background-position: 50% 50%;
+	background-size: 80%;
+	background-repeat: no-repeat;
+}
+.navbar-nav>li {
+	padding: 10px;
+	cursor: pointer;
+}
+@media (min-width: 768px) {
+	.navbar-nav>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.navbar-right {
+		margin-right: 0;
+	}
+}
+.navbar-nav>li>a {
+	display: inline-block;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+	background-color: transparent;
+	color: #fff;
+}
+.navbar-nav>.active>a, .navbar-nav>.active>a:hover {
+	border-bottom: 2px solid #fff;
+}
+.navbar-border>li {
+	position: static;
+}
+.navbar-border>li>a, .navbar-border>li>a {
+	padding-bottom: 8px;
+	border-bottom: 2px solid transparent;
+}
+.navbar-border>li:hover>a, .navbar-border>li:active>a {
+	border-bottom: 2px solid #fff;
+}
+.fa-caret-down {
+	margin-left: 5px;
+}
+.navbar-right .fa-caret-down {
+	margin-left: 2em;
+	/* border-top: 6px dashed;
+	border-right: 6px solid transparent;
+	border-left: 6px solid transparent;  */
+}
+.navbar-right li {
+	padding: 0;
+}
+.navbar-right li a img {
+	width: 40px;
+	height: 40px;
+	margin-right: 10px;
+}
+.navbar-right li:hover, .navbar-right li:focus,
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover,
+.navbar-nav>li>.dropdown-menu {
+	background-color: #2189ea;
+}
+.navbar-nav>li>.dropdown-menu {
+	width: 100%;
+	border: none;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover, .dropdown-menu>li>a {
+	color: #fff;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+	background-color: #3d99fe;
+}
+.dropdown-menu>li>a {
+	padding-left: 40px;
+	background-image: url(images/menu-userinfo.png);
+	background-position: 10px;
+	background-repeat: no-repeat;
+	background-size: 18px;
+}
+.dropdown-menu>li>a.security {
+	background-image: url(images/menu-security.png);
+}
+.dropdown-menu>li>a.mail {
+	background-image: url(images/menu-mail.png);
+}
+.dropdown-menu>li>a.exit {
+	background-image: url(images/menu-exit.png);
+}
+.navbar-pulldown {
+	position: absolute;
+	left: 0;
+	top: 60px;
+	width: 100%;
+	display: none;
+	background-color: #17283a;
+	padding: 20px 10%;
+}
+.navbar-pulldown a {
+	padding-top: 8px;
+	display: block;
+	float: left;
+	margin-right: 2em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+.navbar-pulldown a .icon {
+	display: block;
+	width: 60px;
+	height: 60px;
+	border-radius: 60px;
+	margin-bottom: 0.5em;
+	padding-top: 15px;
+	background-color: rgba(255,255,255,.1);
+	filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#19ffffff,endcolorstr=#19ffffff);
+}
+.navbar-pulldown a .icon i {
+	display: block;
+	font-size: 30px;
+}
+.navbar-pulldown a:hover {
+	color: #ef7922;
+}
+.banner {
+	height: 380px;
+	background-image: url(images/banner-bg.jpg);
+	background-repeat: no-repeat;
+}
+.banner-right {
+	width: 30%;
+	height: 100%;
+	position: relative;
+	line-height: 2.5em;
+	padding-top: 40px;
+	background: rgba(0,0,0,.2);
+	filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#33000000,endcolorstr=#33000000);
+	color: #fff;
+	vertical-align: middle;
+}
+.banner-right li {
+	padding-left: 2em;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	cursor: pointer;
+}
+.banner-right a {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+.banner-right a:hover, .banner-right a:active {
+	color: #fff;
+}
+.easyway {
+	display: table-cell;
+	width: 1%;
+	line-height: 3em;
+	border-right: 1px solid #e6e6e6;
+	border-bottom: 1px solid #e6e6e6;
+	text-align: center;
+	color: #999;
+}
+.easyway span {
+	font-size: 18px;
+	margin-right: 10px;
+}
+.easyway a {
+	display: inline-block;
+	margin-left: 10px;
+	color: #999;
+	font-size: 24px;
+	vertical-align: middle;
+}
+.panels {
+	background-color: #eee;
+	padding: 10px;
+}
+.panel-width {
+	width: 31%;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>进度插件</title>
+
+	<!-- 需要引用的CSS -->
+	<link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css" />
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+  </head>
+  <body>
+  	<!-- 页面结构 -->
+  	<div class="ue-container">
+  		<p>步骤一：</p>
+  		<div class="demo1"></div>
+  		<p>步骤二：</p>
+  		<div class="demo2"></div>
+  		<p>步骤三：</p>
+  		<div class="demo3"></div>
+  		<p>返回步骤二：</p>
+  		<div class="demo4"></div>
+  	</div>
+  	<!-- 代码高亮 -->
+  	<div class="ue-container">
+  		<br/>
+  		<ul id="myTab" class="nav nav-tabs ue-tabs">
+  			<li class="active"><a href="#html" data-toggle="tab">源码</a></li>
+  		</ul>
+  		<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+  			<div class="tab-pane active" id="html">
+  				<pre>
+
+<div class="demo1"></div>
+<div class="demo2"></div>
+<div class="demo3"></div>
+<div class="demo4"></div>
+  				</pre>
+  			</div>
+  		</div>
+  		<h4>js非模块化加载：</h4>
+		<p style="line-height:25px">需要引用的js文件及加载顺序：</p> 
+		<p><code>jquery.js</code>，<code>form.js</code></p>
+		<p>引用方式：</p>
+		<p>正常js引用方式 <code>&lt;script type="text/javascript" src="jquery.js路径"&gt;&lt;/script&gt;</code></p>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+			<div class="tab-pane active" id="JS_format">
+  				<pre>
+$(function () {
+    $('.demo1').getNavBar(['选择镜像', '高级设置', '设置完毕']);
+    $('.demo2').getNavBar(['选择镜像', '高级设置', '设置完毕']).next();
+    $('.demo3').getNavBar(['选择镜像', '高级设置', '设置完毕']).next().next();
+    $('.demo4').getNavBar(['选择镜像', '高级设置', '设置完毕']).next().next().prev();
+});
+  			</pre>
+  		</div>
+  	</div>
+  	<br />
+  	<h4>js模块化加载：</h4>
+	<p>在require之前需要引用的js文件：</p>
+	<p><code>require.js</code>，<code>main.js</code></p>
+	<p>引用方式：</p>
+	<p><code>&lt;script src="require.js路径"&gt;&lt;/script&gt;</code></p>
+	<p><code>&lt;script src="main.js路径"&gt;&lt;/script&gt;</code></p>
+	<p>之后在require中加载组件所需要的js文件，<code>jquery</code>，<code>form/breadcrumb</code></p>
+	<p>将js文件放在数组里面，js的引用在非模块化中是无序的，注意文件不要加.js后缀，因为RequireJS会自动加载。</p>
+	<ul id="myTab" class="nav nav-tabs ue-tabs">
+		<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+	</ul>
+	<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+		<div class="tab-pane active" id="JS_require">
+			<pre>
+			
+require(['jquery','from/breadcrumb'], function($){
+    $(function () {
+        $('.demo1').getNavBar(['选择镜像', '高级设置', '设置完毕']);
+        $('.demo2').getNavBar(['选择镜像', '高级设置', '设置完毕']).next();
+        $('.demo3').getNavBar(['选择镜像', '高级设置', '设置完毕']).next().next();
+        $('.demo4').getNavBar(['选择镜像', '高级设置', '设置完毕']).next().next().prev();
+    });
+});
+			</pre>
+		</div>
+	</div>
+  </div>
+  <div class="ue-container">
+  	<br />
+  	<p style="line-height:25px">本插件须引用的css文件:</p>
+  	<p><code>bootstrap.css</code>，<code>form.css</code></p>
+  	<br/>
+  	<h3>说明</h3>
+  	<p style="line-height:25px">在DOM结构中，用户可以根据自己的需求定义容器和类标签。设计好容器之后就可以
+  		在js中调用getNavBar()方法，参数是要展示的步骤，放在数组中传递。其中前三个是步骤一道步骤三的的展示，
+  		最后一个是返回步骤二的展示。</p>
+  		<br/>
+  		<h3>方法</h3>
+  		<table class="table table-bordered">
+  			<thead>
+  				<tr>
+  					<th>方法</th>
+  					<th>说明</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  				<tr>
+  					<td>next()</td>
+  					<td>进行下一个步骤</td>
+  				</tr>
+  				<tr>
+  					<td>prev()</td>
+  					<td>返回前一步骤</td>
+  				</tr>
+  			</tbody>
+  		</table>
+  	</div>
+
+  	<!-- 需要引用的JS -->
+  	<!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+  	<script type="text/javascript" src="../../dist/js/bootstrap.js"></script> 
+  	<script type="text/javascript" src="../../dist/js/form.js"></script>
+  	<script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+  	<script type="text/javascript" src="../prettify.js"></script> -->
+  	<script src="../require.js"></script>
+    <script src="../main.js"></script>
+  	<script type="text/javascript">
+  	require(['jquery','form/breadcrumb','demo/prettify'], function($){
+  		$(function () {
+  			$('.demo1').getNavBar(['选择镜像', '高级设置', '设置完毕']);
+  			$('.demo2').getNavBar(['选择镜像', '高级设置', '设置完毕']).next();
+  			$('.demo3').getNavBar(['选择镜像', '高级设置', '设置完毕']).next().next();
+  			$('.demo4').getNavBar(['选择镜像', '高级设置', '设置完毕']).next().next().prev();
+  		});
+  	});
+  	</script>
+  </body>
+  </html>

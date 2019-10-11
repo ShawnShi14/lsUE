@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    	<title>警告框-bootstrap</title>
+
+    	<!-- 需要引用的CSS -->
+    	<link rel="shortcut icon" href="../../site.ico" />
+		<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css">
+		<link rel="stylesheet" type="text/css" href="../prettify.css" />
+
+    	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    	<!--[if lt IE 9]>
+      		<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    	<![endif]-->
+	</head>
+  	<body>
+		<!-- 页面结构 -->
+		<div class="ue-container">	
+			<br/>
+			<div id="alterSuccess" class="alert alert-success alert-dismissible" role="alert" >
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<strong>Well done!</strong> You successfully read this important alert message.
+			</div>
+			<div class="alert alert-info alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<strong>Heads up!</strong> This alert needs your attention, but it`s not super important.
+			</div>
+			<div class="alert alert-warning alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<strong>Warning!</strong> Better check yourself, you're not looking too good.
+			</div>
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<strong>Oh snap!</strong> Change a few things up and <a href="#" class="alert-link">try submitting again</a>.
+			</div>
+		</div>
+		
+		<!-- 代码高亮 -->
+		<div class="ue-container">
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="html">
+					<pre>
+					
+<div id="alterSuccess" class="alert alert-success alert-dismissible" role="alert" >
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Well done!</strong> You successfully read this important alert message.
+</div>
+<div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Heads up!</strong> This alert needs your attention, but it`s not super important.
+</div>
+<div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</div>
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Oh snap!</strong> Change a few things up and <a href="#" class="alert-link">try submitting again</a>.
+</div>
+					</pre>
+				</div>
+			</div>
+		</div>
+		<div class="ue-container">
+			<p>本组件需要使用的css文件：<code>bootstrap.css</code>，<code>ui.css</code></p>
+			<p>本组件需要使用的js文件：<code>jquery.js</code>，<code>bootstrap.js</code></p>
+			<h3>说明</h3>
+			<p>1. 将任意文本和一个可选的关闭按钮组合在一起就能组成一个警告框，<code>.alert</code> 类是必须要设置的，另外我们还提供了有特殊意义的4个类（例如，.alert-success），代表不同的警告信息。</p>
+			<p>2. 为警告框添加一个可选的 <code>.alert-dismissible</code> 类和一个关闭按钮。确保在所有设备上的正确行为务必给 button元素添加 <code>data-dismiss="alert"</code> 属性。</p>
+			<p>3. 警告框中的链接，用 <code>.alert-link</code> 工具类，可以为链接设置与当前警告框相符的颜色。</p>
+			<h3>事件</h3>
+			<p>Bootstrap 的警告框插件对外暴露了一些可以被监听的事件</p>
+			<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>事件类型</th>
+					<th>描述</th>
+				</tr>
+			</thead>
+				<tbody>
+					<tr>
+						<td>close.bs.alert</td>
+						<td>当 close方法被调用后立即触发此事件。</td>
+					</tr>
+					<tr>
+						<td>closed.bs.alert</td>
+						<td>当警告框被关闭后（也即 CSS 过渡效果完毕之后）立即触发此事件。</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>用法：</p>
+			<pre>
+			
+$('#myAlert').on('closed.bs.alert', function () {
+  // do something…
+})
+			</pre>
+		</div>
+		
+    	<!-- 需要引用的JS -->
+    	<script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    	<script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    	<script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    	<script type="text/javascript" src="../prettify.js"></script>
+	</body>
+</html>

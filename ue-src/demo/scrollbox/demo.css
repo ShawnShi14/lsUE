@@ -1,0 +1,42 @@
+.demo-wrap {
+	border: 1px solid #ddd;
+	width: 450px;
+	padding: 20px;
+}
+.scroll-text {
+	height: 100px;
+	overflow: hidden;
+}
+.scroll-text ul li {
+	height: 25px;
+	font-size: 14px;
+	font-family: 'Microsoft yahei';
+}
+.scroll-text ul li a:hover {
+	color: #00c;
+	text-decoration: underline;
+}
+.scroll-img {
+	border: 1px solid #ddd;
+	width: 680px;
+	height: 142px;
+	overflow: hidden;
+	font-size: 0;
+}
+.scroll-img ul {
+	width: 680px;
+}
+.scroll-img ul li {
+	display: inline-block;
+	margin: 10px 0 10px 10px;
+}
+#demo3.scroll-img ul {
+	width: 809px;
+}
+#demo4.scroll-img ul {
+	width: 1350px;
+}
+#demo3-btn {
+	width: 680px;
+	padding-top: 10px;
+}

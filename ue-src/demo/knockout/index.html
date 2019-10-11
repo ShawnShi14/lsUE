@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>数据绑定-knockout.js</title>
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css" />
+	<style type="text/css">
+		body{
+			position: relative;
+		}
+		ul.nav-pills{
+			width: 200px;
+		}
+		.affix-top {
+			margin-top: 30px;
+		}
+		.affix{
+		    top: 30px;         
+		}
+		.affix-bottom {
+		    position: absolute;
+		}
+		.nav .nav {
+		    display: none;
+		}
+	</style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body data-spy="scroll" data-taget="#myScrollspy">
+	<!-- 页面结构 -->
+	 <div class="container">
+	    <div class="row">
+	        <div class="col-xs-3" id="myScrollspy">
+	            <ul class="nav nav-pills nav-stacked" id="myNav">
+	                <li class="active"><a href="#description">简介</a></li>
+                    <li><a href="#theory">实现原理</a></li>
+                    <li><a href="#method">怎么使用它</a></li>
+	            </ul>
+	        </div>
+	        <div class="col-md-9">
+                   <section id="description">
+	              <h1>Konckout是什么</h1>
+	              <hr/>
+	               <p>Knockout是个模板绑定器,简称ko。通过应用<em>MVVM</em>模式使JavaScript前端UI简单化,你可以在任何时候动态更新UI的选择部分。</p>
+	               <p>Knockout有如下4大重要特性:</p>
+                   <p>声明式绑定 (Declarative Bindings)：使用简明易读的语法很容易地将模型(model)数据关联到DOM元素上。</p> 
+                 <p>UI界面自动刷新 (Automatic UI Refresh)：当模型状态(model state)改变时，UI界面将自动更新。</p>
+                 <p>依赖跟踪 (Dependency Tracking)：为转变和联合数据，在模型数据之间隐式建立关系。</p>
+                   <p>模板 (Templating)：为模型数据快速编写复杂的可嵌套的UI。</p>
+                    </section>
+                   <!-- end of description -->
+                   <br/>
+                   
+                   <section id="theory">
+                   <h1>实现原理</h1>
+                   <hr/>
+                   <h3>采用MVVM模式实现，什么是MVVM模式？</h3>
+                   <p>MVVM是model-view-model view的简写。</p>
+                   <p>model是模型，数据访问层。</p>
+                   <p>View是视图，UI界面。</p> 
+                   <p>View model 是视图模型,它是view的抽象，负责view与model之间信息交换，将view的实际操作的调用传送到model。</p>  
+                   </section>
+                   <!-- end of theory-->
+                   <br/>
+                   
+                   <section id="method">
+                   <h1>Ko,怎么使用?</h1>
+                   <hr/>
+                   <p>简单来说：首先导入knockoout.js文件，声明你的数据作为一个JavaScript 模型对象（model object），然后将DOM 元素或者模板（templates）绑定到它上面.</p>
+                   <p>创建一个view model，只需要声明任意的JavaScript object。例如：</p>
+	                       <pre>
+	                     
+var myViewModel = {
+    personName: 'Bob',
+    personAge: 123
+};
+	                       </pre>
+                   <p>你可以为view model创建一个声明式的view。例如：下面的代码显示personName 值：</p>
+		                     <pre>
+		                     
+The name is <span data-bind="text: personName"></span>
+		                     </pre>
+                  <p>激活Knockout，让它起作用需要添加如下的 代码块：</p>
+                           <pre>
+                           
+ko.applyBindings(myViewModel);
+                           </pre>  
+                  <p>KO一个重要的功能是当view model改变的时候能自动更新界面。 所以需要将model属性声明成observable的,能够通知订阅者它的改变以及自动探测到相关的依赖。 </p>
+                  <p>例如：将上述例子的view model改成如下代码：</p>
+		                   <pre>
+
+
+var myViewModel = {
+    personName: ko.observable('Bob'),
+    personAge: ko.observable(123)
+};
+		                    </pre>
+                <p>不需要修改view所有的data-bind语法依然工作，不同的是他能监控到变化，当值改变时，view会自动更新。</p>
+                   </section>
+                   <!-- end of method -->
+              </div>
+	    </div>
+    </div>
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script> 
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#myNav").affix({
+        	 offset: {
+                 top: $("#myNav").offset().top,
+                 bottom: $('#hdisplay').outerHeight(true) + 40
+             }
+        });
+    });
+    </script>
+    
+</html>

@@ -1,0 +1,8 @@
+/* 
+ * Name: Loushang-UI
+ * Version: 2.0.0
+ * SVN: 13778
+ * Date: 2017-03-28
+ */
+
+.ue-legend{width:100%;position:relative}.ue-legend ul{position:absolute;left:50%}.ue-legend li{float:left;line-height:15px;cursor:pointer;margin-left:10px;padding-top:10px}.legend-icon{display:inline-block;width:15px;height:15px;text-align:center;margin-right:3px;color:#fff}.legend-select{opacity:.5}.ue-bar,.ue-line,.ue-map,.ue-pie{font-size:12px;font-family:"Microsoft YaHei";color:#666}.ue-echarts-content{position:relative}.ue-yaxis{width:14px}.ue-yaxis .ue-axis-title .fa.fa-pencil{cursor:pointer}.ue-yaxis .ue-axis-title{word-wrap:break-word;letter-spacing:5px}.ue-yaxis .new-title{width:200px;border:1px solid #ddd;background-color:#fff;padding:10px}

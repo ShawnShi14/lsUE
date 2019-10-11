@@ -1,0 +1,318 @@
+ <!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>列表</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+    <link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	<style type="text/css">
+   	.titleBar {
+   		line-height: 36px;
+   		border-bottom: 2px solid #ddd;
+   		padding-left: 15px;
+   	}
+   	.ue-list-right .ue-btn {
+		margin-top: 4px;
+		padding: 2px 12px;
+		float: right;
+    }
+    </style>
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container">
+		<div class="titleBar">
+			<strong>样式列表</strong>
+		</div>
+		<ul class="ue-list-n">
+			<li>
+				<div class="ue-list-left">
+			    	<div class="ue-list-left-img"></div>
+			        <div class="ue-list-left-content">
+			        	<div class="title">培训文档</div>
+			        	<div class="desc">
+			                     大小： 1.8MB&nbsp;&nbsp;时间： 2016/1/22
+			            </div>
+			        </div>
+			    </div>
+			    <div class="ue-list-right">
+			        <span>已下载：12</span>
+			        <button class="btn ue-btn">下载</button>
+			    </div>
+			</li>
+			<li>
+				<div class="ue-list-left">
+			    	<div class="ue-list-left-img"></div>
+			        <div class="ue-list-left-content">
+			        	<div class="title">培训文档</div>
+			            <div class="desc">
+			                     大小： 1.8MB&nbsp;&nbsp;时间： 2016/1/22
+			            </div>
+			        </div>
+			    </div>
+			    <div class="ue-list-right">
+			     	<span>已下载：12</span>
+			    	<button class="btn ue-btn">下载</button>
+			    </div>
+			</li>
+			<li>
+				<div class="ue-list-left">
+			    	<div class="ue-list-left-img"></div>
+			    	<div class="ue-list-left-content">
+			        	<div class="title">培训文档</div>
+			        	<div class="desc">
+			                     大小： 1.8MB&nbsp;&nbsp;时间： 2016/1/22
+			            </div>
+			        </div>
+			    </div>
+			    <div class="ue-list-right">
+			    	<span>已下载：12</span>
+			    	<button class="btn ue-btn">下载</button>
+				</div>
+			</li>
+	    </ul>
+	    <br/>
+	    <!-- 代码高亮 -->
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<ul class="ue-list-n">
+    <li>
+        <div class="ue-list-left">
+            <div class="ue-list-left-img"></div>
+            <div class="ue-list-left-content">
+                <div class="title">培训文档</div>
+                <div class="desc">
+                                 大小： 1.8MB&nbsp;&nbsp;时间： 2016/1/22
+                </div>
+            </div>
+        </div>
+        <div class="ue-list-right">
+            <span>已下载：12</span>
+            <button class="btn ue-btn">下载</button>
+        </div>
+    </li>
+</ul>
+		        </pre>
+			</div>
+		</div>
+		<br/>
+		<p style="line-height:25px">本组件须引用的css文件:</p>
+		<p><code>bootstrap.css</code>，<code>ui.css</code></p>
+		<br/>
+		<h3>说明</h3>
+	    <p style="line-height:25px">列表采用左右结构。左部分引用<code>.ue-list-left</code>,右部分引用<code>.ue-list-right</code>。左部分包括图片<code>.ue-list-left-img</code>
+	             和文本内容<code>.ue-list-left-content</code>。右边显示下载次数以及下载按钮</p>
+	</div>
+	<!-- 页面结构 -->
+	<div class="ue-container">
+		<div class="titleBar">
+			<strong>样式列表</strong>
+		</div>
+		<ul class="ue-list indent">
+			<li>
+				<span class="ue-relative-layout">
+					<span class="ue-list-facebox"></span>
+					<span class="ue-list-title">这里是评论标题</span>
+				</span>
+				<span class="pull-right">2016-1-17</span>
+				<div class="ue-list-desc">这里是评论内容，UI组件库又美观又实用,有丰富的模板</div>
+			</li>
+			<li>
+				<span class="ue-relative-layout">
+					<span class="ue-list-facebox"></span>
+					<span class="ue-list-title">这里是评论标题</span>
+				</span>
+				<span class="pull-right">2016-1-17</span>
+				<div class="ue-list-desc">这里是评论内容，UI组件库又美观又实用,有丰富的模板</div>
+			</li>
+			<li>
+				<span class="ue-relative-layout">
+					<span class="ue-list-facebox"></span>
+					<span class="ue-list-title">这里是评论标题</span>
+				</span>
+				<span class="pull-right">2016-1-17</span>
+				<div class="ue-list-desc">这里是评论内容，UI组件库又美观又实用,有丰富的模板</div>
+			</li>
+		</ul>
+		
+    	<!-- 代码高亮部分 -->
+		<br/>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<ul class="ue-list indent">
+    <li>
+        <span class="ue-relative-layout">
+            <span class="ue-list-facebox"></span>
+            <span class="ue-list-title">这里是评论标题</span>
+        </span>
+        <span class="pull-right">2016-1-17</span>
+        <div class="ue-list-desc">这里是评论内容，UI组件库又美观又实用,有丰富的模板</div>
+    </li>
+</ul>
+		        </pre>
+			</div>
+		</div>
+		<p style="line-height:25px">本插件须引用的css文件:</p>
+		<p><code>bootstrap.css</code>，<code>ui.css</code></p>
+		<br/>
+		<h3>说明</h3>
+	    <p style="line-height:25px">列表是ul 结构，ul 上须引用<code>.ue-list</code>和<code>.indent</code>整体样式。</p>
+		<p style="line-height:25px"> 图片引用<code>.ue-list-facebox</code>样式，同样，评论者或者标题引用<code>.ue-list-title</code>样式。
+		内容引用<code>.ue-list-desc</code>样式。</p>
+		<p style="line-height:25px">将图片和标题内容包裹在<code>.ue-relative-layout</code>中，或者是另外设置<code>position: relative;</code>的元素,然后加入HTML代码。</p>	 
+	</div>
+	
+	<!-- 页面结构 -->
+	<div class="ue-container">
+		<div class="titleBar">
+			<strong>样式列表----文件信息类</strong>
+		</div>
+		<ul class="ue-list">
+			<li>
+				<span class="ue-relative-layout">
+					<span class="ue-list-facebox nodesc"></span>
+					<span class="ue-list-title">[ 更新维护 ]</span>
+				</span>
+				<span class="pull-right">2016-1-17</span>
+				<span>1月1日维护更新公告1月1日维护更新公告1月1日维护更新公告</span>
+			</li>
+			<li>
+				<span class="ue-relative-layout">
+					<span class="ue-list-facebox nodesc"></span>
+					<span class="ue-list-title">[ 更新维护 ]</span>
+				</span>
+				<span class="pull-right">2016-1-17</span>
+				<span>1月1日维护更新公告1月1日维护更新公告1月1日维护更新公告</span>
+			</li>
+			<li>
+				<span class="ue-relative-layout">
+					<span class="ue-list-facebox nodesc"></span>
+					<span class="ue-list-title">[ 更新维护 ]</span>
+				</span>
+				<span class="pull-right">2016-1-17</span>
+				<span>1月1日维护更新公告1月1日维护更新公告1月1日维护更新公告</span>
+			</li>
+		</ul>
+		
+		<!-- 代码高亮部分 -->
+		<br/>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<ul class="ue-list">
+    <li>
+        <span class="ue-relative-layout">
+            <span class="ue-list-facebox nodesc"></span>
+            <span class="ue-list-title">[ 更新维护 ]</span>
+        </span>
+        <span class="pull-right">2016-1-17</span>
+        <span>1月1日维护更新公告1月1日维护更新公告1月1日维护更新公告</span>
+    </li>
+</ul>
+		        </pre>
+			</div>
+		</div>
+		<p style="line-height:25px">本插件须引用的css文件:</p>
+		<p><code>bootstrap.css</code>，<code>ui.css</code></p>
+		<br/>
+		<h3>说明</h3>
+	    <p style="line-height:25px">列表是ul 结构，ul 上须引用<code>.ue-list</code>整体样式。</p>
+	</div>
+	
+	<!-- 页面结构 -->
+	<div class="ue-container">
+		<div class="titleBar">
+			<strong>样式列表----新闻类</strong>
+		</div>
+		<ul class="ue-list-new">
+			<li>
+				<div class="ue-list-titlemask">这里是标题</div>
+				<div>这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略</div>
+				<div class="from">
+					<span>来自：</span>
+					<a>这里是类别</a>
+				</div>
+			</li>
+			<li>
+				<div class="ue-list-titlemask">这里是标题</div>
+				<div>这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略</div>
+				<div class="from">
+					<span>来自：</span>
+					<a>这里是类别</a>
+				</div>
+			</li>
+			<li>
+				<div class="ue-list-titlemask">这里是标题</div>
+				<div>这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略</div>
+				<div class="from">
+					<span>来自：</span>
+					<a>这里是类别</a>
+				</div>
+			</li>
+		</ul>
+		
+		<!-- 代码高亮部分 -->
+		<br/>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<ul class="ue-list-new">
+    <li>
+        <div class="ue-list-titlemask">这里是标题</div>
+        <div>这里是内容缩略这里是内容缩略这里是内容缩略这里是内容缩略这里 
+            <div class="from">
+                <span>来自：</span>
+                <a>这里是类别</a>
+            </div>
+        </div>
+    </li>
+</ul>
+		        </pre>
+			</div>
+		</div>
+		<p style="line-height:25px">本插件须引用的css文件:</p>
+		<p><code>bootstrap.css</code>，<code>ui.css</code></p>
+		<br/>
+		<h3>说明</h3>
+	    <p style="line-height:25px">列表是ul 结构，ul 上须引用<code>.ue-list-new</code>整体样式。</p>
+	</div>
+    <!-- 需要引用的JS -->
+  	<script type="text/javascript" src="../../dist/js/jquery.js"></script>
+  	<script type="text/javascript" src="../../dist/js/bootstrap.js"></script> 
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script> 
+  </body>
+</html>

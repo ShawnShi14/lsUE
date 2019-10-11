@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>对话框-artDialog</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+    <link rel="stylesheet" type="text/css" href="../prettify.css"/>
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container">
+	
+	    <a href="#" class="btn ue-btn alerts">alert</a>
+	    
+	    <a href="#" class="btn ue-btn confirm">confirm</a>
+	    
+	    <a href="#" class="btn ue-btn prompt">prompt</a>
+	    
+	    <a href="#" class="btn ue-btn iframe">iframe</a>
+	    
+	    <div style="padding-top: 20px;">
+	    	<input class="form-control ue-form" id="rtnValue"/>
+	    </div>
+	    
+    </div>
+    <!-- 代码高亮 -->
+     <div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<a href="#" class="btn ue-btn alerts">alert</a>
+<a href="#" class="btn ue-btn confirm">confirm</a>
+<a href="#" class="btn ue-btn iframe">iframe</a>	
+				</pre>
+				<pre>
+				
+$('.alerts').click(function() {
+    $.dialog({
+        type: 'alert',
+        content: '欢迎使用 artDialog 对话框组件！'
+    });
+});
+ 
+$('.confirm').click(function() {
+    $.dialog({
+        type: 'confirm',
+        content: '确定关闭对话框？',
+        ok: function () {},
+        cancel: function () {}
+    });
+});
+
+$('.prompt').click(function() {
+    $.dialog({
+        type: 'confirm',
+        content: '<form class="form-horizontal">' + 
+                 '<div class="form-group">' + 
+                 '<span class="col-xs-4 col-md-4 control-label">结点名称：</span>' + 
+                 '<div class="col-xs-8 col-md-8" style="padding-left:0px"><input id="nodeName" class="form-control ue-form" /></div>' + 
+                 '</div>'+ '</form>',
+        ok: function () {},
+        cancel: function () {}
+    });
+});
+
+$('.iframe').click(function() {
+    $.dialog({
+        type: 'iframe',
+        url: 'iframe.html',
+        title: '新增岗位',
+        width: 700,
+        height: 400,
+        onshow: function () {
+        },              
+        onclose: function () {
+            if(this.returnValue != ""){
+                eval("var str='"+JSON.stringify(this.returnValue)+"';");
+                $('#rtnValue').val(str);
+            }
+        },
+        oniframeload: function () {
+        }
+    });
+});
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<h3>说明</h3>
+		<p style="height:25px">本插件须引用的css文件：</p>
+		<p><code>bootstrap.css</code>，<code>ui.css</code>，<code>form.css</code></p>
+		<p style="height:25px">本插件须引用的js文件：</p>
+		<code>jquery.js</code>，<code>form.js</code>
+		<br/>
+		<br/>
+		<h3>配置参数</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>类型</th>
+					<th>默认值</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>title</td>
+					<td>String</td>
+					<td>'消息'</td>
+					<td>标题内容</td>
+				</tr>
+				<tr>
+					<td>content</td>
+					<td>loading...</td>
+					<td>"&lt;div class="d-loading"&gt;&lt;span&gt;loading..lt;/span&gt;&lt;/div&gt;"</td>
+					<td>设置消息内容<br/>
+						1、如果传入的是HTMLElement类型，如果是隐藏元素会给其设置display:block以显示该元素，其他属性与绑定的事件都会完整保留，对话框关闭后此元素又将恢复原来的display属性，并且重新插入原文档所在位置<br/>
+						2、如果没有设定content的值则会有loading的动画
+					</td>
+				</tr>
+				<tr>
+					<td>ok</td>
+					<td>Function,Boolean</td>
+					<td>null</td>
+					<td>确定按钮回调函数<br/>
+						函数如果返回false将阻止对话框关闭；函数this指针指向内部api；如果传入true，表示只显示有关闭功能的按钮
+					</td>
+				</tr>
+				<tr>
+					<td>cancel</td>
+					<td>Function,Boolean</td>
+					<td>null</td>
+					<td>取消按钮回调函数<br/>
+						函数如果返回false将阻止对话框关闭；函数this指针指向内部api；如果传入true，表示只显示有关闭功能的按钮。<br/>
+						对话框标题栏的关闭按钮其实就是取消按钮，只不过视觉不同罢了，点击同样触发cancel事件
+					</td>
+				</tr>
+				<tr>
+					<td>okValue</td>
+					<td>String</td>
+					<td>'确定'</td>
+					<td>确定按钮显示的文本</td>
+				</tr>
+				<tr>
+					<td>cancelVal</td>
+					<td>String</td>
+					<td>'取消'</td>
+					<td>取消按钮显示的文本</td>
+				</tr>
+				<tr>
+					<td>button</td>
+					<td>Array</td>
+					<td>null</td>
+					<td>自定义按钮。<br />
+				            配置参数成员：
+				            <div>value —— 按钮名称</div>
+				            <div>callback —— 按下后执行的函数</div>
+				            <div>focus —— 是否聚焦点</div>
+				            <div>disabled —— 是否标记按钮为不可用状态（后续可使用扩展方法让其恢复可用状态）</div>
+				            <br />
+				            <div>示例：</div>
+				            参数如：[{value: '登录', callback: function () {}}, {name: '取消'}] 。注意点击按钮默认会触发按钮关闭动作，需要阻止触发关闭请让回调函数返回false
+                   </td>
+				</tr>
+				<tr>
+					<td>width</td>
+					<td>Number,String</td>
+					<td>'auto'</td>
+					<td>设置消息内容宽度，可以带单位。一般不需要设置，对话框框架会自己适应内容。如果设置为百分值单位，将会以根据浏览器可视范围作为基准，此时如果浏览器窗口大小被改变其也会进行相应的调整</td>
+				</tr>
+				<tr>
+					<td>height</td>
+					<td>Number</td>
+					<td>'auto'</td>
+					<td>设置消息内容高度，可以带单位。不建议设置，而应该让内容自己撑开高度。如果设置为百分值单位，将会以根据浏览器可视范围作为基准，此时如果浏览器窗口大小被改变其也会进行相应的调整</td>
+				</tr>
+				<tr>
+					<td>follow</td>
+					<td>HTMLElement</td>
+					<td>null</td>
+					<td>让对话框依附在指定元素附近</td>
+				</tr>
+				<tr>
+					<td>backdropOpacity</td>
+					<td>Number</td>
+					<td>0.4</td>
+					<td>设置背景透明度</td>
+				</tr>
+				<tr>
+					<td>autofocus</td>
+					<td>Boolean</td>
+					<td>false</td>
+					<td>是否自动聚焦</td>
+				</tr>
+				<tr>
+					<td>onshow</td>
+					<td>Function</td>
+					<td>null</td>
+					<td>对话框显示时执行事件</td>
+				</tr>
+				<tr>
+					<td>oniframeload</td>
+					<td>Function</td>
+					<td>null</td>
+					<td>对话框加载完毕后执行事件</td>
+				</tr>
+				<tr>
+					<td>onclose</td>
+					<td>Function</td>
+					<td>null</td>
+					<td>对话框关闭后执行的事件</td>
+				</tr>
+				<tr>
+					<td>url</td>
+					<td>String</td>
+					<td>null</td>
+					<td>iframe地址,存在content参数时候,此参数无效</td>
+				</tr>
+				<tr>
+					<td>id</td>
+					<td>String</td>
+					<td>null</td>
+					<td>设定对话框唯一标识</td>
+				</tr>
+				<tr>
+					<td>show</td>
+					<td>Boolean</td>
+					<td>true</td>
+					<td>是否显示对话框</td>
+				</tr>
+				<tr>
+					<td>close</td>
+					<td>Function</td>
+					<td>null</td>
+					<td>对话框关闭前执行的函数。函数如果返回false将阻止对话框关闭。<br/>
+						请注意这不是关闭按钮的回调函数，无论何种方式关闭对话框，close都将执行。
+					</td>
+				</tr>
+				<tr>
+					<td>time</td>
+					<td>Number</td>
+					<td>null</td>
+					<td>设置对话框显示时间。以秒为单位</td>
+				</tr>
+				<tr>
+					<td>resize</td>
+					<td>Boolean</td>
+					<td>true</td>
+					<td>是否允许用户调节尺寸</td>
+				</tr>
+				<tr>
+					<td>drag</td>
+					<td>Boolean</td>
+					<td>true</td>
+					<td>是否允许用户拖动位置</td>
+				</tr>
+				<tr>
+					<td>esc</td>
+					<td>Boolean</td>
+					<td>true</td>
+					<td>是否允许用户按Esc键关闭对话框</td>
+				</tr>
+				<tr>
+					<td>init</td>
+					<td>Function</td>
+					<td>null</td>
+					<td>对话框弹出后执行的函数</td>
+				</tr>
+				<tr>
+					<td>lock</td>
+					<td>Boolean</td>
+					<td>false</td>
+					<td>开启锁屏。<br/>中断用户对话框之外的交互，用于显示非常重要的操作/消息，所以不建议频繁使用它，它会让操作变得繁琐</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>methods</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>描述</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>close()</td>
+					<td>关闭对话框</td>
+				</tr>
+				<tr>
+					<td>show()</td>
+					<td>显示对话框</td>
+				</tr>
+				<tr>
+					<td>hidden()</td>
+					<td>隐藏对话框</td>
+				</tr>
+				<tr>
+					<td>visible()</td>
+					<td>把隐藏的对话框显示</td>
+				</tr>
+				<tr>
+					<td>title(value)</td>
+					<td>设置对话框标题</td>
+				</tr>
+				<tr>
+					<td>content(value)</td>
+					<td>设置消息内容</td>
+				</tr>
+				<tr>
+					<td>button(arguments)</td>
+					<td>插入一个自定义按钮。<br />
+					           配置参数成员：
+					           <div>name —— 按钮名称</div>
+					           <div>callback —— 按下后执行的函数</div>
+					           <div>focus —— 是否聚焦点</div>
+					           <div>disabled —— 是否标记按钮为不可用状态（后续可使用扩展方法让其恢复可用状态）</div>
+					           <br />
+					           <div>示例：</div>
+   <pre style="background:none; border:none 0;">button(
+   {
+    value: '登录',
+    focus: true,
+    callback: function () {}
+   }, {
+    name: '取消'
+})</pre>
+					</td>
+				</tr>
+				<tr>
+					<td>follow(element)</td>
+					<td>让对话框依附在指定元素附近</td>
+				</tr>
+				<tr>
+					<td>size(width, height)</td>
+					<td>指定对话框内容尺寸</td>
+				</tr>
+				<tr>
+					<td>lock()</td>
+					<td>开启锁屏遮罩</td>
+				</tr>
+				<tr>
+					<td>unlock()</td>
+					<td>关闭锁屏遮罩</td>
+				</tr>
+				<tr>
+					<td>time(value)</td>
+					<td>设置对话框显示时间，超过时间自动关闭 (单位：毫秒)</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+    <!-- 需要引用的JS -->
+  	<!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script> -->
+   <script src="../require.js"></script>
+    <script src="../main.js"></script>
+    
+    <script type="text/javascript">
+    require(['jquery','form/artdialog','demo/prettify'], function(artdialog){
+    	$(function() {
+    		$('.alerts').click(function() {
+    			$.dialog({
+    				type: 'alert',
+    		    	content: '欢迎使用artdialog!'
+    	    	});
+    		});
+    	
+    		$('.confirm').click(function() {
+    			var dialog = $.dialog({
+    				type: 'confirm',
+    		   	 	content: "是否退出",
+    		    	ok: function () {},
+    		    	cancel: function () {},
+    		    	button: [{
+    		    		id: 'testID',
+    		    		value: '登录',
+    		    		callback: function() {},
+    		    		focus: true
+    		    	}] 
+    	    	});
+    		});
+    		$('.prompt').click(function() {
+    			$.dialog({
+    				type: 'confirm',
+    				content: '<form class="form-horizontal" style="margin-left: -34px;">' + 
+     			         	'<div class="form-group">' + 
+     			         	'<span class="col-xs-4 col-md-4 control-label">名称：</span>' + 
+                         	'<div class="col-xs-8 col-md-8" style="padding-left:0px"><input id="nodeName" class="form-control ue-form" /></div>' + 
+                         	'</div>'+ '</form>',
+    		    	ok: function () {},
+    		    	cancel: function () {}
+    	    	});
+    		});
+    	
+    		$('.iframe').click(function() {
+    			$.dialog({
+    				type: 'iframe',
+    				isLock: false,
+					url: 'iframe.html',
+					title: '新增岗位',
+					width: 700,
+					height: 400,
+					onshow: function () {
+					},    		    
+			   	 	onclose: function () {
+						if(this.returnValue != ""){
+							eval("var str='"+JSON.stringify(this.returnValue)+"';");
+							$('#rtnValue').val(str);
+						}
+					},
+					oniframeload: function () {
+					}
+				});
+    		});
+    	});
+    });
+    </script>
+  </body>
+</html>

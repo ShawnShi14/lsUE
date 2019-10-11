@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>政府信息化-登录页</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+    <link rel="stylesheet" type="text/css" href="login.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="login">
+		<div class="login-top"></div>
+		<div class="login-body">
+			<div class="logo"></div>
+			<div class="login-content clearfix">
+				<div class="ue-relative-layout pull-left">
+					<div class="ue-unslider">
+                        <ul class="unslider-inner">
+                            <li><img src="images/item1.png"/></li>
+                            <li><img src="images/item2.png"/></li>
+                        </ul>
+                    </div>
+				</div>
+				<div class="login-form">
+					<form>
+					  <div class="form-group">
+					    <label class="form-title">登录</label>
+					    <div class="input-group">
+					    	<div class="input-group-addon user"></div>
+					    	<input type="text" class="form-control ue-form" id="userName" placeholder="请输入用户名">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					  	<div class="input-group">
+						  	<div class="input-group-addon password"></div>
+						    <input type="password" class="form-control ue-form" id="password" placeholder="请输入密码">
+						</div>
+					  </div>
+					  <div class="checkbox">
+					    <label class="form-checkbox">
+					      <input type="checkbox"> 记住我
+					    </label>
+					  </div>
+					  <div class="login-btn">
+				  	  	<button class="btn btn-login">登录</button>
+				  	  	<button class="btn btn-reset">重置</button>
+				  	  </div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="login-bottom">
+			<div class="bottom-content">
+				<a>常用下载</a>
+				<a>版权信息</a>
+				<a class="no-border">使用帮助</a>
+			</div>
+		</div>
+	</div>
+	
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+   	<script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+   	<script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function() {
+    	$('.ue-unslider').unslider({
+    		// 支持响应式设计
+    		fluid: true,
+    		// 显示点导航
+    		dots: true,
+    		// 动画的速度,没有过度效果时为 false (整型或布尔型)
+    		speed: 500,
+    		delay: 1500
+    	});
+    	var unslider = $('.ue-unslider').unslider();
+   		$('.ue-unslider-arrow').click(function() {
+        	var fn = this.className.split(' ')[1];
+       	 	//  Either do unslider.data('unslider').next() or .prev() depending on the className
+        	unslider.data('unslider')[fn]();
+    	});
+    });
+	</script>
+  </body>
+</html>

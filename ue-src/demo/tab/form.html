@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>表单</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css">
+    <style type="text/css">
+    .form-horizontal .form-group {
+    	margin-left: 0;
+    	margin-right: 0;
+    	margin-top: 15px;
+    }
+    </style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<form class="form-horizontal">
+		<div class="form-group">
+		    <label for="position" class="col-sm-2 control-label">岗位名称</label>
+		    <div class="col-sm-10">
+		        <input type="text" class="form-control ue-form" id="position" value="实施">
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label for="org" class="col-sm-2 control-label">所属机构</label>
+		    <div class="col-sm-10">
+		        <select class="form-control ue-form" id="org">
+		      	    <option value="rj">浪潮软件</option>
+		      	    <option value="tr">浪潮通软</option>
+		      	    <option value="tx">浪潮通信</option>
+		      	    <option value="xx">浪潮信息</option>
+		        </select>
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label for="date" class="col-sm-2 control-label">创建日期</label>
+		    <div class="col-sm-10">
+		    	<div class="input-group date" id="dateDemo">
+		    		<input type="text" id="createDate" class="form-control ue-form" />
+		    		<span class="input-group-addon ue-form-btn"><i class="fa fa-calendar"></i></span>
+		    	</div>
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label for="org" class="col-sm-2 control-label">属性选择</label>
+		    <div class="col-sm-10">
+		    	<div class="checkbox">
+		    		<label><input type="checkbox"/>属性一</label>
+		    		<label><input type="checkbox"/>属性二</label>
+		    		<label><input type="checkbox"/>属性三</label>
+		    	</div> 
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label for="org" class="col-sm-2 control-label">是否在岗</label>
+		    <div class="col-sm-10">
+		    	<div class="radio ">
+		    		<label><input type="radio" name="group"/>是</label>
+		    		<label><input type="radio" name="group"/>否</label>
+		    	</div>
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label for="org" class="col-sm-2 control-label">职责描述</label>
+		    <div class="col-sm-10">
+		    	<textarea class="form-control ue-form" rows="3"></textarea>
+		    </div>
+		</div>
+	</form>
+	
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script>
+    <script type="text/javascript">
+    $('#dateDemo').datetimepicker({
+    	container: $('#dateDemo'),
+    	language: "zh-CN",
+    	autoclose: 1,
+    	startView: 2,
+		minView: 2,
+    	format: "yyyy-mm-dd"
+    });
+    </script>
+  </body>
+</html>

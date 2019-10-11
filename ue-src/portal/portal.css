@@ -1,0 +1,449 @@
+body {
+	background-color: #f1f1f1;
+}
+.ue-form-btn {
+	padding: 0 8px;
+}
+.navbar-bg {
+	background-color: #081e33;
+	margin-bottom: 0;
+}
+.navbar-right {
+	margin-top: 10px;
+	margin-right: 10px;
+}
+.component-banner {
+	height: 250px;
+	background-image: url(images/home-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.component-banner .jumbotron {
+	margin-bottom: 0;
+	padding-top: 80px;
+	background-color: transparent;
+	color: #fff;
+	text-align: center;
+}
+.component-menu {
+	border-bottom: #D2D6D5 1px solid;
+	background-color: #fff;
+	font-size: 15px;
+	height: 49px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.component-menu > ul > li {
+	display: table-cell;
+	list-style: none;
+	padding: 13px 25px;
+	border-right: #E6E6E6 1px solid;
+	border-bottom: transparent 2px solid;
+}
+.component-menu > ul > li.on{
+ 	border-bottom: #007FFF 2px solid;
+}
+.component-menu > ul > li > a {
+	color: #595959;
+	text-align: center;
+}
+.component-menu > ul > li > a:hover, .component-menu > ul > li > a:active {
+	text-decoration: none;
+}
+.component-menu > ul > li i {
+	font-size: 12px;
+}
+.component-menu > ul > li > ul {
+	display: none;
+}
+.component-menu-wrap {
+	height: 49px;
+	width: 100%;
+	margin-bottom: 21px;
+	border-bottom: 1px #ddd solid;
+	background-color: #fff;
+}
+.uidesign-link {
+	margin-left: 20px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.list-types {
+	display: none;
+	position: absolute;
+	top: -20px;
+	width: 100%;
+	z-index: 100;
+	border: #D2D6D5 1px solid;
+	border-top: 0;
+	background-color: #fff;
+	font-size: 15px;
+	padding: 20px;
+}
+.list-types ul {
+	margin: 0;
+	padding: 0;
+}
+.list-types ul li {
+	list-style: none;
+	display: inline-block;
+	margin: 10px 15px;
+}
+.list-types ul li a {
+	display: inline-block;
+	width: 190px;
+	border: #EEE 1px solid;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	color: #595959;
+	text-decoration: none;
+}
+.list-types ul li a:hover {
+	color: #000;
+	border-color: #007FFF;
+}
+.list-types ul li a i, .side-types a i {
+	margin-right: 15px;
+}
+.side-types {
+	padding: 0;
+	list-style: none;
+	border: 1px solid #ddd;
+	border-bottom: none;
+}
+.side-types a {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+	background-color: #fff;
+	border-bottom: 1px solid #ddd;
+	color: #555;
+	text-decoration: none;
+}
+.component-item {
+	padding-bottom: 30px;
+	overflow: hidden;
+}
+.component {
+	position: relative;
+	float: left;
+	width: 100%;
+	padding-bottom: 10px;
+	margin-left: 0;
+	box-shadow: 1px 1px 1px #D0D0D0;
+	background-color: #fff;
+}
+.component .link {
+	width: 100%;
+	overflow: hidden;
+}
+.component a > img {
+	width: 100%;
+	border: none;
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	-o-transition: 1s;
+	transition: 1s;
+}
+.component a > img:hover {
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
+}
+.component article {
+	display: block;
+	height: 100px;
+	padding: 10px;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+.component article > a {
+	display: block;
+	font-size: 15px;
+	line-height: 25px;
+	font-weight: bold;
+	margin: 5px 0;
+	text-decoration: none;
+}
+.component article small {
+	color: #8E8E8E;
+}
+.component-detail .top-bann {
+	background-color: #FAFAFA;
+	padding: 13px;
+	padding-left: 20px;
+	border-bottom: 1px solid #e8e8e8;
+}
+.component-detail .top-bann h4 {
+	font-size: 25px;
+	margin: 0;
+}
+.component-detail .con {
+	padding: 40px;
+	background-color: #fff;
+}
+.component-detail .con .thumbile {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+	margin-bottom: 30px;
+}
+.component-detail {
+	padding: 0;
+	border-right: #DADADA 1px solid;
+	border: 1px solid #e8e8e8;
+}
+.component-detail .browsers {
+	background-repeat: no-repeat;
+}
+.component-detail .browsers li {
+	list-style: none;
+	display: inline-block;
+	position: relative;
+	float: left;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	color: #CACACA;
+	font-weight: bold;
+	margin-right: 15px;
+	margin-top: 8px;
+}
+.component-detail .browsers li.on {
+	color: #7CCC4F;
+	border-color: #7CCC4F;
+}
+.component-detail .browsers li i {
+	display: inline-block;
+	position: absolute;
+	top: 26px;
+	left: 15px;
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 10px;
+}
+.component-detail .browsers li.on i {
+	background-image: url(images/support.png);
+}
+.component-info {
+	background-color: #fff;
+	padding: 0;
+	border: 1px solid #e8e8e8;
+}
+.component-info .inner {
+	padding: 20px;
+}
+.component-info .inner .author-info {
+	border-bottom: #e8e8e8 1px dashed;
+	padding-bottom: 15px;
+}
+.component-info .inner .author-info .author {
+	height: 50px;
+	line-height: 50px;
+	color: #333;
+}
+.component-info .inner .author-info .tx {
+	position: relative;
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	margin-right: 20px;
+	float: left;
+}
+.component-info .inner .oper-wrap {
+	padding: 10px 20px;
+}
+.component-info .inner .oper-wrap .btn {
+	width: 100%;
+	margin: 10px 0;
+	color: #333;
+	border-color: #ccc;
+}
+.browsers-shell {
+	padding-bottom: 9px;
+	border: 1px #ddd solid;
+	text-align: center;
+}
+.opers-choose {
+    width: 100%;
+    padding-left: 24px;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    padding-top: 0;
+}
+.opers-choose a {
+    border: 2px solid;
+    width: 100%;
+    line-height: 40px;
+    float: left;
+    margin-top: 10px;
+    color: #fff;
+    text-decoration: none;
+    background-color: #5BB8D4;
+	border: #2970ae;
+}
+.component-upload {
+	width: 100%;
+	line-height: 40px;
+	float: left;
+	color: #fff;
+	text-align: center;
+	background-color: #EBAA53;
+	margin-top: 20px;
+}
+.opers-choose a:hover, .opers-choose a:active {	
+	background-color: #62c3e0;
+	text-decoration: none;
+}
+.component-upload:hover, .component-upload:active {	
+	background-color: #f9b457;
+	text-decoration: none;
+	color: #fff;
+}
+.opers-choose a .fa, .component-upload .fa {
+    margin-right: 10px;
+}
+#saveCom {
+	margin-right: 20px;
+	margin-top: 20px;
+	color: #fff;
+	background-color: #3d99fe;
+	border-radius: 0;
+}
+#saveCom:focus, #saveCom:hover {
+	background-color: #4187cd;
+}
+
+/***一级导航***/
+#comt {
+	float:left;
+}
+#comt li:first-child {
+	border-left: 1px #ddd solid;
+}
+
+/***component-menu菜单右侧链接***/
+#coma {
+	float:right;
+}
+#coma li {
+	border-left: none;
+	border-right: none;
+	border: none;
+	padding-top: 15px;
+}
+#coma li a:hover {
+	color: #3e99ff;
+	text-decoration: underline;
+}
+
+/*把组件之间的间隔都设为20px */
+.col-md-3, .col-sm-4 {
+  	padding-right: 10px;
+    padding-left: 10px;
+}
+.component-item {
+    padding-bottom: 20px;
+}
+
+/* 设置评论的样式*/
+.comment {
+	padding: 15px 40px;
+	background-color: #fafafa;
+	border-top: 1px solid #e8e8e8;
+	border-bottom: 1px solid #e8e8e8;
+}
+.comment div {
+	margin-bottom: 15px;
+}
+.comment .bt {
+	text-align: right;
+	margin-top: 10px;
+}
+
+.col-md-12 {
+	float: none;
+}
+
+/*设置推荐样式*/
+.list-group {
+	margin-top: 30px;
+}
+
+.recommend {
+ 	margin-bottom: -1px;
+	padding: 10px 15px;
+	background-color: #fff;
+	color: #8e8e8e;
+	border: 1px solid #ddd;
+	cursor: pointer;
+}
+
+.recommend:hover {
+	background-color: #f5f5f5;
+}
+
+.recommend i {
+	margin-right: 10px;
+}
+
+.comment-head {
+	padding-left: 20px;
+	height: 67px;
+}
+.comment > p {
+	float: left;
+	display: block;
+	font-size: 23px;
+	font-family: "Microsoft YaHei" !important;
+	line-height: 34px;
+}
+.rateresult > p {
+	color: #fff;
+	background-color: #f60;
+	border-radius: 5px;
+	padding: 0px 10px;
+	float: left;
+	font-weight: bold;
+	font-size: 24px;
+}
+.rateresult p span {
+	font-size: 14px;
+}
+.ue-list.indent>li {
+	padding-left: 20px;
+}
+@media (max-width: 990px) {
+	.component-menu > ul > li {
+ 		padding: 13px 15px;
+ 	}
+}
+ @media (max-width: 768px) {
+ 	#coma {
+		display: none;
+	}
+}
+/*设置登录按钮的样式*/
+.navbar-right .login, .navbar-right .login:hover{
+	color: #fff;
+	text-decoration: underline; 
+}
+.navbar-header a {
+	color: #fff;
+}
+ @media (min-width: 768px) {
+	.navbar-right .dropdown-menu {
+		right: -25px;
+	}
+} 
+.dropdown-menu {
+	min-width: 100px;
+}
+.dropdown-menu li {
+	padding: 0;
+}
+.dropdown {
+	float: right;
+}

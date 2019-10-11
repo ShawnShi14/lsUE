@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>附加导航&滚动监听</title>
+
+    <!-- 需要引用的CSS -->
+	<link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+ <body data-spy="scroll" data-target="#myScrollspy">
+	<!-- 页面结构 -->
+	<div class="container">
+		<div class="jumbotron">
+	        <h2>附加导航 & 滚动监听</h2>
+	    </div>
+	    <div class="row">
+	        <div class="col-md-3" id="myScrollspy">
+	            <ul class="ue-affix nav hidden-xs hidden-sm" id="myNav">
+	                <li><a href="#web-design">Web Design</a>
+                     </li>
+                     <li><a href="#web-development">Web Development</a>
+                         <ul class="ue-affix nav hidden-xs hidden-sm">
+                             <li><a href="#ruby">Ruby</a>
+                             </li>
+                             <li><a href="#python">Python</a>
+                             </li>
+                             <li><a href="#php">PHP</a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li><a href="#marketing">Marketing</a>
+                     </li>
+                     <li><a href="#graphic-design">Graphic Design</a>
+                     </li>
+                     <li><a href="#logistics">Logistics</a>
+                     </li>
+                     <li><a href="#social">Social</a>
+                     </li>
+                     <li><a href="#management">Management</a>
+                     </li>
+                     <li><a href="#chemistry">Chemistry</a>
+                     </li>
+                     <li><a href="#mobile-development">Mobile Development</a>
+                         <ul class="ue-affix nav hidden-xs hidden-sm">
+                             <li><a href="#android">Android</a>
+                             </li>
+                             <li><a href="#iOS">iOS</a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li><a href="#mathematics">Mathematics</a>
+                     </li>
+	            </ul>
+	        </div>
+	        <div class="col-md-9">
+                <section id="web-design">
+                    <h2><span class="fa fa-edit"></span> Web Design</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
+                    </p>
+                </section>
+                <!--end of #web-design-->
+
+                <section id="web-development">
+                    <h2><span class="fa fa-edit"></span> Web Development</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+
+                    <section id="ruby">
+                        <h3>Ruby</h3>
+                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        </p>
+                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        </p>
+                        <button type="button" class="btn btn-primary">Learn More</button>
+                    </section>
+                    <!--end of #ruby-->
+
+                    <section id="python">
+                        <h3>Python</h3>
+                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        </p>
+                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        </p>
+                    </section>
+                    <!--end of #python-->
+
+                    <section id="php">
+                        <h3>PHP</h3>
+                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        </p>
+                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        </p>
+                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        </p>
+                    </section>
+                    <!--end of #php-->
+                </section>
+                <!--end of #web-devlopment-->
+
+                <section id="marketing">
+                    <h2><span class="fa fa-edit"></span> Marketing</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
+                    </p>
+                    <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                </section>
+                <!--end of #marketing-->
+
+                <section id="graphic-design">
+                    <h2><span class="fa fa-edit"></span> Graphic Design</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                </section>
+                <!--end of #graphic-design-->
+
+                <section id="logistics">
+                    <h2><span class="fa fa-edit"></span> Logistics</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                </section>
+                <!--end of #logistics-->
+
+                <section id="social">
+                    <h2><span class="fa fa-edit"></span> Social</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
+                    </p>
+                    <p>Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                </section>
+                <!--end of #social-->
+
+                <section id="management">
+                    <h2><span class="fa fa-edit"></span> Management</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
+                    </p>
+                </section>
+                <!--end of #management-->
+
+                <section id="chemistry">
+                    <h2><span class="fa fa-edit"></span> Chemistry</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                </section>
+                <!--end of #chemistry-->
+
+                <section id="mobile-development">
+                    <h2><span class="fa fa-edit"></span> Mobile Development</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
+                    </p>
+
+                    <section id="android">
+                        <h3>Android Development</h3>
+                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        </p>
+                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        </p>
+                    </section>
+                    <!--end of #android-->
+
+                    <section id="iOS">
+                        <h3>iOS Development</h3>
+                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        </p>
+                        <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        </p>
+                    </section>
+                    <!--end of #iOS-->
+                </section>
+                <!--end of #mobile-development-->
+
+                <section id="mathematics">
+                    <h2><span class="fa fa-edit"></span> Mathematics</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    </p>
+                </section>
+                    <!--end of #mathematics-->
+              </div>
+	    </div>
+	</div>
+	<br/>
+	
+	
+	<!-- 代码高亮 -->
+	 <br/>
+	 <br/>
+	 <hr/>
+	 <div class="container" id="hdisplay" style="padding: 10%">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+&lt;body data-spy="scroll" data-target="#myScrollspy"&gt;
+<div class="row">
+    <div class="col-md-3" id="myScrollspy">
+        <ul class="ue-affix nav hidden-xs hidden-sm" id="myNav">
+            <li><a href="#web-design">Web Design</a></li>
+            <li><a href="#web-development">Web Development</a>
+                <ul class="ue-affix nav hidden-xs hidden-sm">
+                    <li><a href="#ruby">Ruby</a></li>
+                    <li><a href="#python">Python</a></li>
+                    <li><a href="#php">PHP</a></li>
+                </ul>
+            </li>
+            <li><a href="#marketing">Marketing</a></li>
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <section id="web-design">
+            <h2><span class="fa fa-edit"></span> Web Design</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+        </section>
+        <!--end of #web-design-->
+ 
+        <section id="web-development">
+            <h2><span class="fa fa-edit"></span> Web Development</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                     
+            <section id="ruby">
+                <h3>Ruby</h3>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>                       
+            </section>
+ 
+            <section id="python">
+                <h3>Python</h3>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>                      
+            </section>
+ 
+            <section id="php">
+                <h3>PHP</h3>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+            </section>
+        </section>
+ 
+        <section id="marketing">
+            <h2><span class="fa fa-edit"></span> Marketing</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        </section>
+    </div>
+</div>
+				</pre>
+				<pre>
+				
+$("#myNav").affix({
+    offset: {
+        top: $("#myNav").offset().top,
+        bottom: //$('#hdisplay').outerHeight(true) + 40 根据自己的情况编写距离底部的距离
+    }
+});
+                </pre>
+			</div>
+		</div>
+		<br/> 
+		<p style="line-height:25px">需要添加的css文件</p>
+		<code>bootstrap.css</code>，<code>ui.css</code>，<code>form.css</code>
+		<p style="line-height:25px">需要添加的js文件</p>
+		<code>jquery.js</code>，<code>bootstrap.js</code>
+		<br/>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">可以通过 data 属性或者通过 JavaScript 来使用附加导航插件,本例通过javascript来实现。</p>
+	    <p style="line-height:25px"><code>data-spy="scroll"</code>：监听元素的滚动事件。这个元素通常都是<code>body</code>元素
+	    <p style="line-height:25px"><code>data-target</code>：添加需要监听的目标元素。</p>
+		<p style="line-height:25px">须为导航条中的链接指定目标id。例如，<code>&lt;a href="#home"&gt;home &lt;/a &gt;</code>必须和dom中类似<code>&lt;section id="home"&gt;&lt;/section&gt;</code>的页面元素相呼应。</p>
+		<hr/>
+ 		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>类型</th>
+					<th>默认值</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>offset</td>
+					<td>number</td>
+					<td>10</td>
+					<td>计算滚动位置时相对于顶部或底部的偏移量</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>其中：</p>
+		<p><code>top</code>表示相对顶部的偏移量。</p>
+		<p><code>bottom</code>表示相对底部的偏移量。</p>
+	</div>
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#myNav").affix({
+        	 offset: {
+                 top: $("#myNav").offset().top,
+                 bottom: $('#hdisplay').outerHeight(true) + 40
+             }
+        });
+    }); 
+    </script>
+  </body>
+</html>

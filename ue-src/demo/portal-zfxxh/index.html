@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>政府信息化-门户</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+    <link rel="stylesheet" type="text/css" href="portal.css" />
+    
+ <style type="text/css">
+ /*通讯录的加号居中*/
+.fa.fa-plus.fa-5x {
+    position: absolute;
+    left: 50%;
+    margin-left: -27.5px;
+    top: 50%;
+    margin-top: -35px;
+}
+ </style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<header class="navbar navbar-static-top">
+   		<div class="navbar-header">
+   			<a class="navbar-brand"></a>
+   		</div>
+    	<nav class="collapse navbar-collapse">
+	      	<ul class="nav navbar-nav navbar-border">
+		        <li class="active">
+		        	<a href="#">首页</a>
+		        </li>
+		        <li>
+		        	<a href="#">应用<span class="fa fa-caret-down"></span></a>
+		        	<div class="navbar-pulldown clearfix">
+						<a class="rsgl" href="">
+							<span class="icon"><i class="fa fa-file-o"></i></span>
+							<span class="text">人事管理</span>
+						</a>
+						<a class="djxk" href="">
+							<span class="icon"><i class="fa fa-list"></i></span>
+							<span class="text">登记许可</span>
+						</a>
+						<a class="gw" href="">
+							<span class="icon"><i class="fa fa-rss"></i></span>
+							<span class="text">公文</span>
+						</a>
+						<a class="zhsw" href="">
+							<span class="icon"><i class="fa fa-briefcase"></i></span>
+							<span class="text">综合事务</span>
+						</a>
+					</div>
+		        </li>
+		        <li>
+		        	<a href="#">协作<span class="fa fa-caret-down"></span></a>
+		        	<div class="navbar-pulldown clearfix">
+						<a class="rsgl" href="">
+							<span class="icon"><i class="fa fa-weixin"></i></span>
+							<span class="text">微博</span>
+						</a>
+						<a class="djxk" href="">
+							<span class="icon"><i class="fa fa-jsfiddle"></i></span>
+							<span class="text">网盘</span>
+						</a>
+						<a class="gw" href="">
+							<span class="icon"><i class="fa fa-list-alt"></i></span>
+							<span class="text">文章</span>
+						</a>
+					</div>
+		        </li>
+		        <li>
+		        	<a href="#">数据</a>
+		        </li>
+		        <li>
+		        	<a href="#">管理</a>
+		        </li>
+	      	</ul>
+	      	<ul class="nav navbar-nav navbar-right">
+		        <li class="dropdown">
+		        	<a data-toggle="dropdown">
+		        		<img src="images/avatar.jpg"/>
+		        		系统管理员
+		        		<span class="fa fa-caret-down"></span>
+		        	</a>
+		        	<ul class="dropdown-menu ue-dropdown-menu">
+		        		<li><a href="#">个人信息</a></li>
+		        		<li><a href="#" class="security">安全设置</a></li>
+		        		<li><a href="#" class="mail">邮件</a></li>
+		        		<li><a href="#" class="exit">退出</a></li>
+		        	</ul>
+		        </li>
+		    </ul>
+   		</nav>
+	</header>
+	<div class="banner">
+		<div class="banner-left pull-left"></div>
+		<div class="banner-right pull-right">
+			<ul>
+				<li>关于6月16日CRM销售线索检查通报</li>
+				<li>关于2015年端午节放假的通知 </li>
+				<li>关于集团行政审批系统维护的通知</li>
+				<li>浪潮与山东省公安消防总队签署战略合作协议</li>
+				<li>四川省经信委副主任王建明一行莅临浪潮参观考察</li>
+				<li>[浪潮软件]关于威海市发改委发来的表扬信</li>
+				<li>浪潮GS资产管理V6.0.9正式发布</li>
+			</ul>
+			<a>更多》</a>
+		</div>
+	</div>
+	<div>
+		<div class="easyway">
+			<span class="fa fa-list-alt"></span>
+			<label>待办事项：</label>
+			<a>6</a>
+		</div>
+		<div class="easyway">
+			<span class="fa fa-pencil"></span>
+			<label>待签：</label>
+			<a>6</a>
+		</div>
+		<div class="easyway">
+			<span class="fa fa-th-large"></span>
+			<label>待阅：</label>
+			<a>6</a>
+		</div>
+		<div class="easyway">
+			<span class="fa fa-envelope-o"></span>
+			<label>未读邮件：</label>
+			<a>6</a>
+		</div>
+	</div>
+	<div class="panels clearfix">
+		<div class="panel ue-panel panel-width pull-left">
+			<i class="fa fa-plus fa-5x"></i>
+		</div>
+	</div>
+	
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/arttemplate.js"></script>
+    <script type="text/html" id="panels">
+{{ each [0,1,2,3] as v i}}
+		<div class="panel ue-panel panel-width pull-left">
+			<div class="panel-heading">
+				通讯录
+				<ul class="ue-panel-tools">
+					<li><a><i class="fa fa-refresh"></i></a></li>
+					<li><a><i class="fa fa-times"></i></a></li>
+				</ul>
+			</div>
+			<div class="panel-body">
+				<table class="table">
+	      			<thead>
+	        			<tr>
+	          			<th>#</th>
+	          			<th>姓名</th>
+	          			<th>年龄</th>
+	          			<th>邮箱</th>
+	        			</tr>
+	      			</thead>
+	      			<tbody>
+	        			<tr>
+	          			<th scope="row">1</th>
+	          			<td>张三</td>
+	          			<td>24</td>
+	          			<td>@zhs</td>
+	        			</tr>
+	        			<tr>
+	         			<th scope="row">2</th>
+	         			<td>李四</td>
+	         			<td>25</td>
+	          			<td>@ls</td>
+	        			</tr>
+	        			<tr>
+	          			<th scope="row">3</th>
+	          			<td>王五</td>
+	          			<td>26</td>
+	          			<td>@ww</td>
+	        			</tr>
+	      			</tbody>
+	    		</table>
+			</div>
+		</div>
+{{/each}}
+    </script>
+    <script type="text/javascript">
+    $(function() {
+    	// panel init
+    	var widgets = template('panels', {});
+    	$(widgets).prependTo($('.panels'));
+    	// nav effect
+    	var $li;
+    	$(".navbar-border").on('mouseenter', 'li', function() {
+    		$li = $(".navbar-border").find('li.active');
+    		$li.removeClass('active');
+    	}).on('mouseleave', 'li', function() {
+    		$li && $li.addClass('active');
+    	}).on('click', 'li', function() {
+    		$(this).addClass('active');
+    		$li = null;
+    	});
+    	// sub menu
+    	$(".navbar-border li").hover(function() {
+    		$('.navbar-pulldown', this).stop(false).slideToggle();
+    	});
+    });
+    </script>
+  </body>
+</html>

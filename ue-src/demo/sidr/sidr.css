@@ -1,0 +1,49 @@
+.sidr {
+	box-shadow: none;
+	border: 1px solid #ddd;
+}
+
+.sidr.right {
+	border-right: none;
+}
+
+.sidr.left {
+	border-left: none;
+}
+
+.sidr ul {
+	border-bottom: none;
+}
+
+.sidr ul li {
+	line-height: 40px;
+	padding-left: 14px;
+	font-size: 14px;
+	border-top: none;
+	border-bottom: none;
+}
+
+ .sidr ul li:hover{
+    line-height: 40px;
+    background-color: #EBEBEB;
+    box-shadow: none;
+	border-bottom: none;
+ }
+
+.header {
+	line-height: 50px;
+	font-size: 18px;
+	font-family: "Microsoft YaHei";
+}
+
+.header img {
+	margin-left: 15px;
+}
+
+.header span {
+	font-size: 18px;
+	font-family: "Microsoft YaHei";
+}
+
+
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.loushang.ue.organ.dao.OrgMapper">
+	<resultMap type="org.loushang.ue.organ.data.Organ" id="organResultMap">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="parentId" column="parent_id" />
+		<result property="isParent" column="is_parent" />
+	</resultMap>
+
+	<!-- 遍历树的所有节点 -->
+	<select id="findAllNodes" parameterType="map" resultMap="organResultMap">
+		select id, name, parent_id, is_parent from demo_organ where parent_id = #{parentId}
+	</select>
+
+	<!-- 增加节点 -->
+	<insert id="addNode" parameterType="org.loushang.ue.organ.data.Organ"
+		keyProperty="id">
+		INSERT INTO DEMO_ORGAN (ID, NAME, PARENT_ID)
+		VALUES (#{id},#{name},#{parentId})
+	</insert>
+
+	<!-- 通过节点id查找节点信息 -->
+	<select id="findById" parameterType="map" resultMap="organResultMap">
+		SELECT ID, NAME, PARENT_ID, IS_PARENT FROM DEMO_ORGAN WHERE ID = #{id}
+	</select>
+
+	<!-- 改变isParent属性的值 -->
+	<update id="updateIsParentT" parameterType="org.loushang.ue.organ.data.Organ">
+		UPDATE DEMO_ORGAN SET 
+		IS_PARENT = "1" WHERE ID = #{id}
+	</update>
+
+	<!-- 改变isParent属性的值,当父节点没有子节点时设置属性的值为false -->
+	<update id="updateIsParentF" parameterType="org.loushang.ue.organ.data.Organ">
+		UPDATE DEMO_ORGAN SET IS_PARENT = "0" WHERE ID = #{id}
+	</update>
+
+	<!-- 修改节点信息 -->
+	<update id="updateNode" parameterType="org.loushang.ue.organ.data.Organ">
+		UPDATE DEMO_ORGAN SET NAME = #{name} WHERE ID = #{id}
+	</update>
+
+	<!-- 删除节点 -->
+	<delete id="deleteNode" parameterType="map">
+		DELETE FROM DEMO_ORGAN
+		WHERE ID = #{id}
+	</delete>
+</mapper>

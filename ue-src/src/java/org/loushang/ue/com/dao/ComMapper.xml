@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.loushang.ue.com.dao.ComMapper">
+	
+	<resultMap type="org.loushang.ue.com.data.Component" id="componentResultMap">
+		<id property="id" column="id" />
+		<result property="name" column="name"/>
+		<result property="userId" column="user_id"/>
+		<result property="typeId" column="type_id"/>
+		<result property="browserIe" column="browser_ie"/>
+		<result property="website" column="website"/>
+		<result property="description" column="description"/>
+		<result property="downloadCount" column="download_count"/>
+		<result property="browseCount" column="browse_count"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="releaseVersion" column="release_version"/>
+		<result property="feedbackCount" column="feedback_count"/>
+		<result property="suffix" column="suffix"/>
+	</resultMap>
+	
+	<!-- 初始所有组件 -->
+	<select id="getAllComs" resultMap="componentResultMap">
+	    SELECT ID, NAME, TYPE_ID, DESCRIPTION 
+	    FROM UE_COM 
+	    ORDER BY CREATE_TIME DESC
+	</select>
+	
+	<!-- 按组件分类查询 -->
+	<select id="getComsByTypeId" parameterType="map" resultMap="componentResultMap">
+		SELECT ID, NAME, TYPE_ID, DESCRIPTION
+		FROM UE_COM
+		WHERE TYPE_ID = #{typeId}
+	</select>
+	
+	<!-- 按组件id对组件进行查询 -->
+	<select id="getComsByComponentId" parameterType="map" resultMap="componentResultMap">
+		SELECT ID, NAME, USER_ID, TYPE_ID, BROWSER_IE, WEBSITE, DESCRIPTION,  DOWNLOAD_COUNT, 
+		       BROWSE_COUNT, CREATE_TIME, UPDATE_TIME, RELEASE_VERSION, FEEDBACK_COUNT, SUFFIX
+		FROM UE_COM
+		WHERE ID = #{id}
+	</select>
+	
+	<!-- 按组件名称对组件进行模糊查询 -->
+	<select id="getComsByName" parameterType="map" resultMap="componentResultMap">
+	    SELECT ID, NAME, TYPE_ID, DESCRIPTION
+		FROM UE_COM
+		<where>		
+			<if test="name !=null and name !='' ">
+				<bind name="pattern" value="'%' + name + '%'"/>
+			    NAME LIKE #{pattern } OR DESCRIPTION LIKE #{pattern}
+			 </if>
+		</where>  
+	</select> 
+	
+	<!--按最新发布推荐组件 -->
+	<select id="getComsOrderByCreateTime" resultMap="componentResultMap">
+		SELECT ID, NAME, TYPE_ID, DESCRIPTION
+		FROM UE_COM
+		<if test="typeId !=null and typeId !='' ">
+		     WHERE TYPE_ID = #{typeId}
+		</if>
+		ORDER BY CREATE_TIME DESC
+	</select>
+	
+	<!-- 按最多浏览次数进行组件推荐 -->
+	<select id="getComsOrderByViewCounts" resultMap="componentResultMap">
+		SELECT ID, NAME, TYPE_ID, DESCRIPTION
+		FROM UE_COM
+		<if test="typeId !=null and typeId !='' ">
+		     WHERE TYPE_ID = #{typeId}
+		</if>
+		ORDER BY BROWSE_COUNT DESC
+		
+	</select>
+	
+	<!-- 更新组件的浏览次数 -->
+	<update id="updateViewCount" parameterType="org.loushang.ue.com.data.Component">
+	 	update ue_com set browse_count=browse_count+1 where id=#{id};
+	</update>
+	
+	<!--按最多评价次数进行组件推荐-->
+	<select id="getComsOrderByCommentCounts" resultMap="componentResultMap">
+		SELECT ID, NAME, TYPE_ID, DESCRIPTION
+		FROM UE_COM
+		<if test="typeId !=null and typeId !='' ">
+		     WHERE TYPE_ID = #{typeId}
+		</if>
+		ORDER BY FEEDBACK_COUNT DESC
+	</select>
+	
+	<!--修改组件评论数-->
+	<update id="updateFeedBackCounts" parameterType="org.loushang.ue.com.data.Component" > 
+	    UPDATE UE_COM SET FEEDBACK_COUNT = #{feedbackCount} WHERE ID = #{id} 
+	</update> 
+	
+	<!-- 按组件类别分类情况下按下载量对组件排序 -->
+	<select id="getComsOrderByDownloadCounts" resultMap="componentResultMap">
+		SELECT ID, NAME, TYPE_ID, DESCRIPTION
+		FROM UE_COM
+		<if test="typeId !=null and typeId !='' ">
+		     where TYPE_ID = #{typeId}
+		</if>
+		ORDER BY DOWNLOAD_COUNT DESC
+	</select>
+
+</mapper>

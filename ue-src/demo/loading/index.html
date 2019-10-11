@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>加载中</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css">
+    <link rel="stylesheet" type="text/css" href="../prettify.css"/>
+    
+ 
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container" id="loading-container" style="height: 120px">
+		<a id="showLine" class="btn ue-btn">显示加载中效果(线形)</a>
+		<a id="showCircle" class="btn ue-btn">显示加载中效果(圆形)</a>
+		<a id="showText" class="btn ue-btn">带文本查看的加载效果</a>
+	</div>
+	<!-- 代码高亮 -->
+    <div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+<a class="btn ue-btn" onclick="showLLoading()">显示加载中效果(线形)</a>
+<a class="btn ue-btn" onclick="showTLoading()">带文本查看的加载效果</a>
+				</pre>
+				<pre>
+function showLLoading() {
+    var $t = $('#loading-container');
+    $t.loading({
+        isShowMask: true,
+        lines: 10,
+        length: 8,
+        width: 5,
+        radius: 15
+    });
+    setTimeout(function() {$t.unloading();}, 1000);
+}
+function showTLoading(){
+    var $t = $('#loading-container');
+    $t.loading({
+        isShowMask: true,
+        lines: 8,
+        length: 0,
+        width: 10,
+        radius: 15,
+        maskOpacity: '0.4',
+        loadingText: '加载中...'
+    });
+    setTimeout(function(){$t.unloading();},1000)
+}
+
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>bootstrap.css</code>，<code>form.css</code>，<code>ui.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p> 
+		<p><code>jquery.js</code>，<code>bootstrap.js</code>，<code>form.js</code></p>
+		<p>若使用国际化，英文请引用<code>i18n/en_US.js</code>，中文请引用<code>i18n/zh_CN.js</code>，默认为中文。</p>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">使用加载中组件，首先在页面中有个触发事件的DOM结构，然后进行初始化。</p>
+		<p style="line-height:25px"><code>setTimeout()</code>方法设置加载时间。</p>
+		<br/>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>类型</th>
+					<th>默认值</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>isShowMask</td>
+					<td>boolean</td>
+					<td>false</td>
+					<td>是否显示遮罩</td>
+				</tr>
+				<tr>
+					<td>lines</td>
+					<td>number</td>
+					<td>12</td>
+					<td>线条数量</td>
+				</tr>
+				<tr>
+					<td>length</td>
+					<td>number</td>
+					<td>7</td>
+					<td>线条长度</td>
+				</tr>
+				<tr>
+					<td>width</td>
+					<td>number</td>
+					<td>4</td>
+					<td>线条宽度</td>
+				</tr>
+				<tr>
+					<td>radius</td>
+					<td>number</td>
+					<td>10</td>
+					<td>设置加载图案的半径值</td>
+				</tr>
+				<tr>
+					<td>maskColor</td>
+					<td>String</td>
+					<td>"#000"</td>
+					<td>遮罩颜色</td>
+				</tr>
+				<tr>
+					<td>maskOpacity</td>
+					<td>String</td>
+					<td>"0.2"</td>
+					<td>遮罩透明度</td>
+				</tr>
+				<tr>
+					<td>color</td>
+					<td>String</td>
+					<td>"#fff"</td>
+					<td>花瓣颜色</td>
+				</tr>
+				<tr>
+					<td>opacity</td>
+					<td>String</td>
+					<td>"0.2"</td>
+					<td>花瓣透明度</td>
+				</tr>
+				<tr>
+					<td>loadingText</td>
+					<td>String</td>
+					<td>"加载中..."</td>
+					<td>显示文本</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+ 
+    <!-- 需要引用的JS -->
+    <!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script> 
+	<script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../dist/js/form.js"></script>
+	<script type="text/javascript" src="../ZeroClipboard.min.js"></script> 
+    <script type="text/javascript" src="../prettify.js"></script>   --> 
+	<script src="../require.js"></script>
+    <script src="../main.js"></script>
+    
+    <script type="text/javascript">	
+    require(['jquery','bootstrap','form/loading','demo/prettify'], function($){
+		function showLLoading() {
+			var $t = $('#loading-container');
+			$t.loading({
+				isShowMask: true,
+				lines: 10,
+				length: 8,
+				width: 5,
+				radius: 15,
+			});
+			setTimeout(function() {$t.unloading();}, 1000);
+		}
+		function showCLoading() {
+			var $t = $('#loading-container');
+			$t.loading({
+				isShowMask: true,
+				lines: 8,
+				length: 0,
+				width: 10,
+				radius: 15,
+				maskOpacity: '0.4',
+				loadingText: " ",	
+			});
+			setTimeout(function() {$t.unloading();}, 1000);
+		}
+		function showTLoading(){
+			var $t = $('#loading-container');
+			$t.loading({
+				isShowMask: true,
+				lines: 8,
+				length: 0,
+				width: 10,
+				radius: 15,
+				maskOpacity: '0.4',
+			});
+			setTimeout(function(){$t.unloading();},1000)
+		}
+		
+		$("#showLine").on("click", showLLoading);
+		$("#showCircle").on("click", showCLoading);
+		$("#showText").on("click", showTLoading);
+    });
+	</script>
+  </body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>侧边栏</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css"/>
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+    <link rel="stylesheet" type="text/css" href="sidr.css"/>  
+ 
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container">
+		<button class="btn ue-btn" id="menul-cover">左侧菜单(覆盖页面)</button>
+		<button class="btn ue-btn" id="menul-shove">左侧菜单(推开页面)</button>
+		<button class="btn ue-btn" id="menur-cover">右侧菜单(覆盖页面)</button>
+	    <button class="btn ue-btn" id="menur-shove">右侧菜单(推开页面)</button>
+	</div> 
+		<div id="sidr1" class="a">
+			<div class="header">
+		      <img src="img/default.png"></img>
+		              菜单名称 
+		    </div>
+			<ul>
+				<li>置顶菜单</li>
+				<li>最近浏览</li>
+				<li>宝贝推荐</li>
+				<li>回收站</li>
+			</ul>
+		</div>
+		<div id="sidr2" class="a">
+			<div class="header">
+		      <img src="img/default.png"></img>
+		              菜单名称 
+		    </div>
+			<ul>
+				<li>置顶菜单</li>
+				<li>最近浏览</li>
+				<li>宝贝推荐</li>
+				<li>回收站</li>
+			</ul>
+		</div>
+	<!-- 代码高亮 -->
+	<div class="ue-container">
+		<br/>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<button class="btn ue-btn" id="menul-shove">左侧菜单(推开页面)</button>
+<button class="btn ue-btn" id="menur-cover">右侧菜单(覆盖页面)</button>
+<div id="sidr2" class="a">
+    <div class="header">
+        <img src="img/default.png"></img>
+                     菜单名称 
+    </div>
+    <ul>
+        <li>置顶菜单</li>
+        <li>最近浏览</li>
+        <li>宝贝推荐</li>
+        <li>回收站</li>
+    </ul>
+</div>
+		        </pre>
+		    </div>
+		</div>
+		<br/>
+		<h4>js非模块化加载：</h4>
+		<p style="line-height:25px">需要引用的js文件及加载顺序：</p> 
+		<p><code>jquery.js</code>，<code>form.js</code>，<code>ui.js</code></p>
+		<p>引用方式：</p>
+		<p>正常js引用方式 <code>&lt;script type="text/javascript" src="jquery.js路径"&gt;&lt;/script&gt;</code></p>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+			<div class="tab-pane active" id="JS_format">
+				<pre>
+				
+$(function(){
+    $('#menul-shove').sidr({
+        "name" : "sidr2"
+    });
+		
+    $('#menur-cover').sidr({
+        "name" : "sidr3",
+        "side" : "right",
+        "displace" : false,
+        "source": function(name) {
+             return  "<div class='header'>"+
+                     "<img src='img/default.png'></img>"+
+                      " 菜单名称"+
+                 "</div>"+
+                 "<ul>"+
+                     "<li>置顶菜单</li>"+
+                     "<li>最近浏览</li>"+
+                     "<li>宝贝推荐</li>"+
+                     "<li>回收站</li>"+
+                 "</ul>"
+         }
+    }); 
+});		
+				</pre>
+			</div>
+		</div>
+		<br />
+		<h4>js模块化加载：</h4>
+		<p>在require之前需要引用的js文件：</p>
+		<p><code>require.js</code>，<code>main.js</code></p>
+		<p>引用方式：</p>
+		<p><code>&lt;script src="require.js路径"&gt;&lt;/script&gt;</code></p>
+		<p><code>&lt;script src="main.js路径"&gt;&lt;/script&gt;</code></p>
+		<p>之后在require中加载组件所需要的js文件，<code>jquery</code>，<code>form/sidr</code></p>
+		<p>将js文件放在数组里面，js的引用在非模块化中是无序的，注意文件不要加.js后缀，因为RequireJS会自动加载。</p>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+			<div class="tab-pane active" id="JS_require">
+				<pre>
+
+require(['jquery','form/sidr'], function($){
+    $(function(){
+        $('#menul-shove').sidr({
+            "name" : "sidr2"
+        });
+		
+        $('#menur-cover').sidr({
+            "name" : "sidr3",
+            "side" : "right",
+            "displace" : false,
+            "source": function(name) {
+                 return  "<div class='header'>"+
+                         "<img src='img/default.png'></img>"+
+                          " 菜单名称"+
+                     "</div>"+
+                     "<ul>"+
+                         "<li>置顶菜单</li>"+
+                         "<li>最近浏览</li>"+
+                         "<li>宝贝推荐</li>"+
+                         "<li>回收站</li>"+
+                     "</ul>"
+             }
+        }); 
+    });
+});
+				</pre>
+			</div>
+		</div>
+	</div>
+	<div class="ue-container">
+		<p style="line-height:25px">本插件须引用的css文件:</p>
+		<p><code>bootstrap.css</code>，<code>form.css</code>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">引用侧边栏组件有两种加载菜单内容的方式。第一种是在本页面编写菜单的DOM结构然后初始化时通过参数<code>name</code>
+		参数找到菜单内容；第二种是通过参数<code>source</code>加载页面，这种方法既可以直接加载另外一个页面，也可以通过函数来实现。
+	     		  <div id="table">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>参数</th>
+									<th>类型</th>
+									<th>默认值</th>
+									<th>说明</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>name</td>
+									<td>String</td>
+									<td>sidr</td>
+									<td>菜单栏的ID名</td> 
+								</tr>
+								<tr>
+								    <td>speed</td> 
+								    <td>string</td> 
+								    <td>200</td> 
+								    <td>执行效果的速度</td> 
+								</tr>
+								<tr>
+								    <td>side</td> 
+								    <td>string</td> 
+								    <td>left</td> 
+								    <td>出现菜单的方向</td> 
+								</tr>
+								<tr>
+								    <td>source</td> 
+								    <td>string</td> 
+								    <td>null</td> 
+								    <td>菜单的来源</td> 
+								</tr>
+								<tr>
+								    <td>displace</td> 
+								    <td>boolean</td> 
+								    <td>true</td> 
+								    <td>是否覆盖页面</td> 
+								</tr>
+								<tr>
+								    <td>onOpen</td> 
+								    <td>function</td> 
+								    <td>null</td> 
+								    <td>回调还数</td> 
+								</tr>
+								<tr>
+								    <td>onClose</td> 
+								    <td>function</td> 
+								    <td>null</td> 
+								    <td>回调函数</td> 
+								</tr>
+							</tbody>
+						</table>
+					</div>
+	</div>
+	 
+    <!-- 需要引用的JS -->
+    <!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script> 
+     <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script> -->
+    <script src="../require.js"></script>
+    <script src="../main.js"></script>
+	<script type="text/javascript">
+	require(['jquery','form/sidr','demo/prettify'], function($){
+		$(document).ready(function(){
+			$('#menul-cover').sidr({
+				"name" : "sidr1",
+				"displace" : false
+	   		});
+		
+			$('#menul-shove').sidr({
+				"name" : "sidr2"
+			});
+		
+			$('#menur-cover').sidr({
+			  	"name" : "sidr3",
+			  	"side" : "right",
+			 	"displace" : false,
+			  	"source": function(name) {
+			        return  "<div class='header'>"+
+				                "<img src='img/default.png'></img>"+
+				                 " 菜单名称"+
+				             "</div>"+
+				             "<ul>"+
+						          "<li>置顶菜单</li>"+
+						          "<li>最近浏览</li>"+
+						          "<li>宝贝推荐</li>"+
+						          "<li>回收站</li>"+
+					          "</ul>"
+			         }
+			});  
+		   
+			$('#menur-shove').sidr({
+				"side" : "right",
+				"source" : "second.html"  
+			});  
+		});
+	});
+	</script>
+  </body>
+</html>

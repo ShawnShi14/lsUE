@@ -1,0 +1,18 @@
+/*设置条件查询区域的样式*/
+.form-inline{
+	margin-left: 0px;
+	margin-bottom: 5px;
+}
+.searchBtn {
+	margin-left:-5px;
+}
+/*设置表单标签的行间距，以便和输入框中对齐*/
+label.text-name {
+	line-height: 34px;
+	font-weight: normal;
+}
+
+/*多条件搜索文字与图标距离的设置*/
+a > i {
+	margin-left: 5px;
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.loushang.ue.feedback.dao.FeedBackMapper">
+
+	<resultMap type="org.loushang.ue.feedback.data.FeedBack" id="FeedBackResultMap">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="comId" column="parent_id" />
+		<result property="content" column="content" />
+		<result property="createTime" column="create_time" />
+		<result property="score" column="score" />
+
+	</resultMap>
+
+	<!-- 按组件id查找组件的反馈信息 -->
+	<select id="getFeedBacksByComId" parameterType="map" resultMap="FeedBackResultMap">
+		SELECT USER_ID, COM_ID, CONTENT, CREATE_TIME, SCORE FROM UE_FEEDBACK
+		WHERE COM_ID = #{comId}
+	</select>
+
+	<!--添加组件评论 -->
+	<insert id="saveFeedBack" parameterType="org.loushang.ue.feedback.data.FeedBack">
+		INSERT INTO UE_FEEDBACK(ID, USER_ID, COM_ID, CONTENT, CREATE_TIME, SCORE)
+		VALUES (#{id},#{userId},#{comId},#{content},#{createTime},#{score})
+	</insert>
+
+</mapper>

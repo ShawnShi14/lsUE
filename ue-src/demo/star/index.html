@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	    <title>星级评价组件-raty</title>
+
+	    <!-- 需要引用的CSS -->
+	    <link rel="shortcut icon" href="../../site.ico" />
+		<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+		<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+		
+	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    <!--[if lt IE 9]>
+	      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	</head>
+	<body>
+		<!-- 页面结构 -->
+		<div class="ue-container">
+			<div id="demo"></div>
+		</div>
+		
+		<!-- 代码高亮 -->
+		<div class="ue-container">
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top:10px">
+				<div class="tab-pane active" id="html">
+					<pre>
+					
+<div id="demo"></div>
+					</pre>
+				</div>
+			</div>
+			<br />
+			<h4>js非模块化加载：</h4>
+			<p style="line-height:25px">需要引用的js文件及加载顺序：</p> 
+			<p><code>jquery.js</code>，<code>form.js</code></p>
+			<p>引用方式：</p>
+			<p>正常js引用方式 <code>&lt;script type="text/javascript" src="jquery.js路径"&gt;&lt;/script&gt;</code></p>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_format">
+					<pre>
+					
+$(function(){
+    $('#demo').raty({
+        score: 3,
+        hints: ['1分', '2分', '3分', '4分', '5分'],
+        click: function(score) {
+            alert('ID: ' + this.id + "\nscore: " + score);
+        }
+    });
+});
+					</pre>
+				</div>
+			</div>
+		    <br/>
+		    <h4>js模块化加载：</h4>
+			<p>在require之前需要引用的js文件：</p>
+			<p><code>require.js</code>，<code>main.js</code></p>
+			<p>引用方式：</p>
+			<p><code>&lt;script src="require.js路径"&gt;&lt;/script&gt;</code></p>
+			<p><code>&lt;script src="main.js路径"&gt;&lt;/script&gt;</code></p>
+			<p>之后在require中加载组件所需要的js文件，<code>jquery</code>，<code>from/star</code></p>
+			<p>将js文件放在数组里面，js的引用在非模块化中是无序的，注意文件不要加.js后缀，因为RequireJS会自动加载。</p>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_require">
+					<pre>
+					
+require(['jquery','from/star'], function($){
+    $(function() {
+        $('#demo').raty({
+            score: 3,
+            hints: ['1分', '2分', '3分', '4分', '5分'],
+            click: function(score) {
+                alert('ID: ' + this.id + "\nscore: " + score);
+            }
+        });
+    });
+});					
+					</pre>
+				</div>
+			</div>
+			<br />
+				<p style="line-height:25px">需要引用的css文件：</p> 
+				<p><code>bootstrap.css</code></p>
+				<br/>
+				<h3>参数说明</h3>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>名称</th>
+							<th>类型</th>
+							<th>默认值</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>click</td>
+							<td>function</td>
+							<td>undefined</td>
+							<td>监听单击星星时触发的回调函数</td>
+						</tr>
+						<tr>
+							<td>half</td>
+							<td>Boolean</td>
+							<td>false</td>
+							<td>是否允许单击获得半颗星</td>
+						</tr>
+						<tr>
+							<td>halfShow</td>
+							<td>Boolean</td>
+							<td>true</td>
+							<td>是否显示半颗星</td>
+						</tr>
+						<tr>
+							<td>hints</td>
+							<td>Array</td>
+							<td>['bad', 'poor', 'regular', 'good', 'gorgeous']</td>
+							<td>鼠标悬浮在星星上方时依次显示的信息</td>
+						</tr>
+						<tr>
+							<td>number</td>
+							<td>Number</td>
+							<td>5</td>
+							<td>设置显示的星星个数</td>
+						</tr>
+						<tr>
+							<td>numberMax</td>
+							<td>Number</td>
+							<td>20</td>
+							<td>可被创建最大星星数量</td>
+						</tr>
+						<tr>
+							<td>readOnly</td>
+							<td>Boolean</td>
+							<td>false</td>
+							<td>是否只读</td>
+						</tr>
+						<tr>
+							<td>score</td>
+							<td>Number/function</td>
+							<td>undefined</td>
+							<td>设置被选中星星的个数</td>
+						</tr>
+					</tbody>
+				</table>
+				<br>
+				<h3>Callbacks</h3>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>方法</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>$('#demo').raty('score');</td>
+							<td>获取当前分数</td>
+						</tr>
+						<tr>
+							<td>$('#demo').raty('score', number);</td>
+							<td>设置分数</td>
+						</tr>
+						<tr>
+							<td>$('#demo').raty('readOnly', boolean);</td>
+							<td>修改是否只读</td>
+						</tr>
+						<tr>
+							<td>$('#demo').raty('set', { option: value });</td>
+							<td>重新设置插件新选项</td>
+						</tr>
+						<tr>
+							<td>$('#demo').raty('destroy');</td>
+							<td>销毁所有的设置</td>
+						</tr>
+					</tbody>
+				</table>
+		    </div>
+	<!-- 需要引用的JS -->
+	<!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script> 
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script> -->
+    <script src="../require.js"></script>
+    <script src="../main.js"></script>
+	<script type="text/javascript">
+	require(['jquery','form/star','demo/prettify'], function($){
+	    $(function() {
+	    	$('#demo').raty({
+	            score: 3,
+	        	hints: ['1分', '2分', '3分', '4分', '5分'],
+	        	click: function(score) {
+	        		alert('ID: ' + this.id + "\nscore: " + score);
+	        	}
+			});
+	    });
+	});
+	    </script>
+	</body>
+</html>

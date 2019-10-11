@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>自定义滚动条-slimscroll</title>
+
+		<!-- 需要引用的CSS -->
+		<link rel="shortcut icon" href="../../site.ico" />
+		<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+		<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	    <style>
+	    .content-wrap {
+	    	display: inline-block;
+	    	width: 500px;
+	    }
+	    </style>
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    <!--[if lt IE 9]>
+	      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	</head>
+	<body>
+		<div class="ue-container">
+			<div class="content">
+				<p>A computer is a machine that manipulates data according to a list of instructions.</p>
+				<p>The first devices that resemble modern computers date to the mid-20th century (1940–1945), although the computer concept and various machines similar to computers existed earlier. Early electronic computers were the size of a large room, consuming as much power as several hundred modern personal computers(PC).[1] Modern computers are based on tiny integrated circuits and are millions to billions of times more capable while occupying a fraction of the space.[2] Today, simple computers may be made small enough to fit into a wristwatch and be powered from a watch battery. Personal computers, in various forms, are icons of the Information Age and are what most people think of as "a computer"; however, the most common form of computer in use today is the embedded computer. Embedded computers are small, simple devices that are used to control other devices — for example, they may be found in machines ranging from fighter aircraft to industrial robots, digital cameras, and children's toys.</p>
+				<p>Information technology (IT),as defined by the Information Technology Association of America (ITAA),is "the study,design,development,implementation,support or management of computer-based information systems,particularly software applications and computer hardware." IT deals with the use of electronic computers and computer software to convert,store,protect,process,transmit,and securely retrieve information.
+Today,the term information has ballooned to encompass many aspects of computing and technology,and the term has become very recognizable.IT professionals perform a variety of duties that range from installing applications to designing complex computer networks and information databases.A few of the duties that IT professionals perform may include data management,networking,engineering computer hardware,database and software design,as well as the management and administration of entire systems.Information technology is starting to spread farther than the conventional personal computer and network technology,and more into integrations of other technologies such as the use of cell phones,televisions,automobiles,and more,which is increasing the demand for such jobs.
+When computer and communications technologies are combined,the result is information technology,or "info-tech".Information technology is a general term that describes any technology that helps to produce,manipulate,store,communicate,and/or disseminate information.</p>
+			</div>
+		</div>
+		
+		<!-- 代码高亮 -->
+		<div class="ue-container">
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top:10px">
+				<div class="tab-pane active" id="html">
+					<pre>
+		
+<div class="content">
+	<!-- 内容 -->
+</div>
+					</pre>
+				</div>
+			</div>
+			<br/>
+			<h4>js非模块化加载：</h4>
+			<p style="line-height:25px">需要引用的js文件及加载顺序：</p> 
+			<p><code>jquery.js</code>，<code>form.js</code></p>
+			<p>引用方式：</p>
+			<p>正常js引用方式 <code>&lt;script type="text/javascript" src="jquery.js路径"&gt;&lt;/script&gt;</code></p>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_format">
+					<pre>
+					
+$(document).ready(function(){
+    $(".content").slimscroll({
+        height: 200,
+        size: "5px",
+        color: "#949faa",
+        distance: "2px",
+        wheelStep: "12px",
+        railVisible: true,
+        railColor: "#ecf0f6",
+        railOpacity: 1,
+        allowPageScroll: true				
+    });
+});
+         			</pre>
+         		</div>
+         	</div>
+         	<br/>
+         	<h4>js模块化加载：</h4>
+			<p>在require之前需要引用的js文件：</p>
+			<p><code>require.js</code>，<code>main.js</code></p>
+			<p>引用方式：</p>
+			<p><code>&lt;script src="require.js路径"&gt;&lt;/script&gt;</code></p>
+			<p><code>&lt;script src="main.js路径"&gt;&lt;/script&gt;</code></p>
+			<p>之后在require中加载组件所需要的js文件，<code>jquery</code>，<code>form/slimscroll</code></p>
+			<p>将js文件放在数组里面，js的引用在非模块化中是无序的，注意文件不要加.js后缀，因为RequireJS会自动加载。</p>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_require">
+					<pre>
+
+require(['jquery','form/slimscroll'], function($){
+    $(document).ready(function(){
+        $(".content").slimscroll({
+            height: 200,
+            size: "5px",
+            color: "#949faa",
+            distance: "2px",
+            wheelStep: "12px",
+            railVisible: true,
+            railColor: "#ecf0f6",
+            railOpacity: 1,
+            allowPageScroll: true				
+        });
+    });
+});
+					</pre>
+				</div>
+			</div>
+			<br/>
+			<p style="line-height:25px">需要引用的js文件：</p> 
+			<p><code>jquery.js</code>，<code>form.js</code></p>
+		    <br/>
+		    <h3>参数说明</h3>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>类型</th>
+						<th>默认值</th>
+						<th>说明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>width</td>
+						<td>String/Number</td>
+						<td>none/"auto"</td>
+						<td>容器宽度</td>
+					</tr>
+					<tr>
+						<td>height</td>
+						<td>String/Number</td>
+						<td>"250px"</td>
+						<td>容器高度</td>
+					</tr>
+					<tr>
+						<td>size</td>
+						<td>String/Number</td>
+						<td>"7px"</td>
+						<td>滚动条宽度</td>
+					</tr>
+					<tr>
+						<td>position</td>
+						<td>String</td>
+						<td>"right"</td>
+						<td>滚动条位置,可选值：left、right</td>
+					</tr>
+					<tr>
+						<td>color</td>
+						<td>String</td>
+						<td>'#000000'</td>
+						<td>滚动条颜色</td>
+					</tr>
+					<tr>
+						<td>alwaysVisible</td>
+						<td>Boolean</td>
+						<td>false</td>
+						<td>是否禁用隐藏滚动条</td>
+					</tr>
+					<tr>
+						<td>distance</td>
+						<td>String/Number</td>
+						<td>"1px"</td>
+						<td>距离边框距离，位置由position参数决定</td>
+					</tr>
+					<tr>
+						<td>start</td>
+						<td>String</td>
+						<td>'top'</td>
+						<td>滚动条初始位置，可选值：top、bottom</td>
+					</tr>
+					<tr>
+						<td>wheelStep</td>
+						<td>String/Number</td>
+						<td>'10px'</td>
+						<td>滚动条滚动值</td>
+					</tr>
+					<tr>
+						<td>railVisible</td>
+						<td>Boolean</td>
+						<td>false</td>
+						<td>滚动条背景轨迹</td>
+					</tr>
+					<tr>
+						<td>railColor</td>
+						<td>String</td>
+						<td>'#333333'</td>
+						<td>滚动条背景轨迹颜色</td>
+					</tr>
+					<tr>
+						<td>railOpacity</td>
+						<td>Number</td>
+						<td>0.2</td>
+						<td>滚动条背景轨迹透明度</td>
+					</tr>
+					<tr>
+						<td>allowPageScroll</td>
+						<td>Boolean</td>
+						<td>false</td>
+						<td>滚动条滚动到顶部或底部时是否允许页面滚动</td>
+					</tr>
+					<tr>
+						<td>scrollTo</td>
+						<td>String/Number</td>
+						<td>null</td>
+						<td>跳转到指定的滚动值</td>
+					</tr>
+					<tr>
+						<td>scrollBy</td>
+						<td>String/Number</td>
+						<td>null</td>
+						<td>增加/减少当前滚动值由指定的数量（正面或负面）</td>
+					</tr>
+					<tr>
+						<td>disableFadeOut</td>
+						<td>Boolean</td>
+						<td>false</td>
+						<td>是否禁用鼠标在内容处一定时间不动隐藏滚动条 <code>当设置alwaysVisible为true时该参数无效</code></td>
+					</tr>
+					<tr>
+						<td>touchScrollStep</td>
+						<td>Number</td>
+						<td>200</td>
+						<td>可以设置不同的触摸滚动事件的敏感性，负数反转方向滚动</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<!-- 页面结构 -->
+		<div class="ue-container">
+			<h3>特殊情况：<code>对两个并排div同时调用该组件接口</code></h3><br>
+			<p><code>并排</code>指的是通过<code>float:left/right</code>、<code>position:absolute</code>以及<code>display:inline-block</code>实现两个或多个同级div并排显示。<br><br></p>
+			<div class="content-wrap">
+				<div class="content">
+					<p>A computer is a machine that manipulates data according to a list of instructions.</p>
+					<p>The first devices that resemble modern computers date to the mid-20th century (1940–1945), although the computer concept and various machines similar to computers existed earlier. Early electronic computers were the size of a large room, consuming as much power as several hundred modern personal computers(PC).[1] Modern computers are based on tiny integrated circuits and are millions to billions of times more capable while occupying a fraction of the space.[2] Today, simple computers may be made small enough to fit into a wristwatch and be powered from a watch battery. Personal computers, in various forms, are icons of the Information Age and are what most people think of as "a computer"; however, the most common form of computer in use today is the embedded computer. Embedded computers are small, simple devices that are used to control other devices — for example, they may be found in machines ranging from fighter aircraft to industrial robots, digital cameras, and children's toys.</p>
+					<p>Information technology (IT),as defined by the Information Technology Association of America (ITAA),is "the study,design,development,implementation,support or management of computer-based information systems,particularly software applications and computer hardware." IT deals with the use of electronic computers and computer software to convert,store,protect,process,transmit,and securely retrieve information.
+	Today,the term information has ballooned to encompass many aspects of computing and technology,and the term has become very recognizable.IT professionals perform a variety of duties that range from installing applications to designing complex computer networks and information databases.A few of the duties that IT professionals perform may include data management,networking,engineering computer hardware,database and software design,as well as the management and administration of entire systems.Information technology is starting to spread farther than the conventional personal computer and network technology,and more into integrations of other technologies such as the use of cell phones,televisions,automobiles,and more,which is increasing the demand for such jobs.
+	When computer and communications technologies are combined,the result is information technology,or "info-tech".Information technology is a general term that describes any technology that helps to produce,manipulate,store,communicate,and/or disseminate information.</p>
+				</div>
+			</div>			
+			<div class="content-wrap">
+				<div class="content">
+					<p>A computer is a machine that manipulates data according to a list of instructions.</p>
+					<p>The first devices that resemble modern computers date to the mid-20th century (1940–1945), although the computer concept and various machines similar to computers existed earlier. Early electronic computers were the size of a large room, consuming as much power as several hundred modern personal computers(PC).[1] Modern computers are based on tiny integrated circuits and are millions to billions of times more capable while occupying a fraction of the space.[2] Today, simple computers may be made small enough to fit into a wristwatch and be powered from a watch battery. Personal computers, in various forms, are icons of the Information Age and are what most people think of as "a computer"; however, the most common form of computer in use today is the embedded computer. Embedded computers are small, simple devices that are used to control other devices — for example, they may be found in machines ranging from fighter aircraft to industrial robots, digital cameras, and children's toys.</p>
+					<p>Information technology (IT),as defined by the Information Technology Association of America (ITAA),is "the study,design,development,implementation,support or management of computer-based information systems,particularly software applications and computer hardware." IT deals with the use of electronic computers and computer software to convert,store,protect,process,transmit,and securely retrieve information.
+	Today,the term information has ballooned to encompass many aspects of computing and technology,and the term has become very recognizable.IT professionals perform a variety of duties that range from installing applications to designing complex computer networks and information databases.A few of the duties that IT professionals perform may include data management,networking,engineering computer hardware,database and software design,as well as the management and administration of entire systems.Information technology is starting to spread farther than the conventional personal computer and network technology,and more into integrations of other technologies such as the use of cell phones,televisions,automobiles,and more,which is increasing the demand for such jobs.
+	When computer and communications technologies are combined,the result is information technology,or "info-tech".Information technology is a general term that describes any technology that helps to produce,manipulate,store,communicate,and/or disseminate information.</p>
+				</div>
+			</div>
+			<br><br>
+			
+			<!-- 代码高亮 -->
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top:10px">
+				<div class="tab-pane active" id="html">
+				<p>在对两个并排显示的div进行滚动条美化时，为了保证样式不走形，请给它们<code><strong>各</strong></code>包裹一个div，并修改为通过该外层div进行并排处理。</p>
+					<pre>
+					
+<div class="content-wrap">
+    <div class="content">
+    <!-- 内容 -->
+    </div>	
+</div>		
+<div class="content-wrap">
+    <div class="content">
+    <!-- 内容 -->
+    </div>	
+</div>				
+					</pre>
+					<br/>
+					<pre>
+.content-wrap {
+  display: inline-block;
+  width: 500px;
+}					
+					</pre>
+				</div>
+			</div>
+			<p>JS方面依旧只需对<code>.content</code>调用<code>.slimscroll()</code>接口，调用方法参考上方示例。</p>
+		</div>	
+		<!-- 需要引用的JS -->
+    	<!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+       	<script type="text/javascript" src="../../dist/js/bootstrap.js"></script> 
+    	<script type="text/javascript" src="../../dist/js/form.js"></script>
+		<script type="text/javascript" src="../ZeroClipboard.min.js"></script> 
+    	<script type="text/javascript" src="../prettify.js"></script> -->
+    	<script src="../require.js"></script>
+    	<script src="../main.js"></script>
+		<script type="text/javascript">		
+		require(['jquery','form/slimscroll','demo/prettify'], function($){
+			$(document).ready(function(){
+				$(".content").slimscroll({
+					height: 200,
+					size: "5px",
+					color: "#949faa",
+					distance: "2px",
+					wheelStep: "12px",
+					railVisible: true,
+					railColor: "#ecf0f6",
+					railOpacity: 1,
+					allowPageScroll: true				
+				});
+			});
+		});
+		</script>
+	</body>
+</html>

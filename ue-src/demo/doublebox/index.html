@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>双边栏选择框</title>
+
+    <!-- 需要引用的CSS -->
+	<link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	<style>
+		 @media (max-width: 1000px) {
+		 	body {
+		 		width: 1000px;
+		 		overflow: auto;
+		 	}
+		 }
+	</style>
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container">
+	    <select multiple="multiple" size="10" name="doublebox" class="demo">
+        </select>
+	</div>
+    <!-- 代码高亮 -->
+     <div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+&lt;select multiple="multiple" size="10" name="doublebox" class="demo"&gt;&lt;/select&gt;
+				</pre>
+				<pre>
+var demo2 = $('.demo').doublebox({
+    nonSelectedListLabel: '选择角色',
+    selectedListLabel: '授权用户角色',
+    preserveSelectionOnMove: 'moved',
+    moveOnSelect: false,
+    nonSelectedList:[{"roleId":"1","roleName":"zhangsan"},{"roleId":"2","roleName":"lisi"},{"roleId":"3","roleName":"wangwu"}],
+    selectedList:[{"roleId":"4","roleName":"zhangsan1"},{"roleId":"5","roleName":"lisi1"},{"roleId":"6","roleName":"wangwu1"}],
+    optionValue:"roleId",
+    optionText:"roleName",
+    doubleMove:true
+});
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<p style="line-height:25px">需要引用的css文件：</p>
+		<p><code>bootstrap.css</code>，<code>form.css</code>，<code>ui.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p>
+		<p><code>bootstrap.js</code>，<code>form.js</code>，<code>ui.js</code></p>
+		<h3>说明</h3>
+		<p style="line-height:25px">在下拉框中如果想同时选择多个选项的时候，可以设置<code>multiple</code>属性，
+				还可以把 <code>multiple</code> 属性与<code>size</code>属性配合使用，来定义可见选项的数目。</p>
+		<br/>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>类型</th>
+						<th>默认值</th>
+						<th>说明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>nonSelectedListLabel</td>
+						<td>String,false</td>
+						<td>false</td>
+						<td>指定非选择列表的名称</td>
+					</tr>
+					<tr>
+						<td>selectedListLabel</td>
+						<td>String,false</td>
+						<td>false</td>
+						<td>指定已选列表的名称</td>
+					</tr>
+					<tr>
+						<td>preserveSelectionOnMove</td>
+						<td>String,false</td>
+						<td>false</td>
+						<td>值可以是'all'（选择已移除的元素和被选中目标元素）或者是'moved'（只选择已移动的元素）</td>
+					</tr>
+					<tr>
+						<td>moveOnSelect</td>
+						<td>boolean</td>
+						<td>true</td>
+						<td>确定是否在选择上移动选项，在安卓浏览器上，这个选项是被选择的</td>
+					</tr>
+					<tr>
+						<td>nonSelectedList</td>
+						<td>[ ]</td>
+						<td>null</td>
+						<td>没被选择列表的内容</td>
+					</tr>
+					<tr>
+						<td>selectedList</td>
+						<td>[ ]</td>
+						<td>null</td>
+						<td>已选择列表的内容</td>
+					</tr>
+					<tr>
+						<td>optionValue</td>
+						<td>String</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>optionText</td>
+						<td>String</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>doubleMove</td>
+						<td>boolean</td>
+						<td>false</td>
+						<td>双击移动的功能</td>
+					</tr>
+					<tr>
+						<td>filterTextClear</td>
+						<td>String</td>
+						<td>'show all'</td>
+						<td>文本为“全部显示”按钮</td>
+					</tr>
+					<tr>
+						<td>filterPlaceHolder</td>
+						<td>String</td>
+						<td>'Filter'</td>
+						<td>为input添加占位符</td>
+					</tr>
+					<tr>
+						<td>moveSelectedLabel</td>
+						<td>String</td>
+						<td>'Move selected'</td>
+						<td>lable标签为移动所选选项按钮</td>
+					</tr>
+					<tr>
+						<td>moveAllLabel</td>
+						<td>String</td>
+						<td>'Move all'</td>
+						<td>lable标签为移动所有选项的按钮</td>
+					</tr>
+					<tr>
+						<td>removeSelectedLabel</td>
+						<td>String</td>
+						<td>'Remove selected'</td>
+						<td>lable标签为“删除”已选选项的按钮</td>
+					</tr>
+					<tr>
+						<td>removeAllLabel</td>
+						<td>String</td>
+						<td>'Remove all'</td>
+						<td>lable标签为“删除”所有选项的按钮</td>
+					</tr>
+					<tr>
+						<td>selectorMinimalHeight</td>
+						<td>number</td>
+						<td>100</td>
+						<td>双列表的最小高度</td>
+					</tr>
+					<tr>
+						<td>showFilterInputs</td>
+						<td>boolean</td>
+						<td>true</td>
+						<td>是否显示</td>
+					</tr>
+					<tr>
+						<td>nonSelectedFilter</td>
+						<td>String</td>
+						<td>' '</td>
+						<td>一个非选择元件滤波器初始化双列表。这是只适用于如果showfilterinputs是真</td>
+					</tr>
+					<tr>
+						<td>selectedFilter</td>
+						<td>String</td>
+						<td>' '</td>
+						<td>一个已选择元件滤波器初始化双列表。这是只适用于如果showfilterinputs是真</td>
+					</tr>
+					<tr>
+						<td>filterOnValues</td>
+						<td>boolean</td>
+						<td>false</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table> 
+	</div>	 
+    <!-- 需要引用的JS -->
+   <!--  <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script> -->
+    <script src="../require.js"></script>
+    <script src="../main.js"></script>
+    <script type="text/javascript">
+    require(['jquery','form/doublebox','demo/prettify'], function($){
+        var demo2 = $('.demo').doublebox({
+          nonSelectedListLabel: '选择角色',
+          selectedListLabel: '授权用户角色',
+          preserveSelectionOnMove: 'moved',
+          moveOnSelect: false,
+          nonSelectedList:[{"roleId":"1","roleName":"zhangsan"},{"roleId":"2","roleName":"lisi"},{"roleId":"3","roleName":"wangwu"}],
+          selectedList:[{"roleId":"4","roleName":"zhangsan1"},{"roleId":"5","roleName":"lisi1"},{"roleId":"6","roleName":"wangwu1"}],
+          optionValue:"roleId",
+          optionText:"roleName",
+          doubleMove:true,
+        });
+    });
+      </script>
+  </body>
+</html>

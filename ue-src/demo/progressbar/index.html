@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>进度条</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	 <div class="ue-container">
+      	<div class="progress">  
+       		<div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+          		<span class="sr-only">40% Complete</span>
+        	</div>
+      	</div>
+
+      	<div class="progress">       
+       		<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+          		<span class="sr-only">60% Complete</span>
+        	</div>
+      	</div>
+      	
+      	<div class="progress">       
+       		<div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+          		<span class="sr-only">80% Complete</span>
+        	</div>
+      	</div>
+      	
+ 		<div class="progress">       
+       		<div class="progress-bar progress-bar-danger progress-bar-striped" id="activeBar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+          		<span class="sr-only">80% Complete</span>
+        	</div>
+      	</div>
+      	<button type="button" class="btn ue-btn-primary" onclick="startDeal()">查看动态效果</button>
+      
+     </div>
+     <!-- 代码高亮 -->
+     <div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">源码</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<div class="progress">  
+    <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+        <span class="sr-only">40% Complete</span>
+    </div>
+</div>
+
+<div class="progress">       
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+        <span class="sr-only">60% Complete</span>
+    </div>
+</div>
+      	
+<div class="progress">       
+    <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+        <span class="sr-only">80% Complete</span>
+    </div>
+</div>
+<div class="progress">       
+     <div class="progress-bar progress-bar-danger progress-bar-striped" id="activeBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+        	<span class="sr-only">100% Complete</span>
+     </div>
+</div>
+<button type="button" class="btn ue-btn-primary" onclick="startDeal()">查看动态效果</button>
+				</pre>
+		        <pre>
+				
+var progress=0;
+function startDeal(){
+    if(progress>100){
+        $(".activeBar").html("完成");
+            return;
+        }
+    if(progress<=100){
+        setTimeout("startDeal()",500);			
+        $(".activeBar").css("width",progress+"%").html(progress+"%");
+        progress+=5;
+    }
+}
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>bootstrap.css</code>，<code>ui.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p> 
+		<p><code>jquery.js</code>，<code>bootstrap.js</code></p>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">进度条须引用<code>.progress</code>整体样式，<code>.progress-bar-success</code>和<code>.progress-bar-danger</code>分别设置成功进度条和危险进度条的样式。
+     	危险进度条上的纹理效果须引用<code>. progress-bar-striped</code>样式。点击<code>button</code>可以查看进度条的动态效果。</p>
+		<p style="line-height:25px"><code>aria-valuenow</code>设置现在状态，<code>aria-valuemin</code>设置状态最小值，<code>aria-valuemax</code>设置状态达到的最大值。</p>
+		<br/>
+	</div>
+ 
+	 
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>
+    <script>
+	 var progress=0;
+	 function startDeal(){
+		if(progress>100){
+			$("#activeBar").html("完成");
+			return;
+		}
+		if(progress<=100){
+			setTimeout("startDeal()",500);			
+			$("#activeBar").css("width",progress+"%").html(progress+"%");
+		    progress+=10;
+		}
+	 }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>数据绑定-arttemplate</title>
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css" />
+	<style type="text/css">
+	   body{
+			position: relative;
+		}
+		ul.nav-pills {
+			width: 200px;
+		}
+		.affix-top {
+			margin-top: 30px;
+		}
+		 .affix{
+		    top: 30px;         
+		} 
+		.affix-bottom {
+		    position: absolute;
+		}
+		.nav .nav {
+		    display: none;
+		}
+	</style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body data-spy="scroll" data-taget="#myScrollspy">
+	<!-- 页面结构 -->
+	 <div class="container">
+	    <div class="row">
+	        <div class="col-xs-3" id="myScrollspy">
+	            <ul class="nav nav-pills nav-stacked" id="myNav">
+	                <li class="active"><a href="#description">简介</a></li>
+                    <li><a href="#understand">快速理解</a></li>
+                    <li><a href="#method">常用方法</a></li>
+                    <li><a href="#example">案例</a></li>
+	            </ul>
+	        </div>
+	        <div class="col-md-9">
+                <section id="description">
+                    <h1>arttemplate介绍</h1>
+                      <p>artTemplate 是新一代 javascript 模板引擎，在页面与数据分离工作中起重要作用。它采用预编译方式让性能有了质的飞跃， 
+                                                              调试功能也值得一提。模板调试器可以精确定位到引发渲染错误的模板语句，让开发变得高效。</p>
+                    <h3>说明</h3>
+                      <p>arttemplate 有两个版本的模板语法：简洁语法和原生语法可。推荐使用简洁语法，语法简单实用，利于读写。本实例采用的是简洁语法。</p>
+                    <h4>简洁语法</h4>
+                       <pre> 
+{{if admin}}
+    {{include 'admin_content'}}
+
+    {{each list}}
+        &lt;div&gt;{{$index}}. {{$value.user}}&lt;/div&gt;
+    {{/each}}
+{{/if}}
+                      </pre>
+                       
+                     
+                    <h4>原生语法</h4>
+                      <pre>
+                      
+&lt;%if (admin){%&gt;
+    &lt;%include('admin_content')%&gt;
+
+    &lt;%for (var i=0;i&lt;list.length;i++) {%&gt;
+        &lt;div&gt;&lt;%=i%&gt;. &lt;%=list[i].user%&gt;&lt;/div&gt;
+    &lt;%}%&gt;
+&lt;%}%&gt;
+
+                    </pre>
+              
+                </section>
+                <!--end of #description  -->
+                <br/>
+                
+                <section id="understand">
+                    <h2>快速理解</h2>
+                    <hr/>
+                    <h3>编写模板</h3>
+                                                 使用一个type="text/html"的script标签存放模板：
+                      <pre >
+                      
+<script id="test" type="text/html">
+    <h1>{{title}}</h1>
+    <ul>
+        {{each list as value i}}
+        <li>索引 {{i + 1}} ：{{value}}</li>
+        {{/each}}
+     </ul>
+</script>
+                      </pre>
+                    <h3>渲染模板</h3>
+                    <pre>
+var data = {
+    title: '标签',
+    list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+};
+var html = template('test', data);
+document.getElementById('content').innerHTML = html; 
+                     </pre>
+                 </section>
+               <!--end of #understand  -->
+               <br/>
+               
+                    <section id="method">
+                        <h2>常用方法</h2>
+                        <hr/>
+                        <h3>template(id,data)</h3>
+                          <p>根据ID渲染模板，内容会根据document.getElementById(id)查找模板，如果没有data参数，会返回渲染函数。   
+                          </p>          
+                         <h3>template.compile(sourceoptions)</h3>
+                            <p>将会返回渲染函数</p>
+                         <h3>template.rander(source,options)</h3>
+                          <p>将会返回渲染结果</p>  
+                          <h3>template.helper(name,callback)</h3>
+                              <p>添加辅助方法</p>        
+                          <h3>template.config(name, value)</h3>
+                          <p>更改引擎的默认配置。</p>
+                        <div id="table">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>字段</th>
+									<th>类型</th>
+									<th>默认值</th>
+									<th>说明</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>openTag</td>
+									<td>String</td>
+									<td>'{{'</td>
+									<td>逻辑语法开始标签</td>
+								</tr>
+								<tr>
+									<td>closeTag</td>
+									<td>String</td>
+									<td>"}}"</td>
+									<td>逻辑语法结束标签</td>
+								</tr>
+								<tr>
+									<td>escape</td>
+									<td>Boolean</td>
+									<td>true</td>
+									<td>是否编码输出 HTML 字符</td>
+								</tr>
+								<tr>
+									<td>cache</td>
+									<td>Boolean</td>
+									<td>true</td>
+									<td>是否开启缓存（依赖 options 的 filename 字段）</td>
+								</tr>
+								<tr>
+									<td>compress</td>
+									<td>Boolean</td>
+									<td>false</td>
+									<td>是否压缩 HTML 多余空白字符</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+                     </section>
+                     <!-- end of #method -->
+					<br/>
+                    <section id="example">
+                        <h2>完整简单案例</h2>
+                        <hr/>
+	                         <pre>
+&lt;!DOCTYPE HTML&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;title>basic-demo&lt;/title&gt;
+&lt;script src="arttemplate.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+		
+&lt;body&gt;
+&lt;div id="content">&lt;/div&gt;
+    &lt;script id="test" type="text/html"&gt;
+        <!--script标签存放模板-->
+           {{if isAdmin}}
+             &lt;h1>{{title}}&lt;/h1&gt;
+              &lt;ul&gt;
+               {{each list as value i}}
+                   &lt;li>索引 {{i + 1}} ：{{value}}&lt;/li&gt;
+                {{/each}}
+              &lt;/ul&gt;
+           {{/if}}  
+    &lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+	<!--渲染模板-->
+		 var data = {
+		 title: '基本例子',
+		 isAdmin: true,
+		 list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+		  };
+		  var html = template('test', data);
+		  document.getElementById('content').innerHTML = html;
+   &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+	                  </pre>
+                   </section>
+                   <!--end of example-->
+                   
+              </div>
+	    </div>
+    </div>
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script> 
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#myNav").affix({
+        	 offset: {
+                 top: $("#myNav").offset().top,
+                 bottom: $('#hdisplay').outerHeight(true) + 40
+             }
+        });
+    });
+    </script>
+</html>

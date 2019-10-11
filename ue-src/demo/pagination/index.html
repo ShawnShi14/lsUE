@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>分页-pagination</title>
+	
+	<!-- 需要引用的CSS -->
+	<link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	</head>
+	<body>
+		<div class="ue-container" style="text-align:center">
+			<div class="pagination"></div>
+		</div>
+ 
+ 
+ 	<!-- 代码高亮部分 -->
+	<div class="ue-container">
+		<br/>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">源码</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+<div class="pagination"></div> 
+		        </pre>
+				<br/>
+				<pre>
+$(function(){
+    //初始化
+    var initPagination = function() {
+        $(".pagination").pagination(20, {
+            num_edge_entries: 1, 
+            num_display_entries: 4,            
+            items_per_page:1
+        });
+     }();
+});
+				</pre>
+			</div>
+		</div>
+	</div>
+	    <div class="ue-container">
+		<p style="line-height:25px">本插件须引用的css文件:</p>
+		<p><code>form.css</code>
+		<p style="line-height:25px">本插件须引用的js文件:</p>
+		<p><code>jquery.js</code>   <code>form.js</code></p>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">使用分页组件只需添加样式为<code>pagination</code>的DOM结构即可。</p>
+		<br/>
+		<div id="table">
+	     		<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>类型</th>
+						<th>默认值</th>
+						<th>说明</th>
+					</tr>	
+				</thead>
+				<tbody>
+					<tr>
+						<td>num_edge_entriess</td>
+						<td>number</td>
+						<td>0</td>
+						<td>两侧显示的首尾分页的条目数</td>
+					</tr>					
+					<tr>
+						<td>num_display_entries</td>
+						<td>number</td>
+						<td>10</td>
+						<td>连续分页主体部分显示的分页条目数</td>
+					</tr>
+					<tr>
+						<td>items_per_page</td>
+						<td>number</td>
+						<td>10</td>
+						<td>每页显示的条目数</td>
+					</tr>
+					<tr>
+						<td>maxentries</td>
+						<td>number</td>
+						<td></td>
+						<td>总条目数</td>
+					</tr>
+					<tr>
+						<td>current_page</td>
+						<td>number</td>
+						<td>0</td>
+						<td>当前选中的页面，其中值为0时，表示第1页</td>
+					</tr>					
+					<tr>
+						<td>link_to</td>
+						<td>String</td>
+						<td>#</td>
+						<td>分页的链接</td>
+					</tr>					
+					<tr>
+						<td>prev_text</td>
+						<td>String</td>
+						<td>Prev</td>
+						<td>“前一页”分页按钮上显示的文字</td>
+					</tr>					
+					<tr>
+						<td>next_text</td>
+						<td>String</td>
+						<td>Next</td>
+						<td>“下一页”分页按钮上显示的文字</td>
+					</tr>
+					<tr>
+						<td>ellipse_text</td>
+						<td>String</td>
+						<td>...</td>
+						<td>省略的页数用什么文字表示</td>
+					</tr>
+					<tr>
+						<td>prev_show_always</td>
+						<td>Boolean</td>
+						<td>true</td>
+						<td>是否显示“前一页”分页按钮</td>
+					</tr>					
+					<tr>
+						<td>next_show_always</td>
+						<td>Boolean</td>
+						<td>true</td>
+						<td>是否显示“下一页”分页按钮</td>
+					</tr>
+					<tr>
+						<td>callback</td>
+						<td></td>
+						<td></td>
+						<td>回调函数</td>
+					</tr>
+				</tbody>
+			</table>
+	   </div>
+	</div>
+			 
+		<!-- 需要引用的JS -->
+		<!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+		<script type="text/javascript" src="../../dist/js/bootstrap.js"></script> 
+		<script type="text/javascript" src="../../dist/js/form.js"></script>  
+		 <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    	<script type="text/javascript" src="../prettify.js"></script> -->
+    	
+    	<script src="../require.js"></script>
+    	<script src="../main.js"></script>
+		<script type="text/javascript">
+		require(['jquery','form/pagination','demo/prettify'], function($){
+		$(function(){
+			//初始化
+			var initPagination = function() {
+				$(".pagination").pagination(20, {
+					num_edge_entries: 1, //边缘页数
+					num_display_entries: 4, //主体页数			
+					items_per_page:1 //每页显示1项
+				});
+			 }();
+		});
+		});
+		</script>
+	</body>
+</html>

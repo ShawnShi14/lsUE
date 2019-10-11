@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>按钮</title>
+
+    <!-- 需要引用的CSS -->
+	<link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	 <div class="ue-container">
+	 	<button type="button" class="btn ue-btn">默认</button>
+		<button type="button" class="btn ue-btn-primary">主要</button>
+		<button type="button" class="btn ue-btn-warning">警告</button>
+		<button type="button" class="btn ue-btn-disable" disabled="disabled">禁用</button>
+		<button type="button" class="btn ue-btn">
+    		<span class="fa fa-search"></span> 查询
+		</button>		 	
+	 </div>
+	 <div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<button type="button" class="btn ue-btn">默认</button>
+<button type="button" class="btn ue-btn-primary">主要</button>
+<button type="button" class="btn ue-btn-warning">警告</button>
+<button type="button" class="btn ue-btn-disable" disabled="disabled">禁用</button>
+<button type="button" class="btn ue-btn">
+    <span class="fa fa-search"></span> 查询
+</button>				
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>bootstrap.css</code>，<code>font-awesome.css</code>，<code>ui.css</code></p>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">设置按钮默按钮引用<code>.ue-btn</code>样式，主要按钮引用<code>.ue-btn-primary</code>样式，依次类推。使用disabled设置禁用元素。</p>
+		<br/>
+	</div>
+ 
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>  
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>  
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>
+    <script type="text/javascript" >
+
+     //解决占位符问题
+     $($(this).children()[0]).bind("click",function(){
+     	 JPlaceHolder.init();
+     })
+    </script>
+  </body>
+</html>

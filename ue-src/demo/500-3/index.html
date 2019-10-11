@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>500</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+   	body {
+		background-color: #fff;
+	}
+	.imginfo {
+		background-image: url("images/error.png");
+		background-repeat: no-repeat;
+		margin: 5% auto;
+		margin-bottom: 0px;
+		width: 80%;
+		height: 200px;
+	}
+	.detailinfo {
+	    display: none;
+	    margin: 0 auto;
+ 	    padding: 0 20px;
+	    width: 80%;
+	    height: 300px;
+	    overflow: auto;
+	    border: 1px solid #ddd;
+	    border-weight: bold;
+	}
+    .ue-btn {
+		margin-right: 25%;
+		background-color: #30c0d0;
+		color: #fff;
+		border-style: none;
+		margin-bottom: 10px;
+	}
+	.btn.ue-btn:hover, .btn.ue-btn:focus {
+	    color: #fff;
+	    background-color: #42d2e2;
+	}
+    </style>
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	 <div class="container">
+    	<div class="imginfo"></div>
+    	<a class="btn ue-btn pull-right" id="infobtn" >详细信息</a>
+    	<div class="detailinfo" id="info">
+    	 <h2><span class="fa fa-edit"></span> Web Development</h2>
+         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+         </p>
+         <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+         </p>
+         <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+         </p>
+         <h3>Ruby</h3>
+         <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+         </p>
+         <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+         </p>
+         <h3>Python</h3>
+         <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+         </p>
+         <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+         </p>
+    	</div>
+    </div>
+    
+    <!-- 需要添加的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>  
+	<script>
+		$(document).ready(function(){
+			$("#infobtn").click(function(){
+				$(this).next().slideToggle(800);
+			})
+		})
+	</script>
+    
+  </body>
+</html>

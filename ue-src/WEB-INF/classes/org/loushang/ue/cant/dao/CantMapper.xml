@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.loushang.ue.cant.dao.CantMapper">
+	
+	<resultMap type="org.loushang.ue.cant.data.Cant" id="cantResultMap">
+		<id property="code" column="cant_code" />
+		<result property="name" column="cant_name"/>
+		<result property="shortName" column="short_name"/>
+		<result property="type" column="cant_type"/>
+		<result property="superCode" column="super_code"/>
+		<result property="countryCode" column="country_code"/>
+		<result property="note" column="cant_note"/>
+		<result property="inUse" column="in_use"/>
+	</resultMap>
+	
+	<!-- 初始所有组件 -->
+	<select id="getCantBySuperCode" resultMap="cantResultMap" parameterType="string">
+	select
+	    cant_code,
+	    cant_name,
+	    short_name,
+	    cant_type,
+	    super_code,
+	    country_code,
+	    cant_note,
+	    in_use
+	from
+	    pub_cant
+	<where>
+		<if test="_parameter != null and _parameter != ''">
+			super_code = #{_parameter}
+		</if>
+	</where>      
+	</select>
+
+</mapper>

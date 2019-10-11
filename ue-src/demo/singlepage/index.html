@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>单屏滚动效果</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../dist/skin/css/form.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="singlepage.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+      <script type="text/javascript" src="../../dist/js/PIE.js"></script>
+    <![endif]-->
+  </head>
+  <body onselectstart="return false">
+	<!-- 页面结构 -->
+	<header class="navbar navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+	   			<a class="navbar-brand"></a>
+	   		</div>
+	    	<nav class="">
+		      	<ul class="nav navbar-nav">
+			        <li class="active">
+			        	<a href="#">首页</a>
+			        </li>
+			        <li>
+			        	<a href="#">应用商店</a>
+			        </li>
+			        <li>
+			        	<a href="#" id="to-component">组件商店</a>
+			        </li>
+			        <li>
+			        	<a href="#">博客</a>
+			        </li>
+			        <li> 
+			        	<a href="#">帮助中心</a>
+			        </li>
+		      	</ul>
+	   		</nav>
+		</div>
+	</header>
+	
+	<div id="fullpage">
+		<div class="section section-home" id="home">
+			<div id="title">
+            	<div id="blueblock" class="ue-pie"></div>
+                <p><strong>Lou Shang</strong></p>
+                <p>用户体验UI库</p>
+            </div>
+            <div id="show">
+				<div id="block"></div>
+				<div id="light"></div>
+				<div id="bottom"></div>
+			</div>
+            <div class="down">
+            	<i class="fa fa-angle-down down1"></i><br/>
+            	<i class="fa fa-angle-down down2"></i><br/>
+                <i class="fa fa-angle-down down3"></i><br/>
+            </div>
+		</div>
+		<div class="section section-app" id="app">
+		    <img class="wangge" src="images/B_wangge.png"/>
+			<p>丰富的UI组件库可以满足各事业部的需求</p>
+			<div class="app-input1"></div>
+			<div class="app-input2"></div>
+			<div class="app-input3"></div>
+			<div class="app-input4"></div>
+            <div class="down">
+            	<i class="fa fa-angle-down down1"></i><br/>
+            	<i class="fa fa-angle-down down2"></i><br/>
+                <i class="fa fa-angle-down down3"></i><br/>
+            </div>
+        </div>
+		<div class="section section-design" id="design">    
+            <div id="uicircle"></div>
+            <div class="circle circle1 ue-pie"></div>
+            <div class="circle circle2 ue-pie"></div>
+            <div class="circle circle3 ue-pie"></div>
+            <div class="circle circle4 ue-pie"></div>
+            <div class="circle circle5 ue-pie"></div>
+            <img src="images/C_beijing.jpg" width="100%" height="100%"/>
+            <div class="message1">
+            	<p>统一识别&nbsp;</p>
+                <p class="p1">美观</p>
+            </div>
+            <div class="message2">
+            	<p>节约资源</p>
+                <p class="p2">简洁</p>
+            </div>
+            <div class="message3">
+                <p class="p3">高效</p>
+            	<p>重复利用</p>
+            </div>
+            <div class="message4">
+                <p class="p4">方便</p>
+                <p>上手简单</p>
+            </div>           
+            <div class="down">
+            	<i class="fa fa-angle-down down1"></i><br/>
+            	<i class="fa fa-angle-down down2"></i><br/>
+                <i class="fa fa-angle-down down3"></i><br/>
+            </div>                  
+		</div>
+		<div class="section section-standard" id="standard">
+        	<div id="standard-pic"></div>
+            <div id="standard-text">
+            	<h1><strong>设计规范</strong></h1>
+                <h4>WEB人机交互界面设计指导手册</h4>
+                <h4>以提升用户体验为目的，提高设计效率，减少开发过程，降低开发成本成本。</h4>
+            </div>
+            <div class="down">
+            	<i class="fa fa-angle-down down1"></i><br/>
+            	<i class="fa fa-angle-down down2"></i><br/>
+                <i class="fa fa-angle-down down3"></i><br/>
+            </div>
+		</div>
+		<div class="section section-classify" id="classify">
+			<ul class="classify">
+				<li class="clacolor"><a href="#"></a></li>
+				<li class="clalayout"><a href="#"></a></li>
+				<li class="clatext"><a href="#"></a></li>
+				<li class="clacomponent"><a href="#"></a></li>
+			</ul>
+		</div>
+	</div>
+
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script>
+     <script type="text/javascript" src="../../dist/js/ui.js"></script>
+	<script type="text/javascript">
+	$(function() 
+    {
+        //跳转
+        $('.down').on('click',function()
+        {
+        	$.fn.fullpage.moveSectionDown();
+        });
+        
+        //单屏滚动设置
+		$('#fullpage').fullpage({
+			sectionsColor: ['#0c1532', '#1f89cb', '#0f123b', '#1f89cb', '#1f89cb'],
+			verticalCentered: true,
+			navigation: true,
+			navigationPosition: 'right',
+			afterRender: function() {
+				$('.section-app').find('p').animate({
+					opacity: 0,
+					},500)
+              	$('.message1').animate({
+                        opacity: 0,
+                    },0);
+            	$('.message2').animate({
+                    opacity: 0,
+                },0);
+            	$('.message3').animate({
+                    opacity: 0,
+                },0);
+            	$('.message4').animate({
+                    opacity: 0,
+                },0);
+            	$('.circle1').animate({
+                    opacity: 0,
+                },0);
+            	$('.circle2').animate({
+                    opacity: 0,
+                },0);
+            	$('.circle3').animate({
+                    opacity: 0,
+                },0);
+            	$('.circle4').animate({
+                    opacity: 0,
+                },0);
+            	$('.circle5').animate({
+                    opacity: 0,
+                },0);
+            	$('.clacolor ').animate({
+                    opacity: 0,
+                },0);
+            	$('.clalayout ').animate({
+                    opacity: 0,
+                },0);
+            	$('.clatext').animate({
+                    opacity: 0,
+                },0);
+            	$('.clacomponent').animate({
+                    opacity: 0,
+                },0);
+			},
+			afterLoad: function(anchorLink, index) {
+				if(index == 1)
+                {	
+                	$('#title').animate({
+                        opacity: 0,
+                        marginTop: "18%"
+                    },0);
+                	$('#bottom').animate({
+                        opacity: 0,
+                    },0);
+                	$('#light').animate({
+                        opacity: 0,
+                    },0);
+					$('#block').animate({
+                        opacity: 0,
+                    },0);
+                	$('#title').animate({
+                        opacity: 1,
+                        marginTop: "10%"
+                    },1000,'swing');
+					$('#show').animate({
+                        top: -40
+                    },1000,'swing');
+                    $('#bottom').animate({
+						opacity: 1
+                    },1000,function(){
+                        $('#light').animate({
+                            opacity: 1
+                        },500);
+                        $('#block').animate({
+                            opacity: 1
+                        },500)
+                    })
+                    $('.down').animate({
+						opacity: 1
+                    },1500,'swing')
+                }
+                if(index == 2)
+				{
+                    $('.down').animate({
+						opacity: 1
+                    },1500,'swing')
+					$('.app-input1').animate({
+						opacity: 1,
+						left: '10%'
+						},300,'swing',function(){
+							$('.app-input2').animate({
+								opacity: 1,
+								left: '60%'
+								},300,'swing',function(){
+									$('.app-input3').animate({
+										opacity: 1,
+										left: '20%'
+										},300,'swing',function(){
+											$('.app-input4').animate({
+												opacity: 1,
+												left: '60%'
+												},300,'swing',function(){
+													$('.section-app').find('p').animate({
+														opacity: 1,
+														top: '45%'
+														},500,'swing')
+												})
+										})
+								})
+						})
+				}
+				if(index == 3)
+				{
+                    $('.down').animate({
+						opacity: 1
+                    },1500,'swing')
+					
+					$('.circle2').animate({
+						opacity: 1
+						},250,'swing',function(){
+							$('.circle3').animate({
+								opacity: 1
+								},250,'swing',function(){
+									$('.circle4').animate({
+										opacity: 1
+										},250,'swing',function(){
+											$('.circle5').animate({
+											opacity: 1
+											},450,'swing',function(){
+												$('.circle1').animate({
+													opacity: 1
+													},550,'swing')
+											})
+									})
+							})
+					})	
+                    
+					$('.message1').animate({
+						opacity: 1,
+						},300,'swing',function(){
+							$('.message2').animate({
+								opacity: 1,
+								
+								},300,'swing',function(){
+									$('.message4').animate({
+										opacity: 1,
+									
+										},300,'swing',function(){
+											$('.message3').animate({
+												opacity: 1,											
+												},300,'swing')
+                                        })
+								})
+						})
+				}			
+				if(index == 4)
+				{
+                    $('.down').animate({
+						opacity: 1
+                    },1/500,'swing')
+					$('#standard-pic').animate({
+						opacity: 0.8,
+						left: 0
+					},500,'swing')
+					$('#standard-text').animate({
+						opacity: 1,
+						right: 0
+					},500,'swing')
+				}	
+				if(index == 5)
+				{
+					$('.clacolor').animate({
+						marginTop: '0px',
+						opacity: 1
+					},1500,'swing')
+					$('.clatext').animate({
+						marginTop: '0px',
+						opacity: 1
+					},1500,'swing')
+					$('.clalayout').animate({
+						marginBottom: '0px',
+						opacity: 1
+					},1500,'swing')
+					$('.clacomponent').animate({
+						marginBottom: '0px',
+						opacity: 1
+					},1500,'swing')
+				}		
+			},
+			
+			onLeave: function(index, nextIndex, direction) {
+				if(index == 1)
+                {
+                	$('#title').animate({
+                        opacity: 0,
+                        marginTop: "18%"
+                    },500,'swing');
+                	$('#bottom').animate({
+                        opacity: 0,
+                    },500,'swing');
+                	$('#light').animate({
+                        opacity: 0,
+                    },0);
+					$('#block').animate({
+                        opacity: 0,
+                    },500,'swing');
+                    $('.down').animate({
+						opacity: 0
+                    },500,'swing')
+                }
+                if(index == 2)
+				{
+                    $('.down').animate({
+						opacity: 0
+                    },500)
+					$('.section-app').find('p').animate({
+						opacity: 0,
+						top: '51%'
+					},500,'swing')
+					$('.app-input1').animate({
+						opacity: 0,
+						left: -100
+					},500,'swing')
+					$('.app-input2').animate({
+						opacity: 0,
+						left: 2000
+					},500,'swing')
+					$('.app-input3').animate({
+						opacity: 0,
+						left: -100
+					},500,'swing')
+					$('.app-input4').animate({
+						opacity: 0,
+						left: 2000
+					},500,'swing')
+				}
+                if(index == 3)
+                {
+                    $('.down').animate({
+						opacity: 0
+                    },500)
+					$('.circle5').animate({
+						opacity: 0
+						},200,'swing',function(){
+							$('.circle4').animate({
+								opacity: 0
+								},200,'swing',function(){
+									$('.circle3').animate({
+										opacity: 0
+										},200,'swing',function(){
+											$('.circle2').animate({
+											opacity: 0
+											},200,'swing',function(){
+												$('.circle1').animate({
+													opacity: 0
+													},200,'swing')
+											})
+									})
+							})
+					})	
+                    $('.message1').animate({
+							opacity: 0,
+						},300,'swing',function(){
+							$('.message2').animate({
+								opacity: 0,
+								
+								},300,'swing',function(){
+									$('.message3').animate({
+										opacity: 0,
+									
+										},300,'swing',function(){
+											$('.message4').animate({
+												opacity: 0,											
+												},300,'swing')
+                                        })
+								})
+						})
+						
+               	}
+				if(index == 4)
+				{
+                	$('.down').animate({
+						opacity: 0
+                    },500)
+					$('#standard-pic').animate({
+						opacity: 0,
+						left: -1000
+					},500,'swing')
+					$('#standard-text').animate({
+						opacity: 0,
+						right: -800
+					},500,'swing')
+				}	
+
+				if(index == 5)
+				{
+					$('.clacolor').animate({
+						marginTop: '40px',
+						opacity: 0
+					},500,'swing')
+					$('.clatext').animate({
+						marginTop: '40px',
+						opacity: 0
+					},500,'swing')
+					$('.clalayout').animate({
+						marginBottom: '40px',
+						opacity: 0
+					},500,'swing')
+					$('.clacomponent').animate({
+						marginBottom: '40px',
+						opacity: 0
+					},500,'swing')
+				}		
+			},
+		});
+	});
+	
+	</script>
+  </body>
+</html>

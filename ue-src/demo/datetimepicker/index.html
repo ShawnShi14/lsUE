@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>日期/时间选择器-datetimepicker</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css">
+    <link rel="stylesheet" type="text/css" href="../prettify.css"/>
+  
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container">
+		<form class="form-horizontal">
+		  <div class="form-group">
+			<label for="date" class="col-sm-3 control-label">创建日期</label>
+			   <div class="col-sm-9">
+			     <div class="input-group date" id="dateDemo">
+			    	<div id="create-date"><input type="text" id="createDate" class="form-control ue-form" /></div>
+			    	<span class="input-group-addon ue-form-btn"><i class="fa fa-calendar"></i></span>
+			     </div>
+			    </div>
+		  </div>
+		  <div class="form-group">
+			    <label for="date" class="col-sm-3 control-label">创建时间</label>
+			    <div class="col-sm-9">
+			    	<div class="input-group date" id="timeDemo">
+			    		<div id="create-time"><input type="text" id="createTime" class="form-control ue-form" /></div>
+			    		<span class="input-group-addon ue-form-btn"><i class="fa fa-clock-o"></i></span>
+			    	</div>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="date" class="col-sm-3 control-label">创建日期时间</label>
+			    <div class="col-sm-9">
+			    	<div class="input-group date" id="datetimeDemo">
+			    		<div id="create-datetime"><input type="text" id="createDateTime" class="form-control ue-form" /></div>
+			    		<span class="input-group-addon ue-form-btn"><i class="fa fa-calendar"></i></span>
+			    	</div>
+			    </div>
+			</div>
+		</form>
+	</div>
+	<!-- 代码高亮部分 -->
+	<div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="date" class="col-sm-3 control-label">创建日期</label>
+        <div class="col-sm-9">
+            <div class="input-group date" id="dateDemo">
+                <div id="create-date">
+                    <input type="text" id="createDate" class="form-control ue-form" />
+                </div>
+                <span class="input-group-addon ue-form-btn">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="date" class="col-sm-3 control-label">创建时间</label>
+        <div class="col-sm-9">
+            <div class="input-group date" id="timeDemo">
+                <div id="create-time"><input type="text" id="createTime" class="form-control ue-form" /></div>
+                <span class="input-group-addon ue-form-btn"><i class="fa fa-clock-o"></i></span>
+            </div>
+        </div>
+    </div>
+			
+    <div class="form-group">
+        <label for="date" class="col-sm-3 control-label">创建日期时间</label>
+        <div class="col-sm-9">
+            <div class="input-group date" id="datetimeDemo">
+                <div id="create-datetime"><input type="text" id="createDateTime" class="form-control ue-form" /></div>
+                <span class="input-group-addon ue-form-btn"><i class="fa fa-calendar"></i></span>
+            </div>
+        </div>
+    </div>
+</form>				
+				</pre>
+				<pre>
+			
+$('#dateDemo').datetimepicker({
+    container: $("#create-date"),
+    language: "zh-CN",
+    autoclose: 1,
+    startView: 2,
+    minView: 2,
+    format: "yyyy-mm-dd"
+});
+
+$('#timeDemo').datetimepicker({
+    container: $('#create-time'),
+    language: "zh-CN",
+    autoclose: 1,
+    startView: 1,
+    minView: 0,
+    maxView: 1,
+    format: "hh:ii"
+    //时间选择器重新初始化时，避免初始日期是1899年12月31日，而是当前日期
+    forceParse: 0 
+});
+
+$('#datetimeDemo').datetimepicker({
+    container: $('#create-datetime'),
+    language: "zh-CN"
+    autoclose: 1,
+    format: "yyyy-mm-dd hh:ii"
+});
+				</pre>
+			</div>
+		</div>
+		<br/>
+			<p style="line-height:25px">需要引用的css文件：</p> 
+		    <p><code>bootstrap.css</code>，<code>font-awesome.css</code>，<code>form.css</code>，<code>ui.css</code></p>
+		    <p style="line-height:25px">需要引用的js文件：</p> 
+		    <p><code>jquery.js</code>，<code>bootstrap.js</code>，<code>form.js</code>，<code>ui.js</code></p>
+		    <br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">为了使时间选择器的格式美观，统一将时间选择器插件放在<code>.form-group</code>的<code>div</code>中。</p>
+		<p style="line-height:25px">用<code>.ue-form</code>调整文本框格式。</p>
+		<br/>
+		<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>类型</th>
+						<th>默认值</th>
+						<th>说明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>container</td>
+						<td></td>
+						<td></td>
+						<td>容器，日期时间选择器弹出的位置相对的父元素</td>
+					</tr>
+					<tr>
+						<td>language</td>
+						<td>String</td>
+						<td>en</td>
+						<td>语言选择</td>
+					</tr>
+					<tr>
+						<td>autoclose</td>
+						<td>Boolean</td>
+						<td>false</td>
+						<td>1时,选择一个日期后关闭日期时间选择器,0则不关闭</td>
+					</tr>
+					<tr>
+						<td>startView</td>
+						<td>Number, String</td>
+						<td>2, 'month'</td>
+						<td>日期时间选择器打开之后首先显示的视图，有2,1,0三种,2代表日期视图,1代表小时视图,0代表分钟视图</td>
+					</tr>
+					<tr>
+						<td>minView</td>
+						<td>Number, String</td>
+						<td>0, 'hour'</td>
+						<td>日期时间选择器所能够提供的最精确的时间选择视图，2,1,0三种,表示最小到达日期视图,此处为分钟视图</td>
+					</tr>
+					<tr>
+						<td>maxView</td>
+						<td>Number, String</td>
+						<td>4, 'decade'</td>
+						<td>日期时间选择器最高能展示的选择范围视图</td>
+					</tr>
+					<tr>
+						<td>weekStart</td>
+						<td>Integer</td>
+						<td>0</td>
+						<td>一周从哪一天开始。0（星期日）到6（星期六）</td>
+					</tr>
+					<tr>
+						<td>format</td>
+						<td>String</td>
+						<td>'mm/dd/yyyy'</td>
+						<td>日期格式， p, P, h, hh, i, ii, s, ss, d, dd, m, mm, M, MM, yy, yyyy 的任意组合</td>
+					</tr>
+					<tr>
+						<td>forceParse</td>
+						<td>Boolean</td>
+						<td>true</td>
+						<td>当选择器关闭的时候，是否强制解析输入框中的值。</td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			<h3>方法</h3>
+			<p>在使用插件过程中，可能会用到初始化日期时间选择器的方法：.datetimepicker(options)</p>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>方法</th>
+						<th>参数</th>
+						<th>说明</th>
+						<th>示例</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>remove</td>
+						<td>None</td>
+						<td>移除日期时间选择器。同时移除已经绑定的event、内部绑定的对象和HTML元素</td>
+						<td>$().datetimepicker('remove');</td>
+					</tr>
+					<tr>
+						<td>show</td>
+						<td>None</td>
+						<td>显示日期时间选择器</td>
+						<td>$().datetimepicker('show');</td>
+					</tr>
+					<tr>
+						<td>hide</td>
+						<td>None</td>
+						<td>隐藏日期时间选择器</td>
+						<td>$().datetimepicker('hide');</td>
+					</tr>
+					<tr>
+						<td>update</td>
+						<td>None</td>
+						<td>使用当前输入框中的值更新日期时间选择器</td>
+						<td>$().datetimepicker('update');</td>
+					</tr>
+					<tr>
+						<td>setStartDate</td>
+						<td>startDate (String)</td>
+						<td>给日期时间选择器设置一个新的起始日期</td>
+						<td>$().datetimepicker('setStartDate', '2012-01-01');</td>
+					</tr>
+					<tr>
+						<td>setEndDate</td>
+						<td>endDate (String)</td>
+						<td>给日期时间选择器设置结束日期</td>
+						<td><$().datetimepicker('setEndDate', '2012-01-01');/td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+		  
+    <!-- 需要引用的JS -->
+   <!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script> -->
+    <script src="../require.js"></script>
+    <script src="../main.js"></script>
+    <script type="text/javascript">
+   require(['jquery','form/datetimepicker','demo/prettify'], function($){ 
+    $('#dateDemo').datetimepicker({
+    	container: $("#create-date"),
+    	language: "zh-CN",
+    	autoclose: 1,
+    	startView: 2,
+		minView: 2,
+    	format: "yyyy-mm-dd"
+    });
+    $('#timeDemo').datetimepicker({
+   	    container: $('#create-time'),
+   	    language: "zh-CN",
+   	    autoclose: 1,
+   	    startView: 1,
+   	    minView: 0,
+   	    maxView: 1,
+   	    format: "hh:ii",
+ 	  	//时间选择器重新初始化时，避免初始日期是1899年12月31日，而是当前日期
+   	    forceParse: 0 
+    	});
+    $('#datetimeDemo').datetimepicker({
+    	container: $('#create-datetime'),
+    	language: "zh-CN",
+    	autoclose: 1,
+    	format: "yyyy-mm-dd hh:ii"
+    });
+    });
+    </script>
+  </body>
+</html>

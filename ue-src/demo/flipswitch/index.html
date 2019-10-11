@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie lt-ie10 lt-ie9" lang="zh-CN"> <![endif]-->
+<!--[if IE 9]><html class="ie lt-ie10" lang="zh-CN"><![endif]-->
+<!--[if !IE]><!--><html lang="zh-CN"><!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>开关滑块</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+    <style type="text/css">
+    	.ue-flipswitch {
+    		margin-left: 10px;
+    	}
+    </style>
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container">
+		<input type="checkbox" class="ue-flipswitch flipswitch-xs ue-flipswitch-primary" checked/>
+		<input type="checkbox" class="ue-flipswitch flipswitch-xs ue-flipswitch-success"/>
+		<input type="checkbox" class="ue-flipswitch flipswitch-sm ue-flipswitch-danger"  checked/>
+		<input type="checkbox" class="ue-flipswitch ue-flipswitch-info"/>
+		<input type="checkbox" class="ue-flipswitch flipswitch-lg ue-flipswitch-warning" checked/>
+	</div>
+	<!-- 代码高亮部分 -->
+	<div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<input type="checkbox" class="ue-flipswitch flipswitch-xs ue-flipswitch-primary" checked/>
+<input type="checkbox" class="ue-flipswitch flipswitch-xs ue-flipswitch-success"/>
+<input type="checkbox" class="ue-flipswitch flipswitch-sm ue-flipswitch-danger"  checked disabled/>
+<input type="checkbox" class="ue-flipswitch ue-flipswitch-info"/>
+<input type="checkbox" class="ue-flipswitch flipswitch-lg ue-flipswitch-warning" checked/>
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<h4>js非模块化加载：</h4>
+		<p style="line-height:25px">需要引用的js文件及加载顺序：</p> 
+		<p><code>jquery.js</code>，<code>form.js</code></p>
+		<p>引用方式：</p>
+		<p>正常js引用方式 <code>&lt;script type="text/javascript" src="jquery.js路径"&gt;&lt;/script&gt;</code></p>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="JS_format">
+				<pre>
+				
+$(function () {
+    $('.ue-flipswitch').flipswitch(callback);
+    function callback(status) {
+        console.log("开关状态:" + status);
+    }
+});
+				</pre>
+			</div>
+		</div>
+		<br />
+		<h4>js模块化加载：</h4>
+		<p>在require之前需要引用的js文件：</p>
+		<p><code>require.js</code>，<code>main.js</code></p>
+		<p>引用方式：</p>
+		<p><code>&lt;script src="require.js路径"&gt;&lt;/script&gt;</code></p>
+		<p><code>&lt;script src="main.js路径"&gt;&lt;/script&gt;</code></p>
+		<p>之后在require中加载组件所需要的js文件，<code>jquery</code>，<code>form/flipswitch</code></p>
+		<p>将js文件放在数组里面，js的引用在非模块化中是无序的，注意文件不要加.js后缀，因为RequireJS会自动加载。</p>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="JS_require">
+				<pre>
+				
+require(['jquery','form/flipswitch'], function($){
+    $(function () {
+        $('.ue-flipswitch').flipswitch(callback);
+        function callback(status) {
+            console.log("开关状态:" + status);
+        }
+    });
+});
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">无论是模块化加载还是非模块化加载都需要引用的css文件：</p> 
+		<p><code>form.css</code></p>
+		<p style="line-height:25px">1、DOM结构及CSS样式。</p>
+		<p style="line-height:25px">首先在页面中定义一个复选框。引用<code>.ue-flipswitch</code>、<code>.flipswitch-xs</code>、
+									<code>.ue-flipswitch-primary</code>等样式。其中必须使用<code>.ue-flipswitch</code>，其他样式
+									说明如下：</p>
+		<p style="line-height:25px">&nbsp;&nbsp;&nbsp;&nbsp;&lt;1&gt;<code>.flipswitch-xs</code>、<code>.flipswitch-sm</code>、<code>.flipswitch-lg</code>是
+									控制开关按钮大小的样式设置，分别是更小，小，更大，不设置任何属性时是按钮显示大小程度为大。</p>
+		<p style="line-height:25px">&nbsp;&nbsp;&nbsp;&nbsp;&lt;2&gt;<code>.ue-flipswitch-primary</code>、<code>.ue-flipswitch-success</code>、<code>.ue-flipswitch-danger</code>
+									<code>.ue-flipswitch-info</code>、<code>.ue-flipswitch-warning</code>用来设置开关按钮的类型，分别是，主要、成功、危险、
+									信息、警告类型。</p>
+		<p style="line-height:25px">&nbsp;&nbsp;&nbsp;&nbsp;&lt;3&gt;使用<code>checked</code>属性默认当前是打开状态，<code>disabled</code>为禁用状态</p>
+		<p style="line-height:25px">2、引用js接口</p> 
+		<p style="line-height:25px">调用<code>flipswitch()</code>接口。</p>
+	</div>
+	 
+    <!-- 需要引用的JS -->
+    <!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../components/js/flipswitch/jquery.flipswitch.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>  -->
+    
+   <script src="../require.js"></script>
+    <script src="../main.js"></script>
+    <script type="text/javascript">
+    require(['jquery','form/flipswitch','demo/prettify', "form/plupload"], function($){ 
+    	$(function () {
+        	$('.ue-flipswitch').flipswitch(callback);
+        	function callback(status) {
+            	console.log("开关状态:" + status);
+        	}
+        	
+        	if ($('html.lt-ie9').size()) {
+          	  require(['PIE','ui'],function(){
+          		 $('.ue-pie').each(function() {
+     	            PIE.attach(this);
+     	        });
+          	  });
+          	}
+    	});
+    });
+	</script>
+  </body>
+</html>

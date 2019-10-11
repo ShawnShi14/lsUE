@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)file:///C:/users/admini~1/appdata/local/temp/17.html -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>前端开发手册</title>
+<!-- 需要引用的CSS -->
+<link rel="shortcut icon" href="site.ico" />
+<link rel="stylesheet" type="text/css"
+	href="dist/skin/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css"
+	href="dist/skin/css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="dist/skin/css/ui.css" />
+<link rel="stylesheet" type="text/css" href="dist/skin/css/form.css" />
+<link rel="stylesheet" type="text/css" href="demo/prettify.css" />
+<style>
+body {
+	position: relative;
+}
+
+ul.nav-pills {
+	width: 200px;
+}
+
+.affix-top {
+	margin-top: 30px;
+}
+
+.affix {
+	top: 30px;
+}
+
+.affix-bottom {
+	position: absolute;
+}
+
+.nav .nav {
+	display: none;
+}
+
+</style>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+	<!-- 页面结构 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-3" id="myScrollspy">
+				<ul class="ue-affix nav hidden-xs hidden-sm" id="myNav">
+					<li class="active"><a href="#introduction">简介</a></li>
+					<li><a href="#basic-principle">基本原则</a>
+						<ul class="ue-affix nav hidden-xs hidden-sm">
+                             <li><a href="#jyx">结构、样式、行为分离</a></li>
+                             <li><a href="#indent">缩进</a></li>
+                             <li><a href="#text-encoding">文件编码</a></li>
+                         </ul>
+					</li>
+					<li><a href="#html">HTML</a>
+						<ul class="ue-affix nav hidden-xs hidden-sm">
+                             <li><a href="#general-html">通用约定</a></li>
+                             <li><a href="#semantization">语义化</a></li>
+                             <li><a href="#head">HEAD</a></li>
+                        </ul>
+					</li>
+					<li><a href="#css">CSS</a>
+						<ul class="ue-affix nav hidden-xs hidden-sm">
+                             <li><a href="#general-css">通用约定</a></li>
+                             <li><a href="#typography">字体排印</a></li>
+                             <li><a href="#organ">模块组织</a></li>
+                             <li><a href="#less">Less规范</a></li>
+                             <li><a href="#performance-css">性能优化</a></li>
+                        </ul>
+					</li>
+					<li><a href="#js">JavaScript</a>
+						<ul class="ue-affix nav hidden-xs hidden-sm">
+                             <li><a href="#general-js">通用约定</a></li>
+                             <li><a href="#jquery">jQuery规范</a></li>
+                             <li><a href="#performance-js">性能优化</a></li>
+                        </ul>
+					</li>
+				</ul>
+			</div>
+			<div class="col-xs-9">
+				<section id="introduction">
+				<h2><code>前端开发手册</code></h2>
+				<h2>1. 简介</h2>
+				<p>
+					此手册主要实现的目标：<code>代码一致性</code>和<code>最佳实践</code>。通过代码风格的一致性，降低维护代码的成本以及改善多人协作的效率。同时遵守最佳实践，确保页面性能得到最佳优化和高效的代码。
+				</p>
+				<p>此手册是在开发中积累下来的经验和参考其它规范指南制定的，它只是起指导作用，除个别条目强制之外，大多数为非强制约束，开发者可根据自己的实际情况自行决定是否要遵守
+					该指南只是保证大方向一致性和最佳实践的阶段性总结，不是最后结论，它会随着时间而变化。</p>
+				</section>
+					<section id="basic-principle">
+				<h2>2. 基本原则</h2>
+				<section id="jyx">
+				<h3>2.1 结构、样式、行为分离</h3>
+				<p>
+					尽量确保文档和模版只包含
+					<code>HTML</code>
+					结构，样式都放到样式表里，行为都放到脚本里。
+				</p>
+				</section>
+				<section id="indent">
+				<h3>2.2 缩进</h3>
+				<p>
+					统一<strong>两个</strong>空格缩进（缩进统一即可），不要使用
+					<code>Tab</code>或者
+					<code>Tab</code>、<code>空格</code>混搭。
+				</p>
+				</section>
+				<section id="text-encoding">
+				<h3>2.3 文件编码</h3>
+				<h4>使用不带<code>BOM</code>的<code>UTF-8</code>编码</h4>
+				<pre>
+在HTML中指定编码&lt;meta charset="utf-8"&gt;;无需使用@charset指定样式表的编码，它默认为‘UTF-8’
+				</pre>
+				<h4>一律使用小写字母</h4>
+				<pre>
+&lt;！--推荐使用--&gt;
+&lt;img src="google.png" alt="Google"&gt;
+
+&lt;！--不推荐使用--&gt;
+&lt;A HREF="/"&gt;Home&lt;/A&gt;
+				</pre>
+
+				<pre>
+/* 推荐使用*/
+color: #e5e5e5;
+
+/* 不推荐使用 */
+color: #E5E5E5;
+				</pre>
+
+				<h4>省略外链资源URL协议部分</h4>
+				<p>
+					省略外链资源(图片及其他媒体资源)URL中的http或者https协议，使URL成为相对地址，避免<a
+						href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">Mixed
+						Content</a>问题，减少文件字节数。
+				</p>
+				<h4>其他协议(<code>ftp</code>等)的URL不省略</h4>
+				<pre>
+&lt;!-- 推荐使用 --&gt;
+&lt;script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"&gt;&lt;/script&gt;
+&lt;!-- 不推荐使用 --&gt;
+&lt;script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"&gt;&lt;/script&gt;
+				</pre>
+
+				<pre>
+/* 推荐使用 */
+.example {
+    background: url(//www.google.com/images/example);
+}
+/* 不推荐使用 */
+.example {
+    background: url(http://www.google.com/images/example);
+}
+		</pre>
+				<h3>统一注释</h3>
+				<p>通过配置编辑器，可以提供快捷键来输出一致认可的注释模式。</p>
+				<h4>HTML注释</h4>
+				<ul>
+					<li>
+						<p>模块注释</p> 
+				<pre>
+&lt;!-- 文章列表模块 --&gt;
+&lt;div class="article-list"&gt;
+...
+&lt;/div&gt;
+				</pre>
+
+					</li>
+					<li>
+						<p>区块注释</p>
+				<pre>
+&lt;!-- 
+@name: Drop Down Menu
+@description: Style of top bar drop down menu.
+@author: ue-group(ue@inspur.com)
+--&gt;
+				</pre>
+
+					</li>
+				</ul>
+				<h4 id="css">
+					<a name="user-content-css"
+						href="file:///C:/users/admini~1/appdata/local/temp/17.html#css"
+						class="headeranchor-link" aria-hidden="true"><span
+						class="headeranchor"></span></a>CSS 注释
+				</h4>
+				<p>组件块和子组件块以及声明块之间使用一空行分隔，子组件块之间三空行分隔;</p>
+				<pre>
+/* ==============组件块============== */
+/* ============子组件块============= */
+.selector {
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+/* =====================子组件块======================== */
+.selector-secondary {
+    display: block; /* 注释 */
+}
+.selector-three {
+    display: span;
+}
+		</pre>
+				<h4>JavaScript注释</h4>
+				<ul>
+					<li>单行注释<br> 必须独占一行。<code>//</code>后跟一个空格，缩进与下一行被注释说明的代码一致。
+					</li>
+					<li>函数/方法注释<br> 函数/方法注释必须包含函数说明，有参数和返回值时必须使用注释标识;<br>
+						参数和返回值注释必须包含类型信息和说明;<br> 当函数是内部函数，外部不可访问时，可以使用@inner标识;
+					</li>
+				</ul>
+				<pre>
+/**
+ * 函数描述
+ *
+ * @param {string} p1 参数1的说明 
+ * @param {string} p2 参数2的说明，比较长
+ * 时换行
+ * @param {number} p3 参数3的说明(可选)
+ * @return {Object} 返回值描述
+ */
+ function foo(p1, p2, p3) {
+     var p3 = p3 || 10;
+     return {
+         p1: p1,
+         p2: p2,
+         p3: p3
+     };
+ }
+				</pre>
+				<h4>文件注释</h4>
+				<p>文件注释用于告诉部署型这段代码的读者这个文件中包含哪些东西。应该提供文件的大体内容，它的作者，依赖关系和兼容性信息。如下：</p>
+				<pre>
+/**
+   * @fileoverview Description of file, its uses and information
+   * about its dependencies.
+   * @author user@inspur.com (Firstname Lastname)
+   * Copyright 2015 Inpur Inc. All Rights Reserved.
+   */
+				</pre>
+				<h3>代码验证</h3>
+				<ul>
+					<li>使用<a href="http://validator.w3.org/">W3C HTML
+							Validator</a>来验证你的HTML代码有效性；
+					</li>
+					<li>使用<a
+						href="http://jigsaw.w3.org/css-validator/validator.html.zh-cn">W3C
+							CSS Validator</a>来验证你的CSS代码有效性；
+					</li>
+				</ul>
+				<p>代码验证不是最终目的，真的目的在于让开发者在经过多次的这种验证过程后，能够深刻理解到怎样的语法或写法是非标准和不推荐的，即使在某些场景下被迫要使用非标准写法，也可以做到心中有数。</p>
+				</section>
+				</section>
+				<section id="html">
+				<h2>3. HTML</h2>
+				<p>尽量遵循HTML标准和语义，但是不要以牺牲实用性为代价。任何时候都要尽量使用最少的标签并保持最小的复杂度</p>
+				<section id="general-html">
+				<h3>3.1 通用约定</h3>
+				<h4>标签</h4>
+				<ul>
+					<li>自闭合(self-closing)标签，无需闭合(例如: <code>img、input、br、hr</code>等);
+					</li>
+					<li>可选的闭合标签(closing tag)，需闭合(例如: <code>&lt;/li&gt;</code>或<code>&lt;/body&gt;</code>);
+					</li>
+					<li>尽量减少标签数量;</li>
+				</ul>
+				<pre>
+&lt;img src="images/google.png" alt="Google"&gt;
+&lt;input type="text" name="title"&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;Style&lt;/li&gt;
+    &lt;li&gt;Guide&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- 不推荐使用 --&gt;
+&lt;span class="avatar"&gt;
+    &lt;img src="..."&gt;
+&lt;/span&gt;
+
+&lt;!-- 推荐使用 --&gt;
+&lt;img class="avatar" src="..."&gt;
+		</pre>
+
+				<h4>Class与ID</h4>
+				<ul>
+					<li>class应以功能或内容命名,不以表现形式命名;</li>
+					<li>class与id单词字母小写,多个单词组成时,采用中划线<code>-</code>分割;
+					</li>
+					<li>使用唯一的id作为JavaScript hook, 同时避免创建无样式信息的class;</li>
+				</ul>
+				<pre>
+&lt;!-- 不推荐使用 --&gt;
+&lt;div class="j-hook left contentWrapper"&gt;&lt;/div&gt;
+
+&lt;!-- 推荐使用 --&gt;
+&lt;div id="j-hook" class="sidebar content-wrapper"&gt;&lt;/div&gt;
+				</pre>
+
+				<h4>属性顺序</h4>
+				<p>HTML属性应该按照特定的顺序出现以保证易读性。</p>
+				<ul>
+					<li>id</li>
+					<li>class</li>
+					<li>name</li>
+					<li>data-xxx</li>
+					<li>src, for, type, href</li>
+					<li>title, alt</li>
+					<li>aria-xxx, role</li>
+				</ul>
+				<pre>
+&lt;a id="..." class="..." data-modal="toggle" href="###"&gt;&lt;/a&gt;
+
+&lt;input class="form-control" type="text"&gt;
+
+&lt;img src="..." alt="..."&gt;
+				</pre>
+
+				<h4>引号</h4>
+				<p>属性的定义，统一使用双引号</p>
+				<pre>
+&lt;!-- 不推荐使用 --&gt;
+&lt;span id="j-hook" class=text&gt;Google&lt;/span&gt;
+
+&lt;!-- 推荐使用 --&gt;
+&lt;span id="j-hook" class="text"&gt;Google&lt;span&gt;
+		</pre>
+
+				<h4>嵌套</h4>
+				<p>
+					<code>a不允许嵌套div</code>
+					这种约束属于语义嵌套约束，与之区别的约束还有严格嵌套约束，比如
+					<code>a不允许嵌套a</code>
+					。<br> 严格嵌套约束在所有的浏览器下都不被允许;而语义嵌套约束，浏览器大多会容错处理，生成的文档树可能相互不太一样。
+				</p>
+				<h4>语义嵌套约束</h4>
+				<ul>
+					<li>&lt;li&gt;用于&lt;ul&gt;或&lt;ol&gt;下;</li>
+					<li>&lt;dd&gt;、&lt;dt&gt;用于&lt;dl&gt;下;</li>
+					<li>&lt;thead&gt;、&lt;tbody&gt;、&lt;tfoot&gt;、&lt;tr&gt;、&lt;td&gt;用于&lt;table&gt;下</li>
+				</ul>
+				<h4>严格嵌套约束</h4>
+				<ul>
+					<li>inline级元素，仅可包含文本或其他inline级元素;</li>
+					<li>&lt;a&gt;里不可以嵌套交互式元素&lt;a&gt;、&lt;button&gt;、&lt;select&gt;等;</li>
+					<li>&lt;p&gt;里不可以嵌套块级元素&lt;div&gt;、&lt;h1&gt;~&lt;h6&gt;、&lt;p&gt;、&lt;ul&gt;、&lt;ol&gt;、&lt;li&gt;、&lt;dl&gt;、&lt;dt&gt;、&lt;dd&gt;、&lt;form&gt;等。</li>
+				</ul>
+				<p>
+					更多详情，参考<a href="http://www.smallni.com/element-nesting/">WEB标准系列-HTML元素嵌套</a>
+				</p>
+				<h4>布尔值属性</h4>
+				<p>HTML5规范中disabled、checked、selected等属性不用设置值</p>
+				<pre>
+&lt;input type="text" disabled&gt;
+
+&lt;input type="checkbox" value="1" checked&gt;
+
+&lt;select&gt;
+    &lt;option value="1" selected&gt;1&lt;/option&gt;
+&lt;/select&gt;
+		</pre>
+			</section>
+			<section id="semantization">
+				<h3>3.2 语义化</h3>
+				<h4>常见标签语义</h4>
+				<table>
+					<thead>
+						<tr>
+							<th>标签</th>
+							<th>语义</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>&lt;p&gt;</td>
+							<td>段落</td>
+						</tr>
+						<tr>
+							<td>&lt;h1&gt;&lt;h2&gt;&lt;h3&gt;…</td>
+							<td>标题</td>
+						</tr>
+						<tr>
+							<td>&lt;ul&gt;</td>
+							<td>无序列表</td>
+						</tr>
+						<tr>
+							<td>&lt;ol&gt;</td>
+							<td>有序列表</td>
+						</tr>
+						<tr>
+							<td>&lt;blockquote&gt;</td>
+							<td>大段引用</td>
+						</tr>
+						<tr>
+							<td>&lt;cite&gt;</td>
+							<td>一般引用</td>
+						</tr>
+						<tr>
+							<td>&lt;b&gt;</td>
+							<td>为样式加粗而加粗</td>
+						</tr>
+						<tr>
+							<td>&lt;strong&gt;</td>
+							<td>为强调内容而加粗</td>
+						</tr>
+						<tr>
+							<td>&lt;i&gt;</td>
+							<td>为样式倾斜而加粗</td>
+						</tr>
+						<tr>
+							<td>&lt;em&gt;</td>
+							<td>为强调内容而加粗</td>
+						</tr>
+						<tr>
+							<td>code</td>
+							<td>代码标识</td>
+						</tr>
+						<tr>
+							<td>abbr</td>
+							<td>缩写</td>
+						</tr>
+					</tbody>
+				</table>
+				<h4>示例</h4>
+				<p>将你构建的页面当作一本书，将标签的语义对应的其功能和含义；</p>
+				<ul>
+					<li>书的名称：&lt;h1&gt;</li>
+					<li>书的每个章节标题: &lt;h2&gt;</li>
+					<li>章节内的文章标题: &lt;h3&gt;</li>
+					<li>小标题/副标题: &lt;h4&gt; &lt;h5&gt; &lt;h6&gt;</li>
+					<li>章节的段落: &lt;p&gt;</li>
+				</ul>
+				<p>
+					更多语义化的内容，参考 sofish 写的文章<a
+						href="http://wenku.baidu.com/view/0a8d3774f242336c1eb95ea9.html">这样去写你的
+						HTML</a>。
+				</p>
+				</section>
+				<section id="head">
+				<h3>3.3 HEAD</h3>
+				<h4>文档类型</h4>
+				<p>为每个HTMl页面的第一行添加标准模式(standard mode)的声明，这样能够确保在每个浏览器中拥有一致的表现。</p>
+				<pre>
+			<code>&lt;!DOCTYPE html&gt;</code>
+		</pre>
+				<h4>语言属性</h4>
+				<p>
+					为什么使用 lang=”zh-cmn-Hans” 而不是我们通常写的 lang=”zh-CN” 呢? 请参考知乎上的讨论: <a
+						href="http://www.zhihu.com/question/20797118">网页头部的声明应该是用
+						lang=”zh” 还是 lang=”zh-cn”？</a>
+				</p>
+				<pre>
+&lt;!-- 中文 --&gt;
+&lt;html lang="zh-Hans"&gt;
+
+&lt;!-- 简体中文 --&gt;
+&lt;html lang="zh-cmn-Hans"&gt;
+
+&lt;!-- 繁体中文 --&gt;
+&lt;html lang="zh-cmd-Hans"&gt;
+
+&lt;!-- English --&gt;
+&lt;html lang="en"&gt;
+		</pre>
+				<h4>字符编码</h4>
+				<ul>
+					<li>以无BOM的utf-8编码作为文件格式;</li>
+					<li>指定字符编码的meta必须是head的第一个直接子元素;</li>
+				</ul>
+				<pre>
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+     ......
+    &lt;/head&gt;
+    &lt;body&gt;
+    ......
+    &lt;/body&gt;
+&lt;/html&gt;
+		</pre>
+				<h4>IE兼容模式</h4>
+				<p>优先使用最新版本的IE和Chrome内核</p>
+		<pre>
+&lt;meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1"&gt;
+		</pre>
+				<h4>SEO优化</h4>
+				<pre>
+&lt;head&gt;
+   &lt;meta charset="utf-8"&gt;
+   &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;
+   &lt;!-- SEO --&gt;
+   &lt;title&gt;Style Guide&lt;/title&gt;
+   &lt;meta name="keywords" content="your keywords"&gt;
+   &lt;meta name="description" content="your description"&gt;
+   &lt;meta name="author" content="author,email address"&gt;
+&lt;/head&gt;
+		</pre>
+				<h4 id="viewport">viewport</h4>
+				<ul>
+					<li>viewport: 一般指的是浏览器窗口内容区的大小，不包含工具条、选项卡等内容；</li>
+					<li>width: 浏览器宽度，输出设备中的页面可见区域宽度；</li>
+					<li>device-width: 设备分辨率宽度，输出设备的屏幕可见宽度；</li>
+					<li>initial-scale: 初始缩放比例；</li>
+					<li>maximum-scale: 最大缩放比例；</li>
+				</ul>
+				<p>为移动端设备优化，设置可见区域的宽度和初始缩放比例。</p>
+				<pre>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+				</pre>
+				<h4>ios图标</h4>
+				<ul>
+					<li>apple-touch-icon 图片自动处理成圆角和高光等效果;</li>
+					<li>apple-touch-icon-precomposed 禁止系统自动添加效果，直接显示设计原图;</li>
+				</ul>
+				<pre>
+&lt;!-- iPhone 和 iTouch，默认 57x57 像素，必须有 --&gt;
+&lt;link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"&gt;
+
+&lt;!-- iPad，72x72 像素，可以没有，但推荐有 --&gt;
+&lt;link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-72x72-precomposed.png" sizes="72x72"&gt;
+
+&lt;!-- Retina iPhone 和 Retina iTouch，114x114 像素，可以没有，但推荐有 --&gt;
+&lt;link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-114x114-precomposed.png" sizes="114x114"&gt;
+
+&lt;!-- Retina iPad，144x144 像素，可以没有，但推荐有 --&gt;
+&lt;link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144x144-precomposed.png" sizes="144x144"&gt;
+				</pre>
+				<h4>favicon</h4>
+				<p>在未指定 favicon 时，大多数浏览器会请求 Web Server 根目录下的 favicon.ico 。为了保证
+					favicon 可访问，避免404，必须遵循以下两种方法之一：</p>
+				<ul>
+					<li>在 Web Server 根目录放置 favicon.ico 文件；</li>
+					<li>使用 link 指定 favicon；</li>
+				</ul>
+				<pre>
+&lt;link rel="shortcut icon" href="path/to/favicon.ico"&gt;
+				</pre>
+
+				<h4>HEAD模板</h4>
+				<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-cmn-Hans"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;
+    &lt;title&gt;Style Guide&lt;/title&gt;
+    &lt;meta name="description" content="不超过150个字符"&gt;
+    &lt;meta name="keywords" content=""&gt;
+    &lt;meta name="author" content="name, email@gmail.com"&gt;
+
+    &lt;!-- 为移动设备添加 viewport --&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;!-- iOS 图标 --&gt;
+    &lt;link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"&gt;
+
+    &lt;link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" /&gt;
+    &lt;link rel="shortcut icon" href="path/to/favicon.ico"&gt;
+&lt;/head&gt;
+		</pre>
+		</section>
+			</section>
+			<section id="css">
+				<h2>4. CSS</h2>
+				<section id="general-css">
+				<h3>4.1 通用约定</h3>
+				<h4>代码组织</h4>
+				<ul>
+					<li>以组件为单位组织代码段；</li>
+					<li>制定一致的注释规范；</li>
+					<li>组件块和子组件块以及声明块之间使用<strong>一</strong>空行分隔，子组件块之间<strong>三</strong>空行分隔；
+					</li>
+					<li>如果使用了多个 CSS 文件，将其按照组件而非页面的形式分拆，因为页面会被重组，而组件只会被移动；</li>
+				</ul>
+				<p>
+					良好的注释是非常重要的。请留出时间来描述组件（component）的工作方式、局限性和构建它们的方法。不要让你的团队其它成员
+					来猜测一段不通用或不明显的代码的目的。<br> 提示：通过配置编辑器，可以提供快捷键来输出一致认可的注释模式。
+				</p>
+				<pre>
+/* ==============组件块==================== */
+/*  =======================子组件块======== */
+.selector {
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+
+/* 子组件块================= */
+.selector-secondary {
+  display: block; /* 注释*/
+}
+
+.selector-three {
+  display: span;
+}
+		</pre>
+
+				<h4>Class和ID</h4>
+				<ul>
+					<li>使用语义化、通用的命名方式；</li>
+					<li>使用连字符 - 作为 ID、Class 名称界定符，不要驼峰命名法和下划线；</li>
+					<li>避免选择器嵌套层级过多，尽量少于 3 级；</li>
+					<li>避免选择器和 Class、ID 叠加使用；<br> 出于<a
+						href="http://www.stevesouders.com/blog/2009/06/18/simplifying-css-selectors/">性能考量</a>，在没有必要的情况下避免元素选择器叠加
+						Class、ID 使用。<br> 元素选择器和 ID、Class
+						混合使用也违反关注分离原则。如果HTML标签修改了，就要再去修改 CSS 代码，不利于后期维护。
+					</li>
+				</ul>
+				<pre>
+/* 不推荐使用 */
+.red {}
+.box_green {}
+.page .header .login #username input {}
+ul#example {}
+
+/* 推荐使用 */
+#nav {}
+.box-video {}
+#username input {}
+#example {}
+				</pre>
+
+				<h4>声明块格式</h4>
+				<ul>
+					<li>选择器分组时，保持独立的选择器占用一行；</li>
+					<li>声明块的左括号 { 前添加一个空格；</li>
+					<li>声明块的右括号 } 应单独成行；</li>
+					<li>声明语句中的 : 后应添加一个空格；</li>
+					<li>声明语句应以分号 ; 结尾；</li>
+					<li>一般以逗号分隔的属性值，每个逗号后应添加一个空格；</li>
+					<li>rgb()、rgba()、hsl()、hsla() 或 rect() 括号内的值，逗号分隔，但逗号后不添加一个空格；</li>
+					<li>对于属性值或颜色参数，省略小于 1 的小数前面的 0 （例如，.5 代替 0.5；-.5px 代替 -0.5px）；</li>
+					<li>十六进制值应该全部小写和尽量简写，例如，#fff 代替 #ffffff；</li>
+					<li>避免为 0 值指定单位，例如，用 margin: 0; 代替 margin: 0px;；</li>
+				</ul>
+				<pre>
+/*  不推荐使用  */
+.selector, .selector-secondary, .selector[type=text] {
+  padding:15px;
+  margin:0px 0px 15px;
+  background-color:rgba(0, 0, 0, 0.5);
+  box-shadow:0px 1px 2px #CCC,inset 0 1px 0 #FFFFFF
+}
+
+/* 推荐使用 */
+.selector,
+.selector-secondary,
+.selector[type="text"] {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: rgba(0,0,0,.5);
+  box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
+}
+		</pre>
+
+				<h4>声明顺序</h4>
+				<p>相关属性应为一组，推荐的样式编写顺序</p>
+				<ol>
+					<li>Positioning</li>
+					<li>Box model</li>
+					<li>Typographic</li>
+					<li>Visual</li>
+				</ol>
+				<p>
+					由于定位（positioning）可以从正常的文档流中移除元素，并且还能覆盖盒模型（box
+					model）相关的样式，因此排在首位。盒模型决定了组件的尺寸和位置，因此排在第二位。<br>
+					其他属性只是影响组件的内部（inside）或者是不影响前两组属性，因此排在后面。
+				</p>
+				<pre>
+.declaration-order {
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  /* Box model */
+  display: block;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  margin: 10px;
+  float: right;
+  overflow: hidden;
+
+  /* Typographic */
+  font: normal 13px "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  text-align: center;
+
+  /* Visual */
+  background-color: #f5f5f5;
+  color: #fff;
+  opacity: .8;
+
+  /* Other */
+  cursor: pointer;
+}
+		</pre>
+
+				<h4>引号使用</h4>
+				<p>
+					url() 、属性选择符、属性值使用双引号。参考<a
+						href="http://stackoverflow.com/questions/2168855/is-quoting-the-value-of-url-really-necessary">Is
+						quoting the value of url() really necessary?</a>
+				</p>
+				<pre>
+/* 不推荐使用 */
+@import url(//www.google.com/css/maia.css);
+
+html {
+  font-family: 'open sans', arial, sans-serif;
+}
+
+/* 推荐使用 */
+@import url("//www.google.com/css/maia.css");
+
+html {
+  font-family: "open sans", arial, sans-serif;
+}
+
+.selector[type="text"] {
+
+}
+		</pre>
+
+				<h4>媒体查询（Media query）的位置</h4>
+				<p>将媒体查询放在尽可能相关规则的附近。不要将他们打包放在一个单一样式文件中或者放在文档底部。如果你把他们分开了，将来只会被大家遗忘。</p>
+				<pre>
+.element { ... }
+.element-avatar { ... }
+.element-selected { ... }
+
+@media (max-width: 768px) {
+  .element { ...}
+  .element-avatar { ... }
+  .element-selected { ... }
+}
+		</pre>
+
+				<h4>不要使用 @import</h4>
+				<p>与&lt;link&gt;相比，@import 要慢很多，不光增加额外的请求数，还会导致不可预料的问题。</p>
+				<p>替代办法：</p>
+				<ul>
+					<li>使用多个 元素；</li>
+					<li>通过 Sass 或 Less 类似的 CSS 预处理器将多个 CSS 文件编译为一个文件；</li>
+					<li>其他 CSS 文件合并工具；<br> 参考<a
+						href="http://www.stevesouders.com/blog/2009/04/09/dont-use-import/">don’t
+							use @import</a>；
+					</li>
+				</ul>
+				<h4>链接的样式顺序：</h4>
+				<pre>
+a:link -&gt; a:visited -&gt; a:hover -&gt; a:active（LoVeHAte）
+				</pre>
+
+				<h4>无需添加浏览器厂商前缀</h4>
+				<p>
+					使用<a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>自动添加浏览器厂商前缀，编写
+					CSS 时不需要添加浏览器前缀，直接使用标准的 CSS 编写。
+				</p>
+				<p>
+					Autoprefixer 通过<a href="http://caniuse.com/">Can I use</a>，按兼容的要求，对相应的
+					CSS 代码添加浏览器厂商前缀。
+				</p>
+				</section>
+				<section id="typography">
+				<h3>4.2 字体排印</h3>
+				<p>
+					暂时参考<a href="http://aaaaaashu.me/shu/">网页字体排印指南</a><br> TODO
+				</p>
+				</section>
+				<section id="organ">
+				<h3>4.3 模块组织</h3>
+				<p>任何超过 1000 行的 CSS 代码，你都曾经历过这样的体验：</p>
+				<ol>
+					<li>这个 class 到底是什么意思呢？</li>
+					<li>这个 class 在哪里被使用呢？</li>
+					<li>如果我创建一个 xxoo class，会造成冲突吗？</li>
+				</ol>
+				<p>Reasonable System for CSS Stylesheet Structure
+					的目标就是解决以上问题，它不是一个框架，而是通过规范，让你构建更健壮和可维护的 CSS 代码。</p>
+				<h4>Components（组件）</h4>
+				<p>从 Components 的角度思考，将网站的模块都作为一个独立的 Components。</p>
+				<h4>Naming components （组件命名）</h4>
+				<p>
+					Components <strong>最少以两个单词命名</strong>，通过 、- 分离，例如：
+				</p>
+				<ul>
+					<li>点赞按钮 (.like-button)</li>
+					<li>搜索框 (.search-form)</li>
+					<li>文章卡片 (.article-card)</li>
+				</ul>
+				<h4 id="elements">Elements （元素）</h4>
+				<p>Elements 是 Components 中的元素</p>
+				<h4>Naming elements （元素命名）</h4>
+				<p>Elements 的类名应尽可能仅有一个单词。</p>
+				<pre>
+ .search-form {
+    &gt; .field { /* ... */ }
+    &gt; .action { /* ... */ }
+}
+		</pre>
+
+				<h4>On multiple words （多个单词）</h4>
+				<p>
+					对于倘若需要两个或以上单词表达的 Elements 类名，不应使用中划线和下划线连接，应<strong>直接连接</strong>。
+				</p>
+				<pre>
+.profile-box {
+    &gt; .firstname { /* ... */ }
+    &gt; .lastname { /* ... */ }
+    &gt; .avatar { /* ... */ }
+}
+				</pre>
+
+				<h4>Avoid tag selectors （避免标签选择器）</h4>
+				<p>任何时候尽可能使用 classnames。标签选择器在使用上没有问题，但是其性能上稍弱，并且表意不明确。</p>
+				<pre>
+.article-card {
+    &gt; h3    { /* ✗ avoid */ }
+    &gt; .name { /* ✓ better */ }
+}
+		</pre>
+
+				<h4>Variants （变体）</h4>
+				<p>Components 和 Elements 可能都会拥有 Variants。</p>
+				<h4>Naming variants （变体命名）
+				</h4>
+				<p>Variants 的 classname 应带有前缀中划线 -</p>
+				<pre>
+.like-button {
+    &amp;.-wide { /* ... */ }
+    &amp;.-short { /* ... */ }
+    &amp;.-disabled { /* ... */ }
+}
+				</pre>
+
+				<h4>Element variants （元素变体）</h4>
+				<pre>
+.shopping-card {
+    &gt; .title { /* ... */ }
+    &gt; .title.-small { /* ... */ }
+}
+				</pre>
+
+				<h4>Dash prefixes （中划线前缀）</h4>
+				<p>为什么使用中划线作为变体的前缀？</p>
+				<ul>
+					<li>它可以避免歧义与 Elements</li>
+					<li>CSS class 仅能以单词和 _ 或 - 开头</li>
+					<li>中划线比下划线更容易输出</li>
+				</ul>
+				<h4>Layout （布局）</h4>
+				<h5>Avoid positioning properties （避免定位属性）</h5>
+				<p>Components 应该在不同的上下文中都可以复用，所以应避免设置以下属性：</p>
+				<ul>
+					<li>Positioning (position, top, left, right, bottom)</li>
+					<li>Floats (float, clear)</li>
+					<li>Margins (margin)</li>
+					<li>Dimensions (width, height) *</li>
+				</ul>
+				<h5>Fixed dimensions （固定尺寸）</h5>
+				<p>头像和 logos 这些元素应该设置固定尺寸（宽度，高度…）。</p>
+				<h5>Define positioning in parents（在父元素中设置定位）</h5>
+				<p>倘若你需要为组件设置定位，应将在组件的上下文（父元素）中进行处理，比如以下例子中，将 widths 和 floats
+					应用在 list component(.article-list) 当中，而不是 component(.article-card)
+					自身。</p>
+				<pre>
+.article-list {
+    &amp; {
+      @include clearfix;
+    }
+
+    &gt; .article-card {
+      width: 33.3%;
+      float: left;
+    }
+}
+
+.article-card {
+    &amp; { /* ... */ }
+    &gt; .image { /* ... */ }
+    &gt; .title { /* ... */ }
+    &gt; .category { /* ... */ }
+} 
+				</pre>
+
+				<h4>Avoid over-nesting （避免过分嵌套）</h4>
+				<p>当出现多个嵌套的时候容易失去控制，应保持不超过一个嵌套。</p>
+				<pre>
+/*避免三层及以上的嵌套 */
+  .image-frame {
+    &gt; .description {
+      /* ... */
+
+      &gt; .icon {
+        /* ... */
+      }
+    }
+}
+
+/* 最好使用两层 */
+.image-frame {
+    &gt; .description { /* ... */ }
+    &gt; .description &gt; .icon { /* ... */ }
+}
+				</pre>
+
+				<h4>Apprehensions （顾虑）</h4>
+				<ul>
+					<li><strong>中划线-是一坨糟糕的玩意</strong>：其实你可以选择性的使用，只要将 Components,
+						Elements, Variants 记在心上即可。</li>
+					<li>
+						<p>
+							<strong>我有时候想不出两个单词唉</strong>：有些组件的确使用一个单词就能表意，比如 aleter
+							。但其实你可以使用后缀，使其意识更加明确。<br> 比如块级元素：
+						</p>
+					</li>
+					<li>
+						<p>.alert-box</p>
+					</li>
+					<li>.alert-card</li>
+					<li>.alert-block</li>
+				</ul>
+				<p>或行内级元素</p>
+				<ul>
+					<li>.link-button</li>
+					<li>.link-span</li>
+				</ul>
+				<h4>Terminologies （术语）</h4>
+				<p>RSCSS 与其他 CSS 模块组织系统相似的概念</p>
+				<table>
+					<thead>
+						<tr>
+							<th>RSCSS</th>
+							<th>BEM</th>
+							<th>SMSCSS</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Component</td>
+							<td>Block</td>
+							<td>Module</td>
+						</tr>
+						<tr>
+							<td>Element</td>
+							<td>Element</td>
+							<td>?</td>
+						</tr>
+						<tr>
+							<td>Layout</td>
+							<td>?</td>
+							<td>Layout</td>
+						</tr>
+						<tr>
+							<td>Variant</td>
+							<td>Modifier</td>
+							<td>Theme&amp;State</td>
+						</tr>
+					</tbody>
+				</table>
+				<h4>Summary （总结）
+				</h4>
+				<ul>
+					<li>以 Components 的角度思考，以两个单词命名（.screenshot-image）</li>
+					<li>Components 中的 Elements，以一个单词命名（.blog-post .title）</li>
+					<li>Variants，以中划线-作为前缀（.shop-banner.-with-icon）</li>
+					<li>Components 可以互相嵌套</li>
+					<li>记住，你可以通过继承让事情变得更简单</li>
+				</ul>
+				</section>
+				<section id="less">
+				<h3>4.4 Less规范</h3>
+				<h4>代码组织</h4>
+				<p>
+					代码按一下顺序组织：<br> 1. @import<br> 2. 变量声明<br> 3. 样式声明
+				</p>
+				<pre>
+@import "mixins/size.less";
+@default-text-color: #333;
+.page {
+  width: 960px;
+  margin: 0 auto;
+}
+				</pre>
+
+				<h4>@import 语句</h4>
+				<p>@import 语句引用的文需要写在一对引号内，.less 后缀不得省略。引号使用 ‘ 和 ”
+					均可，但在同一项目内需统一。</p>
+				<pre>
+/* 不推荐使用 */
+@import "mixins/size";
+@import 'mixins/grid.less';
+
+/* 推荐使用 */
+@import "mixins/size.less";
+@import "mixins/grid.less";
+				</pre>
+
+				<h4>混入（Mixin）</h4>
+				<ol>
+					<li>
+						<p>在定义 mixin 时，如果 mixin 名称不是一个需要使用的
+							className，必须加上括号，否则即使不被调用也会输出到 CSS 中。</p>
+					</li>
+					<li>
+						<p>如果混入的是本身不输出内容的 mixin，需要在 mixin 后添加括号（即使不传参数），以区分这是否是一个
+							className。</p>
+					</li>
+				</ol>
+				<pre>
+/* 不推荐使用 */
+.big-text {
+  font-size: 2em;
+}
+
+h3 {
+  .big-text;
+  .clearfix;
+}
+
+/* 推荐使用 */
+.big-text() {
+  font-size: 2em;
+}
+
+h3 {
+  .big-text(); /* 1 */
+  .clearfix(); /* 2 */
+}
+				</pre>
+
+				<h4>避免嵌套层级过多</h4>
+				<ul>
+					<li>将嵌套深度限制在2级。对于超过3级的嵌套，给予重新评估。这可以避免出现过于详实的CSS选择器。</li>
+					<li>避免大量的嵌套规则。当可读性受到影响时，将之打断。推荐避免出现多于20行的嵌套规则出现。</li>
+				</ul>
+				<h4>字符串插值</h4>
+				<p>
+					变量可以用类似ruby和php的方式嵌入到字符串中，像@{name}这样的结构: @base-url: “<a
+						href="http://assets.fnord.com/">http://assets.fnord.com</a>”;
+					background-image: url(“@{base-url}/images/bg.png”);
+				</p>
+				</section>
+				<section id="performance-css">
+				<h3>4.5 性能优化</h3>
+				<h4>慎重选择高消耗的样式</h4>
+				<p>高消耗属性在绘制前需要浏览器进行大量计算：</p>
+				<ul>
+					<li>box-shadows</li>
+					<li>border-radius</li>
+					<li>transparency</li>
+					<li>transforms</li>
+					<li>CSS filters（性能杀手）</li>
+				</ul>
+				<h4>避免过分重排</h4>
+				<p>
+					当发生重排的时候，浏览器需要重新计算布局位置与大小，<a
+						href="http://www.jianshu.com/p/e305ace24ddf">更多详情</a>。<br>
+					常见的重排元素:
+				</p>
+				<ul>
+					<li>width</li>
+					<li>height</li>
+					<li>padding</li>
+					<li>margin</li>
+					<li>display</li>
+					<li>border-width</li>
+					<li>position</li>
+					<li>top</li>
+					<li>left</li>
+					<li>right</li>
+					<li>bottom</li>
+					<li>font-size</li>
+					<li>float</li>
+					<li>text-align</li>
+					<li>overflow-y</li>
+					<li>font-weight</li>
+					<li>overflow</li>
+					<li>font-family</li>
+					<li>line-height</li>
+					<li>vertical-align</li>
+					<li>clear</li>
+					<li>white-space</li>
+					<li>min-height</li>
+				</ul>
+				<h4>正确使用 Display 的属性</h4>
+				<p>Display 属性会影响页面的渲染，请合理使用。</p>
+				<ul>
+					<li>display: inline后不应该再使用 width、height、margin、padding 以及
+						float；</li>
+					<li>display: inline-block 后不应该再使用 float；</li>
+					<li>display: block 后不应该再使用 vertical-align；</li>
+					<li>display: table-* 后不应该再使用 margin 或者 float；</li>
+				</ul>
+				<h4>不滥用 Float</h4>
+				<p>Float在渲染时计算量比较大，尽量减少使用。</p>
+				<h4>动画性能优化</h4>
+				<p>
+					动画的实现原理，是利用了人眼的“视觉暂留”现象，在短时间内连续播放数幅静止的画面，使肉眼因视觉残象产生错觉，而误以为画面在“动”。<br>
+					动画的基本概念：
+				</p>
+				<ul>
+					<li>帧：在动画过程中，每一幅静止画面即为一“帧”;</li>
+					<li>帧率：即每秒钟播放的静止画面的数量，单位是fps(Frame per second);</li>
+					<li>帧时长：即每一幅静止画面的停留时间，单位一般是ms(毫秒);</li>
+					<li>跳帧(掉帧/丢帧)：在帧率固定的动画中，某一帧的时长远高于平均帧时长，导致其后续数帧被挤压而丢失的现象。<br>
+						一般浏览器的渲染刷新频率是 60 fps，所以在网页当中，帧率如果达到 50-60 fps 的动画将会相当流畅，让人感到舒适。
+					</li>
+					<li>如果使用基于 javaScript 的动画，尽量使用 requestAnimationFrame. 避免使用
+						setTimeout, setInterval.</li>
+					<li>避免通过类似 jQuery animate()-style 改变每帧的样式，使用 CSS
+						声明动画会得到更好的浏览器优化。</li>
+					<li>使用 translate 取代 absolute 定位就会得到更好的 fps，动画会更顺滑。</li>
+				</ul>
+				<h4>多利用硬件能力，如通过 3D 变形开启 GPU 加速</h4>
+				<p>一般在 Chrome 中，3D或透视变换（perspective transform）CSS属性和对 opacity 进行
+					CSS 动画会创建新的图层，在硬件加速渲染通道的优化下，GPU 完成 3D 变形等操作后，将图层进行复合操作（Compesite
+					Layers），从而避免触发浏览器大面积重绘和重排。</p>
+				<p>注：3D 变形会消耗更多的内存和功耗。</p>
+				<p>使用 translate3d 右移 500px 的动画流畅度要明显优于直接使用 left：</p>
+				<pre>
+.ball-1 {
+  transition: -webkit-transform .5s ease;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.ball-1.slidein{
+  -webkit-transform: translate3d(500px, 0, 0);
+}
+.ball-2 {
+  transition: left .5s ease; left：0;
+}
+.ball-2.slidein {
+  left：500px;
+}
+		</pre>
+
+				<h4>提升 CSS 选择器性能</h4>
+				<p>CSS
+					选择器对性能的影响源于浏览器匹配选择器和文档元素时所消耗的时间，所以优化选择器的原则是应尽量避免使用消耗更多匹配时间的选择器。而在这之前我们需要了解
+					CSS 选择器匹配的机制， 如子选择器规则：</p>
+				<pre>
+#header &gt; a {font-weight:blod;}
+				</pre>
+
+				<p>我们中的大多数人都是从左到右的阅读习惯，会习惯性的设定浏览器也是从左到右的方式进行匹配规则，推测这条规则的开销并不高。</p>
+				<p>我们会假设浏览器以这样的方式工作：寻找 id 为 header 的元素，然后将样式规则应用到直系子元素中的 a
+					元素上。我们知道文档中只有一个 id 为 header 的元素，并且它只有几个 a 元素的子节点，所以这个 CSS
+					选择器应该相当高效。</p>
+				<p>事实上，却恰恰相反，CSS
+					选择器是从右到左进行规则匹配。了解这个机制后，例子中看似高效的选择器在实际中的匹配开销是很高的，浏览器必须遍历页面中所有的 a
+					元素并且确定其父元素的 id 是否为 header 。</p>
+				<p>如果把例子的子选择器改为后代选择器则会开销更多，在遍历页面中所有 a 元素后还需向其上级遍历直到根节点。</p>
+				<pre>
+#header  a {font-weight:blod;}
+		</pre>
+
+				<p>
+					理解了CSS选择器从右到左匹配的机制后，明白只要当前选择符的左边还有其他选择符，样式系统就会继续向左移动，直到找到和规则匹配的选择符，或者因为不匹配而退出。我们把最右边选择符称之为<strong>关键选择器</strong>。
+				</p>
+				<ol>
+					<li>避免使用通用选择器</li>
+				</ol>
+				<pre>
+/* 不推荐使用 */
+.content * {color: red;}
+		</pre>
+
+				<p>浏览器匹配文档中所有的元素后分别向上逐级匹配 class 为 content
+					的元素，直到文档的根节点。因此其匹配开销是非常大的，所以应避免使用关键选择器是通配选择器的情况。</p>
+				<ol>
+					<li>避免使用标签或 class 选择器限制 id 选择器</li>
+				</ol>
+				<pre>
+/* 不推荐使用 */
+button#backButton {…}
+/* 推荐使用 */
+#newMenuIcon {…}
+				</pre>
+
+				<ol>
+					<li>避免使用标签限制 class 选择器</li>
+				</ol>
+				<pre>
+/* 不推荐使用 */
+treecell.indented {…}
+/* 推荐使用 */
+.treecell-indented {…}
+/* 更推荐使用 */
+.hierarchy-deep {…}
+				</pre>
+
+				<ol>
+					<li>避免使用多层标签选择器。使用 class 选择器替换，减少css查找</li>
+				</ol>
+				<pre>
+/* 不推荐使用 */
+treeitem[mailfolder="true"] &gt; treerow &gt; treecell {…}
+/* 推荐使用 */
+.treecell-mailfolder {…}
+		</pre>
+
+				<ol>
+					<li>避免使用子选择器</li>
+				</ol>
+				<pre>
+/* 不推荐使用 */
+treehead treerow treecell {…}
+/* 推荐使用 */
+treehead &gt; treerow &gt; treecell {…}
+/* 更推荐使用 */
+.treecell-header {…}
+		</pre>
+
+				<ol>
+					<li>使用继承</li>
+				</ol>
+				<pre>
+/* 不推荐使用 */
+#bookmarkMenuItem &gt; .menu-left { list-style-image: url(blah) }
+/* 推荐使用 */
+#bookmarkMenuItem { list-style-image: url(blah) }
+		</pre>
+				</section>
+			</section>
+			<section id="js">
+				<h2>5. JavaScript</h2>
+				<section id="general-js">
+				<h3>5.1 通用约定</h3>
+				<h4>注释</h4>
+				<h5>原则</h5>
+				<ul>
+					<li>As short as possible（如无必要，勿增注释）：尽量提高代码本身的清晰性、可读性。</li>
+					<li>As long as
+						necessary（如有必要，尽量详尽）：合理的注释、空行排版等，可以让代码更易阅读、更具美感。</li>
+				</ul>
+				<h5>单行注释</h5>
+				<p>必须独占一行。// 后跟一个空格，缩进与下一行被注释说明的代码一致。</p>
+				<h5>多行注释</h5>
+				<p>
+					避免使用 /<em>…</em>/ 这样的多行注释。有多行注释内容时，使用多个单行注释。
+				</p>
+				<h5>函数/方法注释</h5>
+				<ol>
+					<li>函数/方法注释必须包含函数说明，有参数和返回值时必须使用注释标识；</li>
+					<li>参数和返回值注释必须包含类型信息和说明；</li>
+					<li>当函数是内部函数，外部不可访问时，可以使用 @inner 标识；</li>
+				</ol>
+				<pre>
+/**
+ * 函数描述
+ *
+ * @param {string} p1 参数1的说明
+ * @param {string} p2 参数2的说明，比较长
+ *     那就换行了.
+ * @param {number=} p3 参数3的说明（可选）
+ * @return {Object} 返回值描述
+ */
+function foo(p1, p2, p3) {
+    var p3 = p3 || 10;
+    return {
+        p1: p1,
+        p2: p2,
+        p3: p3
+    };
+}
+		</pre>
+
+				<h5>文件注释</h5>
+				<p>文件注释用于告诉不熟悉这段代码的读者这个文件中包含哪些东西。 应该提供文件的大体内容, 它的作者,
+					依赖关系和兼容性信息。如下:</p>
+				<pre>
+/**
+ * @fileoverview Description of file, its uses and information
+ * about its dependencies.
+ * @author user@meizu.com (Firstname Lastname)
+ * Copyright 2009 Meizu Inc. All Rights Reserved.
+ */
+		</pre>
+
+				<h4>命名</h4>
+				<p>
+					<strong>变量</strong>, 使用 Camel 命名法。
+				</p>
+				<pre>
+var loadingModules = {};
+				</pre>
+
+				<p>
+					<strong>私有属性、变量和方法</strong>以下划线 _ 开头。
+				</p>
+				<pre>
+var _privateMethod = {};
+				</pre>
+
+				<p>
+					<strong>常量</strong>, 使用全部字母大写，单词间下划线分隔的命名方式。
+				</p>
+				<pre>
+			<code>var HTML_ENTITY = {};
+</code>
+		</pre>
+
+				<ol>
+					<li><strong>函数</strong>，使用Camel命名法。</li>
+					<li>函数的<strong>参数</strong>，使用Camel命名法。
+					</li>
+				</ol>
+				<pre>
+			<code>function stringFormat(source) {}
+
+function hear(theBells) {}
+</code>
+		</pre>
+
+				<ol>
+					<li><strong>类</strong>, 使用 Pascal 命名法</li>
+					<li>类的<strong>方法 / 属性</strong>, 使用 Camel 命名法。
+					</li>
+				</ol>
+				<pre>
+function TextNode(value, engine) {
+    this.value = value;
+    this.engine = engine;
+}
+
+TextNode.prototype.clone = function () {
+    return this;
+};
+		</pre>
+
+				<ol>
+					<li><strong>枚举变量</strong>使用 Pascal 命名法。</li>
+					<li><strong>枚举的属性</strong>,使用全部字母大写，单词间下划线分隔的命名方式。</li>
+				</ol>
+				<pre>
+var TargetState = {
+    READING: 1,
+    READED: 2,
+    APPLIED: 3,
+    READY: 4
+};
+		</pre>
+
+				<p>
+					由多个单词组成的<strong>缩写词</strong>，在命名中，根据当前命名法和出现的位置，所有的字母的大小写与首字母的大小写保持一致。
+				</p>
+				<pre>
+function XMLParser() {}
+
+function insertHTML(element, html) {}
+
+var httpRequest = new HTTPRequest();
+		</pre>
+
+				<h4>命名语法</h4>
+				<p>
+					<strong>类名</strong>，使用名词。
+				</p>
+				<pre>
+function Engine(options) {}
+		</pre>
+
+				<p>
+					<strong>函数名</strong>，使用动宾短语。
+				</p>
+				<pre>
+			<code>function getStyle(element) {}
+</code>
+		</pre>
+
+				<p>
+					<strong>boolean</strong>类型的变量使用 is 或 has 开头。
+				</p>
+				<pre>
+var isReady = false;
+var hasMoreCommands = false;
+		</pre>
+
+				<p>
+					<strong>Promise对象</strong>用动宾短语的进行时表达。
+				</p>
+				<pre>
+var loadingData = ajax.get('url');
+loadingData.then(callback);
+		</pre>
+
+				<h4>接口命名规范</h4>
+				<ol>
+					<li>可读性强，见名晓义；</li>
+					<li>尽量不与 jQuery 社区已有的习惯冲突；</li>
+					<li>尽量写全。不用缩写，除非是下面列表中约定的；（变量以表达清楚为目标，uglify 会完成压缩体积工作）</li>
+				</ol>
+				<table>
+					<thead>
+						<tr>
+							<th><strong>常用词</strong></th>
+							<th><strong>说明</strong></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>options</td>
+							<td>表示选项，与 jQuery 社区保持一致，不要用 config, opts 等</td>
+						</tr>
+						<tr>
+							<td>active</td>
+							<td>表示当前，不要用 current 等</td>
+						</tr>
+						<tr>
+							<td>index</td>
+							<td>表示索引，不要用 idx 等</td>
+						</tr>
+						<tr>
+							<td>trigger</td>
+							<td>触点元素</td>
+						</tr>
+						<tr>
+							<td>triggerType</td>
+							<td>触发类型、方式</td>
+						</tr>
+						<tr>
+							<td>context</td>
+							<td>表示传入的 this 对象</td>
+						</tr>
+						<tr>
+							<td>object</td>
+							<td>推荐写全，不推荐简写为 o, obj 等</td>
+						</tr>
+						<tr>
+							<td>element</td>
+							<td>推荐写全，不推荐简写为 el, elem 等</td>
+						</tr>
+						<tr>
+							<td>length</td>
+							<td>不要写成 len, l</td>
+						</tr>
+						<tr>
+							<td>prev</td>
+							<td>previous 的缩写</td>
+						</tr>
+						<tr>
+							<td>next</td>
+							<td>next 下一个</td>
+						</tr>
+						<tr>
+							<td>constructor</td>
+							<td>不能写成 ctor</td>
+						</tr>
+						<tr>
+							<td>easing</td>
+							<td>示动画平滑函数</td>
+						</tr>
+						<tr>
+							<td>min</td>
+							<td>minimize 的缩写</td>
+						</tr>
+						<tr>
+							<td>max</td>
+							<td>maximize 的缩写</td>
+						</tr>
+						<tr>
+							<td>DOM</td>
+							<td>不要写成 dom, Dom</td>
+						</tr>
+						<tr>
+							<td>.hbs</td>
+							<td>使用 hbs 后缀表示模版</td>
+						</tr>
+						<tr>
+							<td>btn</td>
+							<td>button 的缩写</td>
+						</tr>
+						<tr>
+							<td>link</td>
+							<td>超链接</td>
+						</tr>
+						<tr>
+							<td>title</td>
+							<td>主要文本</td>
+						</tr>
+						<tr>
+							<td>img</td>
+							<td>图片路径（img标签src属性）</td>
+						</tr>
+						<tr>
+							<td>dataset</td>
+							<td>html5 data-xxx数据接口</td>
+						</tr>
+						<tr>
+							<td>theme</td>
+							<td>主题</td>
+						</tr>
+						<tr>
+							<td>className</td>
+							<td>类名</td>
+						</tr>
+						<tr>
+							<td>classNameSpace</td>
+							<td>class 命名空间</td>
+						</tr>
+					</tbody>
+				</table>
+				<h4>True 和 False 布尔表达式</h4>
+				<p>
+					类型检测优先使用 typeof。对象类型检测使用 instanceof。null 或 undefined 的检测使用 == null。<br>
+					下面的布尔表达式都返回 false:
+				</p>
+				<ul>
+					<li>null</li>
+					<li>undefined</li>
+					<li>’‘ 空字符串</li>
+					<li>0 数字0<br> 但小心下面的, 可都返回 true:
+					</li>
+					<li>‘0’ 字符串0</li>
+					<li>[] 空数组</li>
+					<li>{} 空对象</li>
+				</ul>
+				<h4>不要在 Array 上使用 for-in 循环</h4>
+				<p>for-in 循环只用于 object/map/hash 的遍历, 对 Array 用 for-in 循环有时会出错.
+					因为它并不是从 0 到 length - 1 进行遍历, 而是所有出现在对象及其原型链的键值。</p>
+				<pre>
+// 不推荐使用
+function printArray(arr) {
+  for (var key in arr) {
+    print(arr[key]);
+  }
+}
+
+printArray([0,1,2,3]);  // This works.
+
+var a = new Array(10);
+printArray(a);  // This is wrong.
+
+a = document.getElementsByTagName('*');
+printArray(a);  // This is wrong.
+
+a = [0,1,2,3];
+a.buhu = 'wine';
+printArray(a);  // This is wrong again.
+
+a = new Array;
+a[3] = 3;
+printArray(a);  // This is wrong again.
+
+// 推荐使用
+function printArray(arr) {
+  var l = arr.length;
+  for (var i = 0; i &lt; l; i++) {
+    print(arr[i]);
+  }
+}
+		</pre>
+
+				<h4>二元和三元操作符</h4>
+				<p>
+					操作符始终写在前一行, 以免<strong>分号的隐式插入</strong>产生预想不到的问题。
+				</p>
+				<pre>
+var x = a ? b : c;
+var y = a ?longButSimpleOperandB : longButSimpleOperandC;
+
+var z = a ?moreComplicatedB : moreComplicatedC;
+		</pre>
+
+				<p>操作符也是如此：</p>
+				<pre>
+var x = foo.bar().doSomething().doSomethingElse();
+		</pre>
+
+				<h4>条件(三元)操作符 (?:)</h4>
+				<p>三元操作符用于替代 if 条件判断语句。</p>
+				<pre>
+// 不推荐使用
+if (val != 0) {
+  return foo();
+} else {
+  return bar();
+}
+
+// 推荐使用
+return val ? foo() : bar();
+		</pre>
+
+				<h4>&amp;&amp; 和 ||</h4>
+				<p>二元布尔操作符是可短路的, 只有在必要时才会计算到最后一项。</p>
+				<pre>
+// 不推荐使用
+function foo(opt_win) {
+  var win;
+  if (opt_win) {
+    win = opt_win;
+  } else {
+    win = window;
+  }
+  // ...
+}
+
+if (node) {
+  if (node.kids) {
+    if (node.kids[index]) {
+      foo(node.kids[index]);
+    }
+  }
+}
+
+// 推荐使用
+function foo(opt_win) {
+  var win = opt_win || window;
+  // ...
+}
+
+var kid = node &amp;&amp; node.kids &amp;&amp; node.kids[index];
+if (kid) {
+  foo(kid);
+}
+		</pre>
+				</section>
+				<section id="jquery">
+				<h3>5.2 jQuery规范</h3>
+				<h4>使用最新版本的 jQuery</h4>
+				<p>最新版本的 jQuery 会改进性能和增加新功能，若不是为了兼容旧浏览器，建议使用最新版本的
+					jQuery。以下是三条常见的 jQuery 语句，版本越新，性能越好：</p>
+				<pre>
+$('.elem')
+$('.elem', context)
+context.find('.elem')
+		</pre>
+
+				<h4>jQuery 变量</h4>
+				<ol>
+					<li>存放 jQuery 对象的变量以 $ 开头；</li>
+					<li>将 jQuery 选择器返回的对象缓存到本地变量中复用；</li>
+					<li>使用驼峰命名变量；</li>
+				</ol>
+				<pre>
+var $myDiv = $("#myDiv");
+$myDiv.click(function(){...});
+		</pre>
+
+				<h4>选择器</h4>
+				<ol>
+					<li>尽可能的使用 ID 选择器，因为它会调用浏览器原生方法 document.getElementById
+						查找元素。当然直接使用原生 document.getElementById 方法性能会更好；</li>
+					<li>在父元素中选择子元素使用 .find() 方法性能会更好, 因为 ID 选择器没有使用到 Sizzle
+						选择器引擎来查找元素；</li>
+				</ol>
+				<pre>
+// 不推荐使用
+var $productIds = $("#products .class");
+
+// 推荐使用
+var $productIds = $("#products").find(".class");
+		</pre>
+
+				<h4>DOM 操作</h4>
+				<ol>
+					<li>当要操作 DOM 元素的时候，尽量将其分离节点，操作结束后，再插入节点；</li>
+					<li>使用字符串连接或 array.join 要比 .append()性能更好；</li>
+				</ol>
+				<pre>
+var $myList = $("#list-container &gt; ul").detach();
+//...a lot of complicated things on $myList
+$myList.appendTo("#list-container");
+
+// 不推荐使用
+var $myList = $("#list");
+for(var i = 0; i &lt; 10000; i++){
+    $myList.append("&lt;li&gt;"+i+"&lt;/li&gt;");
+}
+
+// 推荐使用
+var $myList = $("#list");
+var list = "";
+for(var i = 0; i &lt; 10000; i++){
+    list += "&lt;li&gt;"+i+"&lt;/li&gt;";
+}
+$myList.html(list);
+
+// 更推荐使用
+var array = [];
+for(var i = 0; i &lt; 10000; i++){
+    array[i] = "&lt;li&gt;"+i+"&lt;/li&gt;";
+}
+$myList.html(array.join(''));
+		</pre>
+
+				<h4>事件</h4>
+				<ol>
+					<li>如果需要，对事件使用自定义的 namespace，这样容易解绑特定的事件，而不会影响到此 DOM
+						元素的其他事件监听；</li>
+					<li>对 Ajax 加载的 DOM
+						元素绑定事件时尽量使用事件委托。事件委托允许在父元素绑定事件，子代元素可以响应事件，也包括 Ajax 加载后添加的子代元素；</li>
+				</ol>
+				<pre>
+$("#myLink").on("click.mySpecialClick", myEventHandler);
+$("#myLink").unbind("click.mySpecialClick");
+		</pre>
+
+				<pre>
+// 不推荐使用
+$("#list a").on("click", myClickHandler);
+
+// 推荐使用
+$("#list").on("click", "a", myClickHandler);
+		</pre>
+
+				<h4>链式写法</h4>
+				<ol>
+					<li>尽量使用链式写法而不是用变量缓存或者多次调用选择器方法；</li>
+					<li>当链式写法超过三次或者因为事件绑定变得复杂后，使用换行和缩进保持代码可读性；</li>
+				</ol>
+				<pre>
+$("#myDiv").addClass("error").show();
+		</pre>
+
+				<pre>
+$("#myLink")
+  .addClass("bold")
+  .on("click", myClickHandler)
+  .on("mouseover", myMouseOverHandler)
+  .show();
+		</pre>
+
+				<h4>其他</h4>
+				<ol>
+					<li>多个参数使用对象字面量存储；</li>
+					<li>不要将 CSS 写在 jQuery 里面；</li>
+					<li>正则表达式仅准用 .test() 和 .exec() 。不准用 “string”.match() ；</li>
+				</ol>
+				<h4>jQuery 插件模板</h4>
+				<pre>
+// jQuery Plugin Boilerplate
+// A boilerplate for jumpstarting jQuery plugins development
+// version 1.1, May 14th, 2011
+// by Stefan Gabos
+
+// remember to change every instance of "pluginName" to the name of your plugin!
+(function($) {
+
+    // here we go!
+    $.pluginName = function(element, options) {
+
+        // plugin's default options
+        // this is private property and is  accessible only from inside the plugin
+        var defaults = {
+
+            foo: 'bar',
+
+            // if your plugin is event-driven, you may provide callback capabilities
+            // for its events. execute these functions before or after events of your
+            // plugin, so that users may customize those particular events without
+            // changing the plugin's code
+            onFoo: function() {}
+
+        }
+
+        // to avoid confusions, use "plugin" to reference the
+        // current instance of the object
+        var plugin = this;
+
+        // this will hold the merged default, and user-provided options
+        // plugin's properties will be available through this object like:
+        // plugin.settings.propertyName from inside the plugin or
+        // element.data('pluginName').settings.propertyName from outside the plugin,
+        // where "element" is the element the plugin is attached to;
+        plugin.settings = {}
+
+        var $element = $(element), // reference to the jQuery version of DOM element
+             element = element;    // reference to the actual DOM element
+
+        // the "constructor" method that gets called when the object is created
+        plugin.init = function() {
+
+            // the plugin's final properties are the merged default and
+            // user-provided options (if any)
+            plugin.settings = $.extend({}, defaults, options);
+
+            // code goes here
+
+        }
+
+        // public methods
+        // these methods can be called like:
+        // plugin.methodName(arg1, arg2, ... argn) from inside the plugin or
+        // element.data('pluginName').publicMethod(arg1, arg2, ... argn) from outside
+        // the plugin, where "element" is the element the plugin is attached to;
+
+        // a public method. for demonstration purposes only - remove it!
+        plugin.foo_public_method = function() {
+
+            // code goes here
+
+        }
+
+        // private methods
+        // these methods can be called only from inside the plugin like:
+        // methodName(arg1, arg2, ... argn)
+
+        // a private method. for demonstration purposes only - remove it!
+        var foo_private_method = function() {
+
+            // code goes here
+
+        }
+
+        // fire up the plugin!
+        // call the "constructor" method
+        plugin.init();
+
+    }
+
+    // add the plugin to the jQuery.fn object
+    $.fn.pluginName = function(options) {
+
+        // iterate through the DOM elements we are attaching the plugin to
+        return this.each(function() {
+
+            // if plugin has not already been attached to the element
+            if (undefined == $(this).data('pluginName')) {
+
+                // create a new instance of the plugin
+                // pass the DOM element and the user-provided options as arguments
+                var plugin = new $.pluginName(this, options);
+
+                // in the jQuery version of the element
+                // store a reference to the plugin object
+                // you can later access the plugin and its methods and properties like
+                // element.data('pluginName').publicMethod(arg1, arg2, ... argn) or
+                // element.data('pluginName').settings.propertyName
+                $(this).data('pluginName', plugin);
+
+            }
+
+        });
+
+    }
+
+})(jQuery);
+		</pre>
+
+				<p>
+					此 jQuery 插件模板出自：<a
+						href="http://stefangabos.ro/jquery/jquery-plugin-boilerplate-revisited/">jQuery
+						Plugin Boilerplate, revisited</a>
+				</p>
+				</section>
+				<section id="performance-js">
+				<h3>5.3 性能优化</h3>
+				<h4>避免不必要的 DOM 操作</h4>
+				<p>浏览器遍历 DOM 元素的代价是昂贵的。最简单优化 DOM
+					树查询的方案是，当一个元素出现多次时，将它保存在一个变量中，就避免多次查询 DOM 树了。</p>
+				<pre>
+// 推荐使用
+var myList = "";
+var myListHTML = document.getElementById("myList").innerHTML;
+
+for (var i = 0; i &lt; 100; i++) {
+  myList += "&lt;span&gt;" + i + "&lt;/span&gt;";
+}
+
+myListHTML = myList;
+
+// 不推荐使用
+for (var i = 0; i &lt; 100; i++) {
+  document.getElementById("myList").innerHTML += "&lt;span&gt;" + i + "&lt;/span&gt;";
+}
+		</pre>
+
+				<h4 id="_46">
+					<a name="user-content-_46"
+						href="file:///C:/users/admini~1/appdata/local/temp/17.html#_46"
+						class="headeranchor-link" aria-hidden="true"><span
+						class="headeranchor"></span></a>缓存数组长度
+				</h4>
+				<p>循环无疑是和 JavaScript 性能非常相关的一部分。通过存储数组的长度，可以有效避免每次循环重新计算。</p>
+				<p>注: 虽然现代浏览器引擎会自动优化这个过程，但是不要忘记还有旧的浏览器。</p>
+				<pre>
+var arr = new Array(1000),
+    len, i;
+// Recommended - size is calculated only 1 time and then stored
+for (i = 0, len = arr.length; i &lt; len; i++) {
+
+}
+
+// Not recommended - size needs to be recalculated 1000 times
+for (i = 0; i &lt; arr.length; i++) {
+
+}
+		</pre>
+
+				<h4 id="_47">
+					<a name="user-content-_47"
+						href="file:///C:/users/admini~1/appdata/local/temp/17.html#_47"
+						class="headeranchor-link" aria-hidden="true"><span
+						class="headeranchor"></span></a>异步加载第三方内容
+				</h4>
+				<p>当你无法保证嵌入第三方内容比如 Youtube 视频或者一个 like/tweet
+					按钮可以正常工作的时候，你需要考虑用异步加载这些代码，避免阻塞整个页面加载。</p>
+				<pre>
+(function() {
+    var script,
+         scripts = document.getElementsByTagName('script')[0];
+    function load(url) {
+      script = document.createElement('script');
+      script.async = true;
+      script.src = url;
+      scripts.parentNode.insertBefore(script, scripts);
+    }
+
+    load('//apis.google.com/js/plusone.js');
+    load('//platform.twitter.com/widgets.js');
+    load('//s.widgetsite.com/widget.js');
+
+}());
+		</pre>
+
+				<h4>避免使用 jQuery 实现动画</h4>
+				<ol>
+					<li>禁止使用 slideUp/Down() fadeIn/fadeOut() 等方法；</li>
+					<li>尽量不使用 animate() 方法；</li>
+				</ol>
+				</section>
+				</section>
+			</div>
+		</div>
+	</div>
+	  <!-- 需要引用的JS -->
+    <script type="text/javascript" src="dist/js/jquery.js"></script>
+    <script type="text/javascript" src="dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="demo/prettify.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#myNav").affix({
+        	 offset: {
+                 top: $("#myNav").offset().top,
+                 bottom: $('#hdisplay').outerHeight(true) + 40 
+             }
+        });
+    });
+    </script>
+</body>
+</html>

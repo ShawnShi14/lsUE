@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>下拉菜单</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+    <style type="text/css">
+    .dropdown {
+		display: inline-block;
+	}
+    </style>
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container">
+		<div class="dropdown">
+		  <button class="btn ue-btn dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown">
+		    	下拉菜单（带箭头，左对齐）
+		  </button>
+		  <ul class="dropdown-menu ue-dropdown-menu">
+		  	<li class="ue-dropdown-angle"></li>
+		    <li><a>个人信息</a></li>
+		    <li><a>安全设置</a></li>
+		    <li><a>邮件</a></li>
+		    <li><a>退出</a></li>
+		  </ul>
+		</div>
+		<div class="dropdown">
+		  <button class="btn ue-btn dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown">
+		    	下拉菜单（不带箭头，右对齐）<span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu dropdown-menu-right ue-dropdown-menu">
+		    <li><a>个人信息</a></li>
+		    <li><a>安全设置</a></li>
+		    <li><a>邮件</a></li>
+		    <li><a>退出</a></li>
+		  </ul>
+		</div>
+	</div>
+	<!-- 代码高亮部分 -->
+	<div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+.dropdown {
+    display: inline-block;
+}
+<div class="dropdown">
+    <button class="btn ue-btn dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown">
+    下拉菜单（带箭头，左对齐）
+    </button>
+    <ul class="dropdown-menu ue-dropdown-menu">
+        <li class="ue-dropdown-angle"></li>
+        <li><a>个人信息</a></li>
+        <li><a>安全设置</a></li>
+        <li><a>邮件</a></li>
+       <li><a>退出</a></li>
+   </ul>
+</div>
+<div class="dropdown">
+    <button class="btn ue-btn dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown">
+     下拉菜单（不带箭头，右对齐）<span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right ue-dropdown-menu">
+        <li><a>个人信息</a></li>
+        <li><a>安全设置</a></li>
+        <li><a>邮件</a></li>
+        <li><a>退出</a></li>
+   </ul>
+</div>
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>bootstrap.css</code>，<code>ui.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p> 
+		<p><code>jquery.js</code>，<code>ui.js</code>、<code>bootstrap.js</code></p>
+		<br/>
+		<p style="line-height:25px">将下拉菜单触发器和下拉菜单都包裹在 <code>.dropdown</code>里，或者另一个声明了 <code>position: relative;</code>的元素，然后加入组成菜单的 HTML 代码。</p>
+		<p style="line-height:25px"><code>data-toggle="dropdown"</code>设定显示信息的方式为<code>dropdown</code>。</p>
+		<p style="line-height:25px">用<code>.ue-btn</code>设置下拉菜单中button的样式，对下拉框中箭头设置则使用<code>.ue-dropdown-angle</code>。</p>
+		<p style="line-height:25px">默认情况下下拉框是左对齐的，如果你想让下拉菜单右对齐的话，只需 为 <code>.dropdown-menu</code> 添加 
+				<code>.dropdown-menu-right</code> 类可以让菜单右对齐。</p>
+		<h5>dropdowns中一些可用接口：</h5>
+		<p style="line-height:25px"><code>$().dropdown()</code>可以向下弹出下拉框，但是不能收回。</p>
+		<p style="line-height:25px"><code>$().dropdown('toggle')</code>相当于<code>data-toggle="dropdown"</code>
+					通过编程式api对某个特定的导航条或标签页导航切换下拉菜单。</p>
+	</div>
+	 
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+  	<script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>
+  </body>
+</html>

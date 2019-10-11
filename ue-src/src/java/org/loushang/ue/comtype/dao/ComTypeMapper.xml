@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.loushang.ue.comtype.dao.ComTypeMapper">
+
+	<resultMap type="org.loushang.ue.comtype.data.ComType" id="comTypeResultMap">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="parentId" column="parent_id" />
+		<result property="displayOrder" column="display_order" />
+		<result property="description" column="description" />
+	</resultMap>
+
+	<!-- 初始化一级导航 -->
+	<select id="getTopType" resultMap="comTypeResultMap">
+		SELECT ID, NAME, PARENT_ID, DISPLAY_ORDER DESCRIPTION FROM UE_COM_TYPE
+		WHERE PARENT_ID = "-1"
+	</select>
+
+	<!-- 初始化二级导航 -->
+	<select id="getSubType" resultMap="comTypeResultMap">
+		SELECT ID, NAME, PARENT_ID, DISPLAY_ORDER DESCRIPTION FROM UE_COM_TYPE
+		WHERE PARENT_ID = #{parentId}
+	</select>
+
+</mapper>

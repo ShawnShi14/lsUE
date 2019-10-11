@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>图片轮播-unslider</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="container">
+		<div class="ue-relative-layout">
+			<div class="ue-unslider">
+				<ul>
+					<li><img src="images/sunset.jpg"/></li>
+					<li><img src="images/shop.jpg"/></li>
+					<li><img src="images/wood.jpg"/></li>
+				</ul>
+			</div>
+			<a href="#" class="ue-unslider-arrow prev"><i class="fa fa-angle-left"></i></a>
+			<a href="#" class="ue-unslider-arrow next"><i class="fa fa-angle-right"></i></a>
+		</div>
+	</div>
+	<br/>
+	<!-- 代码高亮部分 -->
+	<div class="container">
+		<br/>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<div class="ue-relative-layout">				
+    <div class="ue-unslider">
+        <ul>
+            <li><img src="images/sunset.jpg"/></li>
+            <li><img src="images/shop.jpg"/></li>
+            <li><img src="images/wood.jpg"/></li>
+       </ul>
+    </div>
+    <a href="#" class="ue-unslider-arrow prev"><i class="fa fa-angle-left"></i></a>
+    <a href="#" class="ue-unslider-arrow next"><i class="fa fa-angle-right"></i></a>
+</div>
+				</pre>
+				<pre>
+ $('.ue-unslider').unslider({
+     fluid: true,
+     dots: true,
+     speed: 500
+ });
+ var unslider = $('.ue-unslider').unslider();
+  $('.ue-unslider-arrow').click(function() {
+     var fn = this.className.split(' ')[1];
+     //  Either do unslider.data('unslider').next() or .prev() depending on the className
+     unslider.data('unslider')[fn]();
+ });
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>bootstrap.css</code>，<code>font-awesome</code>，<code>form.css</code>，<code>ui.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p> 
+		<p><code>jquery.js</code>，<code>form.js</code></p>
+		<br/>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">组件引用<code>.ue-relative-layout</code>整体样式,或者另一个声明了 <code>position: relative;</code>的元素，然后加入图片轮播的 HTML 代码</p>
+		<p style="line-height:25px"><code>.ue-unslider</code>设置轮播图片样式，添加向前向后翻的链接<code>.ue-unslider-arrow prev</code><code>.ue-unslider-arrow next</code>，同时还可以设置前后翻页按钮的样式。</p>
+		<br/>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>类型</th>
+					<th>默认值</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>speed</td>
+					<td>整型或布尔型</td>
+					<td>500</td>
+					<td>动画的速度,没有过度效果时为 false</td>
+				</tr>
+				<tr>
+					<td>delay</td>
+					<td>整型或布尔型</td>
+					<td>3e3</td>
+					<td>幻灯片之间的延迟，没有自动播放时为false</td>
+				</tr>
+				<tr>
+					<td>keys</td>
+					<td>布尔型</td>
+					<td>true</td>
+					<td>允许键盘左右键控制</td>
+				</tr>
+				<tr>
+					<td>dots</td>
+					<td>布尔型</td>
+					<td>false</td>
+					<td>显示点导航</td>
+				</tr>
+				<tr>
+					<td>fluid</td>
+					<td>布尔型</td>
+					<td>false</td>
+					<td>支持响应式设计</td>
+				</tr>
+			</tbody>
+		</table>
+		<br/>
+		<h3>回调函数</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>complete</td>
+					<td>播放每张幻灯片后调用的函数</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+    <!-- 需要引用的JS -->
+   <!--  <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script> 
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script> --> 
+    <script src="../require.js"></script>
+    <script src="../main.js"></script>
+    <script type="text/javascript">
+    require(['jquery','form/unslider','demo/prettify'], function($){
+    //给图片轮转添加左右翻页功能
+    $(document).ready(function() {
+    	$('.ue-unslider').unslider({
+    		// 支持响应式设计
+    		fluid: true,
+    		// 显示点导航
+    		dots: true,
+    		// 动画的速度,没有过度效果时为 false (整型或布尔型)
+    		speed: 500
+    	});
+    	var unslider = $('.ue-unslider').unslider();
+   		$('.ue-unslider-arrow').click(function() {
+        	var fn = this.className.split(' ')[1];
+       	 	//  Either do unslider.data('unslider').next() or .prev() depending on the className
+        	unslider.data('unslider')[fn]();
+    	});
+   		window.onresize = function(){
+   			$(".ue-unslider").css("width","100%");
+   		}
+    });
+    });
+    </script>
+  </body>
+</html>

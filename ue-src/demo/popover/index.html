@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>popover-弹出框</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	<style  type="text/css">
+		button {
+			margin-left: 20px;
+		}
+		.popover.bottom {
+			min-width: 750px;
+		}
+		.popover-content-left, .popover-content-right {
+			float: left;
+		}
+		.popover-content-left {
+			width: 280px;
+		}
+		.popover-content-right {
+			margin-left: 40px;
+			width: 390px;
+		} 
+		.form-control {
+			display: inline;
+			width: auto;
+		}
+		label.text-name {
+			line-height: 40px;
+			font-weight: normal;
+		}
+	</style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container" style="margin-top:100px">
+		<button type="button" class="btn ue-btn" id="left">popover左侧(内容)</button>
+		<button type="button" class="btn ue-btn" id="top">popover顶部(html)</button>
+		<button type="button" class="btn ue-btn" id="bottom">popover底部(模板)</button>
+		<a tabindex="0" role="button" class="btn ue-btn" id="right"  data-toggle="popover" data-trigger="focus" title="" data-content="未定义标题失去焦点可消失popover的内容 ">popover右侧(失焦消失)</a>
+	</div>
+	 
+	<div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#js" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="js">
+				<pre>
+<button type="button" class="btn ue-btn" id="left">popover左侧(内容)</button>
+<button type="button" class="btn ue-btn" id="top">popover顶部(html)</button>
+<a tabindex="0" role="button" class="btn ue-btn" id="right"  data-toggle="popover" data-trigger="focus" title="" data-content="未定义标题失去焦点可消失popover的内容 ">popover右侧(失焦消失)</a>
+				</pre>
+			</div>
+		</div>
+		<pre>
+		
+       $("#left").popover({
+           title: "这是普通popover的标题",
+           content: "定义标题普通popover的内容",
+           placement: "left"
+       });
+       
+       $("#top").popover({
+           title: "",
+           html: true,
+           content: '<div class="form-inline" style="width: 350px">'+
+                       '<label for="menuId" class="text-name">目录编码:</label>'+
+                       '<input type="text" class="form-control ue-form" id="menuId">'+
+                    '</div>',
+           placement: "top"
+       }); 
+    
+       $("#right").popover({
+           placement: "right"
+       });
+		</pre>
+		<br/>
+		<br/>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>bootstrap.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p> 
+		<p><code>jquery.js</code>，<code>bootstrap.js</code></p>
+		<br/>
+		<h3>说明</h3>
+		<br/>
+		<p style="line-height:25px">在使用失焦消失的popover弹出框时，为了更好的跨浏览器兼容，使用a标签，当使用a标签的时候一定要注意不要忘了tabindex属性。弹出框的位置使用js方法固定即可。</p>
+		<p style="line-height:25px">使用Popover组件有两种使用方法：一种是通过data-属性，一种是通过javascript方法调用。本例通过javascript来实现。</p>
+		<br/>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>类型</th>
+					<th>默认值</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>animation</td>
+					<td>boolean</td>
+					<td>true</td>
+					<td>是否开启CSS动画</td>
+				</tr>
+				<tr>
+					<td>content</td>
+					<td>string | function</td>
+					<td>""</td>
+					<td>popover的内容,内容可以是普通文本，html代码，模板等，为html代码或者是模板的时候要设置html的值为true</td>
+				</tr>
+				<tr>
+					<td>title</td>
+					<td>string | function</td>
+					<td>""</td>
+					<td>弹出框标题</td>
+				</tr>
+				<tr>
+					<td>html</td>
+					<td>boolean</td>
+					<td>false</td>
+					<td>向弹出框插入 HTML。如果设置为false时，内容中的html代码将会作为文本输出。如果设置为true时就会自动解析相应的html。</td>
+				</tr>
+				<tr>
+					<td>placement</td>
+					<td>string|function</td>
+					<td>top</td>
+					<td>规定如何定位弹出框（即 top|bottom|left|right|auto）。当指定为 auto 时，会动态调整弹出框。</td>
+				</tr>
+				<tr>
+					<td>trigger</td>
+					<td>string</td>
+					<td>'click'</td>
+					<td>定义如何触发弹出框： click| hover | focus | manual。您可以传递多个触发器，每个触发器之间用空格分隔。</td>
+				</tr>
+				<tr>
+					<td>template</td>
+					<td>string</td>
+					<td>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</td>
+					<td>定义模板，当html选项的值设为true时期作用。</td>
+				</tr>
+				<tr>
+					<td>delay</td>
+					<td>number | object</td>
+					<td>0</td>
+					<td>延迟显示和隐藏弹出框的毫秒数 - 对 manual 手动触发类型不适用。如果提供的是一个数字，展现和消失的时候都会显示。提供对象的话结构如下: delay: { "show": 500, "hide": 100 }</td>
+				</tr>
+				<tr>
+					<td>container</td>
+					<td>string | false</td>
+					<td>false</td>
+					<td>将提示框放在特定的容器里</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+	<script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../dist/js/arttemplate.js"></script>
+	<script type="text/javascript" src="../../dist/js/form.js"></script>
+	<script type="text/javascript" src="../../dist/js/ui.js"></script>
+	 <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+	<script type="text/javascript" src="../prettify.js"></script>
+	<script id="mypopover" type="text/html">
+	<div>
+		<div class="popover-content-left">
+			<div class="form-inline">
+				<label for="menuId" class="text-name">目录编码:</label> 
+				<input type="text" class="form-control ue-form" id="menuId">
+			</div>
+			<div class="form-inline">
+				<label for="menuType" class="text-name">目录类型:</label> 
+				<select  class="form-control ue-form" id="menuType">
+					<option>全部</option>
+				</select>
+			</div>
+			<div class="form-inline">
+				<label for="doMain" class="text-name">实施主体:</label> 
+				<input type="text" class="form-control ue-form" id="doMain" >
+			</div>
+			<div style="margin:10px 45px">
+				<button id="confirm" class="btn ue-btn-primary">搜索</button>
+			</div>
+		</div>
+		<div class="popover-content-right">
+			<div class="form-inline">
+				<label for="startDay" class="text-name">办理时间:</label> 
+				<div class="input-group date" id="startDay">
+					<div id="start">
+						<input type="text" class="form-control ue-form" style="width: 100px" name="startDay" /> 
+					</div>
+					<span class="input-group-addon ue-form-btn"><i class="fa fa-calendar"></i></span>								   
+				</div>&nbsp;&nbsp;到
+				<div class="input-group date" id="endDay">
+					<div id="end">
+						<input type="text" class="form-control ue-form" style="width: 100px" name="endDay"/> 
+					</div>
+					<span class="input-group-addon ue-form-btn"><i class="fa fa-calendar"></i></span>								   
+				</div>
+			</div>
+			<div class="form-inline">
+				<label for="menuName" class="text-name">目录名称:</label> 
+				<input type="text" class="form-control ue-form" id="menuName">
+			</div>
+			<div class="form-inline">
+				<label for="menutype" class="text-name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状态:</label> 
+				<select  class="form-control ue-form" id="menutype">
+					<option>全部</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	</script>
+	<script type="text/javascript">
+		$("document").ready(function(){
+			$("#left").popover({
+				title: "这是普通popover的标题",
+				content: "定义标题普通popover的内容",
+				placement: "left"
+			});
+			$("#top").popover({
+				title: "",
+				html: true,
+				content: '<div class="form-inline" style="width: 350px">'+
+							'<label for="menuId" class="text-name">目录编码:</label>'+
+							'<input type="text" class="form-control ue-form" id="menuId" style="width: 180px">'+
+						 '</div>',
+				placement: "top"
+			}); 
+			 $("#bottom").popover({
+				title: "",
+				content: template('mypopover',{}),
+				placement: "bottom",
+				html: true
+			}); 
+			$("#right").popover({
+				placement: "right"
+			});
+			 $("#bottom").on("click",function(){
+				    $('#startDay').datetimepicker({
+				    	container: $("#start"),
+				    	language: "zh-CN",
+				    	autoclose: 1,
+				    	startView: 2,
+						minView: 2,
+				    	format: "yyyy-mm-dd"
+				    });
+				    $('#endDay').datetimepicker({
+				    	container: $("#end"),
+				    	language: "zh-CN",
+				    	autoclose: 1,
+				    	startView: 2,
+						minView: 2,
+				    	format: "yyyy-mm-dd"
+				    });
+			 });
+		});
+	</script>
+  </body>
+</html>

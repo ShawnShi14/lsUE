@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>垂直菜单导航-vmenu</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-menu-left">
+		<div class="ue-left-top">工作流</div>
+		<div class="ue-left-content">
+			<div class="ue-vmenu">
+				<ul>
+					<li>
+						<a>任务列表</a>
+						<ul>
+							<li>
+								<a>默认任务列表</a>
+								<ul>
+									<li>
+				                     	<a>新建任务</a>
+				                     	<ul>
+						                     <li><a data-role="leaf">新建任务<i class="fa fa-star-o ue-vmenu-icon-r"></i></a></li>
+					                    </ul>
+				                    </li>
+									<li><a data-role="leaf">待办任务</a></li>
+									<li><a data-role="leaf">已办任务</a></li>
+									<li><a data-role="leaf">办结任务</a></li>
+								</ul>
+							</li>
+							<li>
+								<a>流程定义任务列表</a>
+								<ul>
+									<li><a data-role="leaf">新建任务</a></li>
+									<li><a data-role="leaf">待办任务</a></li>
+									<li><a data-role="leaf">已办任务</a></li>
+									<li><a data-role="leaf">办结任务</a></li>
+								</ul>
+							</li>
+							<li><a data-role="leaf">流程类型任务列表</a></li>
+							<li><a data-role="leaf">系统全局任务列表</a></li>
+						</ul>
+					</li>
+					<li>
+						<a>流程管理</a>
+						<ul>
+							<li><a data-role="leaf">流程类型</a></li>
+							<li><a data-role="leaf">流程定义</a></li>
+							<li><a data-role="leaf">管理监控</a></li>
+							<li><a data-role="leaf">业务流程定义</a></li>
+						</ul>
+					</li>
+					<li><a data-role="leaf">配置管理</a></li>
+					<li><a data-role="leaf">出差代理</a></li>
+					<li><a data-role="leaf">流程统计分析</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+   <!-- 代码高亮部分 -->
+	<div class="ue-container ue-menu-right" >
+		<div style="height: 100%;overflow: auto;">
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top:10px">
+				<div class="tab-pane active" id="html">
+					<pre>	
+					
+/*此样式是一个五星（一般用于收藏菜单）*/
+.fa-star-o {
+    font-size: 18px;
+    margin-right: 8px;
+    margin-top: 2px;
+}		
+<div class="ue-vmenu">
+    <ul>
+        <li>
+            <a>任务列表</a>
+            <ul>
+                <li>
+                    <a>默认任务列表</a>
+                    <ul>
+                        <li>
+                           <a>新建任务</a>
+                           <ul>
+                                <li><a data-role="leaf">新建任务<i class="fa fa-star-o ue-vmenu-icon-r"></i></a></li>
+                            </ul>
+                        </li>
+                        <li><a data-role="leaf">待办任务</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a>流程定义任务列表</a>
+                    <ul>
+                        <li><a data-role="leaf">新建任务</a></li>
+                    </ul>
+                </li>
+                <li><a data-role="leaf">流程类型任务列表</a></li>
+            </ul>
+        </li>
+        <li>
+            <a>流程管理</a>
+            <ul>
+                <li><a data-role="leaf">流程类型</a></li>
+            </ul>
+        </li>
+        <li><a data-role="leaf">配置管理</a></li>
+    </ul>
+</div>
+					</pre>
+				</div>
+			</div>
+			<br/>
+			<h4>js非模块化加载：</h4>
+			<p style="line-height:25px">需要引用的js文件及加载顺序：</p> 
+			<p><code>jquery.js</code>，<code>form.js</code></p>
+			<p>引用方式：</p>
+			<p>正常js引用方式 <code>&lt;script type="text/javascript" src="jquery.js路径"&gt;&lt;/script&gt;</code></p>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_format">
+					<pre>
+					
+$(function() {
+    $('.ue-vmenu').vmenu({
+        autostart: 1,
+        autohide: 0
+    });
+});
+					</pre>
+				</div>
+			</div>
+			<br />
+			<h4>js模块化加载：</h4>
+			<p>在require之前需要引用的js文件：</p>
+			<p><code>require.js</code>，<code>main.js</code></p>
+			<p>引用方式：</p>
+			<p><code>&lt;script src="require.js路径"&gt;&lt;/script&gt;</code></p>
+			<p><code>&lt;script src="main.js路径"&gt;&lt;/script&gt;</code></p>
+			<p>之后在require中加载组件所需要的js文件，<code>jquery</code>，<code>form/vmenu</code></p>
+			<p>将js文件放在数组里面，js的引用在非模块化中是无序的，注意文件不要加.js后缀，因为RequireJS会自动加载。</p>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_require">
+					<pre>
+					
+require(['jquery','form/vmenu'], function($){
+    $(function() {
+        $('.ue-vmenu').vmenu({
+            autostart: 1,
+            autohide: 0
+        });
+    });
+});
+					</pre>
+				</div>
+			</div>
+			<br/>
+			<p style="line-height:25px">组件须引用的css文件:
+			<code>bootstrap.css</code>，<code>font-awesome.css</code>，
+		    <code>form.css</code>，<code>ui.css</code>
+			</p>	
+			<br/>
+			<br/>	
+			<h3>说明</h3>
+			<p style="line-height:25px">将垂直菜单导航使用<code>.ue-vmenu</code>控制插件外部样式。</p>
+			<p style="line-height:25px">将垂直菜单导航使用ul 结构，ul里面是子列表li， 然后接着可以在子列表里再写ul 结构</p>
+			<p><code>&lt;a&gt;</code>标签中<code>data-role="leaf"</code>表示该内容放置在叶子容器中。</p>
+			<br/>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>类型</th>
+						<th>默认值</th>
+						<th>说明</th>
+					</tr>	
+				</thead>
+				<tbody>
+					<tr>
+						<td>speed</td>
+						<td>number</td>
+						<td>220</td>
+						<td>设置下拉菜单速度</td>
+					</tr>
+					<tr>
+						<td>autostart</td>
+						<td>number/boolean</td>
+						<td>1/true</td>
+						<td>页面加载完毕后是否展开所有节点</td>
+					</tr>
+					<tr>
+						<td>autohide</td>
+						<td>number/boolean</td>
+						<td>1/true</td>
+						<td>当打开兄弟节点时本节点是否自动隐藏</td>
+					</tr>
+				</tbody>
+			</table>
+	 </div>
+	 </div>
+    <!-- 需要引用的JS -->
+    <!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script> 
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script> -->
+    <script src="../require.js"></script>
+    <script src="../main.js"></script>
+	<script type="text/javascript">
+	require(['jquery','form/vmenu','demo/prettify'], function($){
+		$(function() {
+			// initialize menu
+			$('.ue-vmenu').vmenu({
+				autostart: 1,
+				autohide: 0
+			});
+		});
+	});
+	</script>
+  </body>
+</html>

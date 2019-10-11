@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<title>可视化流程图</title>
+
+<!-- 需要引用的CSS -->
+<link rel="shortcut icon" href="../../site.ico" />
+<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+   <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+<link rel="stylesheet" type="text/css" href="../../dist/skin/css/raphael-flowchart.css" />
+<link rel="stylesheet" type="text/css" href="../prettify.css" />
+<style type="text/css">
+#content {
+	position: relative;
+	font-size: 12px;
+	height: 240px;
+}
+
+.red {
+	background-color: #fe3e53;
+	background-image: url(img/machine.png);
+}
+
+.blue {
+	background-color: #3d99fe;
+	background-image: url(img/file.png);
+}
+
+.brown {
+	background-color: #c2a178;
+	background-image: url(img/user.png);
+}
+
+.green {
+	background-color: #00a6a4;
+	background-image: url(img/machine.png);
+}
+
+</style>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<div class="ue-container">
+		<div id="content"></div>
+	</div>
+	<!-- 页面结构 -->
+	<!-- 代码高亮部分 -->
+	<div class="ue-container">
+
+		<br />
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="html">
+				<p style="line-height: 25px">
+					<code>为实现流程图组件，需要提供一个相对定位的流程图容器。例如，可定义一个id为content的div,如下所示：</code>
+				</p>
+				<pre>
+
+<div id="content"></div>
+
+<style type="text/css">
+.red {
+	background-color: #fe3e53;
+	background-image: url(img/machine.png);
+}
+
+.blue {
+	background-color: #3d99fe;
+	background-image: url(img/file.png);
+}
+
+.brown {
+	background-color: #c2a178;
+	background-image: url(img/user.png);
+}
+
+.green {
+	background-color: #00a6a4;
+	background-image: url(img/machine.png);
+}
+</style>
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<p>
+			<code>为绘制每个流程块和流程块之间的连线，需要提供以下模板：</code>
+		</p>
+		<pre>
+<script type="text/html" id="T-graph">
+    <div class="ue-flowchart-graph" data-index="{{data.index}}" data-id="{{data.id}}" style="left:{{data.x}}px; top:{{data.y}}px; width:{{data.widthNum}}px">
+        <div class="{{data.className}} ue-flowchart-left">
+        </div>
+        <div class="ue-flowchart-right">
+            <dl class="ue-flowchart-title">{{data.title}}</dl>
+            <div class="ue-flowchart-content" style="height: {{data.rowsHeight}}px"></div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="row">
+    <dl class="ue-rowContent " style = "height: {{data.height}}px; line-height: {{data.height-10}}px">{{data.content}}</dl> 
+</script>
+        </pre>
+        <br/>
+        <br/>
+		<p>
+			本插件除了引用必须的js文件外，还需要调用
+			<code>$("").showGraph(data, options)</code>
+			接口。
+		</p>
+				<pre>
+
+var data = {
+		"states" : [ {
+			"id" : 1,
+			"title" : "updateBegin",
+			"content" : [1,2,3,4],
+			"type" : 1,
+			"order" : 1
+		}, {
+			"id" : 2,
+			"title" : "",
+			"content" : [1,2,3,4],
+			"type" : 1,
+			"order" : 1
+		}],
+		"relations" : [ {
+			"id" : 29,
+			"fromStateId" : 1,
+			"toStateID" : 3
+		}, {
+			"id" : 30,
+			"fromStateId" : 2,
+			"toStateID" : 3
+		} ]
+	};
+$(function() {
+	$("#content").showGraph(data, {
+		styleKey : "type",
+		styleRef : {
+			"1" : "red",
+			"2" : "blue", 
+			"3" : "green",
+			"4" : "brown"
+		},
+		lineColor : "#4848fe",
+		rows: 3,
+		rowHeight: 24
+	});
+});
+				</pre>
+				<br/>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>raphael-flowchart.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p> 
+		<p><code>jquery.js</code>，<code>jquery-ui.js</code>，<code>raphael.js</code>，<code>raphael-flowchart.js</code></p>
+		<br/>
+		<h3>options</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>类型</th>
+					<th>可取值</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>data</td>
+					<td>json数据</td>
+					<td>json数据</td>
+					<td>需要展示的json格式的数据</td>
+				</tr>
+				<tr>
+					<td>styleKey</td>
+					<td>string</td>
+					<td>json数据中states中的任意一个属性</td>
+					<td>用户根据该值选择不同类型的流程块</td>
+				</tr>
+				<tr>
+					<td>styleRef</td>
+					<td>json数据</td>
+					<td>键值对</td>
+					<td>type和流程块样式的对应关系</td>
+				</tr>
+				<tr>
+					<td>"1"</td>
+					<td>String</td>
+					<td>type值</td>
+					<td>json数据中的被选属性对应值</td>
+				</tr>
+				<tr>
+					<td>"red"</td>
+					<td>class</td>
+					<td>red、blue、green、brown</td>
+					<td>流程块对应样式，此处可由用户自定义</td>
+				</tr>
+				<tr>
+					<td>lineColor</td>
+					<td>string</td>
+					<td>color值</td>
+					<td>连线的颜色</td>
+				</tr>
+				<tr>
+					<td>rows</td>
+					<td>int</td>
+					<td>行数</td>
+					<td>content要显示的行数</td>
+				</tr>
+				<tr>
+					<td>rowHeight</td>
+					<td>int</td>
+					<td>行高</td>
+					<td>content单行文字的高度</td>
+				</tr>
+			</tbody>
+		</table>
+	</div> 
+	<!-- 需要引用的JS -->
+	<script type="text/javascript" src="../../dist/js/raphael.js"></script>
+	<script type="text/javascript" src="../../dist/js/jquery.js"></script>
+	    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../dist/js/arttemplate.js"></script>
+	<script type="text/javascript" src="../../dist/js/jquery-ui.js"></script>
+	  <script type="text/javascript" src="../../dist/js/ui.js"></script>
+	<script type="text/javascript" src="../../dist/js/raphael-flowchart.js"></script>
+	    <script type="text/javascript" src="../../dist/js/form.js"></script> 
+		<script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+	<script type="text/javascript" src="prettify.js"></script>
+
+	<script type="text/html" id="T-graph">
+		<div class="ue-flowchart-graph" data-index="{{data.index}}" data-id="{{data.id}}" style="left:{{data.x}}px; top:{{data.y}}px; width:{{data.widthNum}}px">
+			<div class="{{data.className}} ue-flowchart-left">
+			</div>
+			<div class="ue-flowchart-right">
+				<dl class="ue-flowchart-title">{{data.title}}</dl>
+				<div class="ue-flowchart-content" style="height: {{data.rowsHeight}}px"></div>
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="row">
+		<dl class="ue-rowContent " style = "height: {{data.height}}px; line-height: {{data.height-10}}px">{{data.content}}</dl> 
+	</script>
+	<script type="text/javascript">
+		var data = {
+			"states" : [ {
+				"id" : 1,
+				"title" : "这里是标题",
+				"content" : ["这里是要显示内容"],
+				"type" : 1,
+				"order" : 1
+			}, {
+				"id" : 2,
+				"title" : "这里是标题",
+				"content" : ["这里是要显示内容","这里是要显示内容","这里是要显示内容"],
+				"type" : 1,
+				"order" : 1
+			}, {
+				"id" : 3,
+				"title" : "这里是标题",
+				"content" : ["这里是要显示内容","这里是要显示内容","这里是要显示内容"],
+				"type" : 2,
+				"order" : 2
+			}, {
+				"id" : 4,
+				"title" : "这里是标题",
+				"content" : ["这里是要显示内容","这里是要显示内容","这里是要显示内容"],
+				"type" : 4,
+				"order" : 3
+			}, {
+				"id" : 5,
+				"title" : "这里是标题",
+				"content" : ["这里是要显示内容","这里是要显示内容"],
+				"type" : 3,
+				"order" : 3
+			} ],
+			"relations" : [ {
+				"id" : 29,
+				"fromStateId" : 1,
+				"toStateID" : 3
+			}, {
+				"id" : 30,
+				"fromStateId" : 2,
+				"toStateID" : 3
+			}, {
+				"id" : 31,
+				"fromStateId" : 3,
+				"toStateID" : 4
+			}, {
+				"id" : 32,
+				"fromStateId" : 3,
+				"toStateID" : 5
+			} ]
+		};
+		$(function() {
+			$("#content").showGraph(data, {
+				styleKey : "type",
+				styleRef : {
+					"1" : "red",
+					"2" : "blue", 
+					"3" : "green",
+					"4" : "brown"
+				},
+				lineColor : "#4848fe",
+				rows: 3,
+				rowHeight: 24
+			});
+		});
+	</script>
+</body>
+</html>

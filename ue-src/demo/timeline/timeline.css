@@ -1,0 +1,53 @@
+.axis text {
+	font: 10px sans-serif;
+}
+
+.y.axis path {
+	display: none;
+}
+
+.y.axis text {
+	font-weight: bold;
+}
+
+.y.axis line {
+	stroke: #fff;
+	shape-rendering: crispEdges;
+}
+
+.x.axis line {
+	stroke: #aaa;
+	stroke-width: 2px;
+	shape-rendering: crispEdges;
+}
+
+.x.axis text.year {
+	fill: #fff;
+}
+
+.axis.x path {
+	stroke: #aaa;
+	stroke-width: 2px;
+	fill: none;
+}
+
+.nav-axis.x path {
+	display: none;
+}
+
+.navigator {
+	fill: #ccc;
+}
+
+.nav-viewport {
+	stroke: #b2b1b6;
+	stroke-width: 0.5px;
+	fill: #eee;
+	fill-opacity: 0.5;
+}
+
+.resize rect {
+	stroke: #999;
+	fill: #fcfdfe;
+	fill-opacity: 1;
+}

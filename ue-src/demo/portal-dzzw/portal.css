@@ -1,0 +1,144 @@
+body {
+	font: 14px arial,microsoft yahei,simsun,simhei,sans-serif;
+	min-width: 1132px; 
+	width: expression((documentElement.clientWidth > 1132) ? "1132px" : "auto" );
+}
+a, a:hover, a:active {
+	color: #333;
+}
+.navbar {
+	margin-bottom: 0;
+	border: none;
+	background: #fff;
+}
+.navbar-header {
+	width: 20%;
+}
+.navbar-brand {
+	width: 100%;
+	height: 50px;
+	background-image: url(images/logo-brand.png);
+	background-position: 50% 70%;
+	background-repeat: no-repeat;
+}
+@media (min-width: 768px) {
+	.navbar-collapse.navbar-right>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.ue-navbar .navbar-right  {
+		margin-right: 20px;
+	}
+}
+.navbar-right li a img {
+	width: 30px;
+	height: 30px;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+	background-color: #eee;
+}
+.dropdown-menu li:last-child a {
+	border-bottom: none;
+}
+.banner {
+	height: 450px;
+	background: #468ccb;
+}
+.banner-left {
+	width: 25%;
+	height: 100%;
+	line-height: 2em;
+	background-image: url(images/user-bg.jpg);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	text-align: center;
+	color: #fff;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=Enabled, sizingMethod=scale, src=images/user-bg.jpg)
+}
+.banner-left img {
+	width: 45%;
+	border-radius: 50%;
+	margin-top: 20px;
+	margin-bottom: 15px;
+	position: relative;
+}
+.banner-left .role {
+	font-size: 18px;
+}
+.banner-left .dept {
+	font-size: 14px;
+}
+.banner-right {
+	width: 75%;
+	padding: 40px 60px;
+	color: #fff;
+}
+.banner-right h1 {
+	margin-bottom: 20px;
+	margin-top: 20px;
+	font-size: 56px;
+}
+.banner-right h4 {
+	display: inline-block;
+	padding: 5px;
+	background-color: rgba(0,0,0,.3);
+	filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#4C000000,endcolorstr=#4C000000);
+}
+.banner-right .warn-num {
+	font-size: 16px;
+	padding: 10px;
+}
+.warn-list {
+	padding-top: 20px;
+}
+.item {
+	display: inline-block;
+	margin-right: 50px;
+	text-align: center;
+}
+.item a {
+	position: relative;
+	display: block;
+	width: 100px;
+	height: 100px;
+	border-radius: 100px;
+	margin-top: 25px;
+	padding: 25px;
+	border: 1px solid rgb(162,197,229);
+	cursor: pointer;
+	behavior:url(PIE.htc);
+}
+.badge {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: red;
+	border-radius:10px;
+	behavior:url(PIE.htc);
+}
+.item a i {
+	font-size: 50px;
+	color: rgba(255,255,255,0.5);
+	filter: alpha(opacity=50);
+}
+.item a:hover i, .item a:active i, .item a:focus i {
+	color: #fff;
+}
+.my {
+	background-color: #eee;
+	padding: 10px 40px;
+}
+.my-left {
+	width: 55%;
+	height: 350px;
+}
+.my-right {
+	float: right;
+	width: 40%;
+	height: 350px;
+}
+.ue-panel-tools>li{
+	margin: 0;
+	margin-left: 10px;
+}

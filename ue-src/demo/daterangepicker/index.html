@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>日期区间选择器-daterangepicker</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css">
+    <link rel="stylesheet" type="text/css" href="../prettify.css"/>
+    <style type="text/css">
+    .input-group{
+    	width:100%;
+    }
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+   <body>
+		<div class="ue-container">
+			<form class="form-horizontal">
+				  <div class="form-group">
+					 <label for="date" class="col-sm-3 control-label">日期区间选择</label>
+						<div class="col-sm-8">
+							<div class="input-group">
+								<input type="text" name="reservation" id="reservation" 
+								class="form-control ue-form"/>		
+							</div>						
+						</div>
+			  	   </div>
+			 </form>
+         </div>
+         <!--代码高亮部分 -->
+  		<div class="ue-container">
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top:20px">
+				<div class="tab-pane active" id="html">
+					<pre>
+					
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="date" class="col-sm-3 control-label">日期区间选择</label>
+        <div class="col-sm-8">
+            <div class="input-group">
+                <input type="text" name="reservation"  id="reservation" class="form-control ue-form"/>
+            </div>						
+        </div>
+    </div>
+</form>
+					</pre>
+					<pre>
+
+$(document).ready(function() {
+    $('#reservation').daterangepicker({
+        format:'MM/DD/YYYY'
+    },
+    function(start,end){
+         //输出ISO标准格式的时间与日期
+        console.log(start.toISOString(),end.toISOString());
+    });
+});			
+					</pre>
+				</div>
+			</div>
+			<br/>
+			<p style="line-height:25px">需要引用的css文件：</p> 
+		    <p><code>bootstrap.css</code>，<code>ui.css</code>，<code>form.css</code></p>
+		    <p style="line-height:25px">需要引用的js文件：</p> 
+		    <p><code>jquery.js</code>，<code>bootstrap.js</code>，<code>form.js</code>，<code>ui.js</code></p>
+		    <br/>
+			<h3>说明</h3>
+			<p style="line-height:25px">将内容放在<code>.form-group</code>中，避免结构混乱。</p>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>类型</th>
+						<th>说明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>format</td>
+						<td>data</td>
+						<td>日期返回格式,可进行格式化修改</td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			<p>在<code>.daterangepicker()</code>中使用了回调函数<code>function(start,end){}</code>。</p>
+			<h3>参数</h3>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>说明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>start</td>
+						<td>获取选择日历的起始日期</td>
+					</tr>
+			        <tr>
+						<td>end</td>
+						<td>获取选择日历的终止日期</td>
+					</tr>
+				</tbody>
+			</table>
+    </div>
+   <!--  <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+   	  <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+      <script type="text/javascript" src="../../dist/js/form.js"></script> 
+      <script type="text/javascript" src="../../dist/js/ui.js"></script>  
+      <script type="text/javascript" src="../ZeroClipboard.min.js"></script>  
+      <script type="text/javascript" src="../prettify.js"></script> -->
+      
+    <script src="../require.js"></script>
+    <script src="../main.js"></script>
+      
+    <script type="text/javascript">
+    require(['jquery','form/daterangepicker','ui','demo/prettify'], function($){
+    	  $(function(){
+        		$('#reservation').daterangepicker(
+      				{
+      					//日期返回格式,可进行格式化修改
+      					format:'MM/DD/YYYY'
+      				},
+      				//回调函数，内有两个参数start(获取选择日历的起始日期),end(获取选择日历的终止日期)
+      				function(start,end){
+      					//输出ISO标准格式的时间与日期
+      					console.log(start.toISOString(),end.toISOString());
+      				}
+      			);
+  			});
+    });
+      </script>
+   </body>
+</html>

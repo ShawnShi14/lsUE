@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>表单校验-validform</title>
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container" id="sandbox-container">
+	  <!-- 验证信息nowrap -->
+		<form class="form-horizontal" id="saveForm" name="saveForm" onsubmit="return false">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">名称<span class="required">*</span></label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control ue-form Validform_input" id="userName"
+						name="userName" value="" placeholder="名称" datatype="s5-16" errormsg="昵称至少5个字符,最多16个字符！" nullmsg="请设置正确名称" />						
+					<span class="Validform_checktip Validform_span"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">账号状态</label>
+				<div class="col-sm-8">
+					<select class="form-control ue-form Validform_input" name="userStatus" datatype="s" nullmsg="请设置账号状态">
+						<option value="">请选择</option>
+						<option value="N">启用</option>
+						<option value="X">停用</option>
+					</select>
+					<span class="Validform_checktip Validform_span"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">身份证号<span class="required">*</span></label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control ue-form Validform_input" id="id"
+						name="userArchiveId" value=""
+						placeholder="身份证号" datatype="idcard" nullmsg="请填写身份证号" errormsg="请填写合法的身份证号"/>
+				    <span class="Validform_checktip Validform_span"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">生日</label>
+				<div class="col-sm-8">
+					<div class="input-group date Validform_input" >
+						<div id="birthday"><input type="text" class="form-control ue-form"
+							name="userArchiveBirthday"
+							placeholder="生日" datatype="*" nullmsg="请设置出生日期"/></div> <span class="input-group-addon ue-form-btn"><i
+							class="fa fa-calendar"></i></span>								   
+					</div>
+					<span class="Validform_checktip Validform_span" ></span>		
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">学历</label>
+				<div class="col-sm-8 text-left radio">
+					<label><input type="radio"  name="userArchiveEducation" value="0" datatype="*" nullmsg="请选择学历"/>本科 	</label>					
+					<label><input type="radio"  name="userArchiveEducation" value="1"/>硕士</label>
+					<label><input type="radio"  name="userArchiveEducation" value="2"/>博士</label>
+					<span class="Validform_checktip"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">学校<span class="required">*</span></label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control ue-form Validform_input" id="school"
+						name="archivesSchool" value=""
+						placeholder="学校" datatype="s" nullmsg="请填写学校名称"/>
+					<span class="Validform_checktip Validform_span"></span>					
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">爱好</label>
+				<div class="col-sm-8 text-left checkbox">					
+						<label><input type="checkbox" value="0" name="archivesFavor" datatype="*" nullmsg="请填写兴趣爱好" errormsg="请填写兴趣爱好"/>篮球</label>			    
+						<label><input type="checkbox" value="1" name="archivesFavor"/>足球</label>
+						<label><input type="checkbox" value="2" name="archivesFavor"/>排球</label>
+						<span class="Validform_checktip" ></span>					
+				</div>			
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">电子邮件</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control ue-form Validform_input" id="email"
+						name="archivesEmail" value=""
+						placeholder="邮件地址" datatype="email" nullmsg="请填写邮箱地址" errormsg="请填写正确的邮箱地址"/>				    
+					<span class="Validform_checktip Validform_span" ></span>
+				</div>			
+			</div>
+			<div class="form-group" >
+				<label class="col-sm-3 control-label"></label>
+				<div class="col-sm-8">				 
+					<button type="button" class="btn ue-btn-primary" id="validate">
+						保存
+					</button>
+					<button type="button" class="btn ue-btn" id="cancel">
+						取消
+					</button>
+					<span id="msgdemo"></span>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- 代码高亮 -->
+	 <div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+<!-- 验证信息wrap -->
+<form class="form-horizontal" id="saveForm" name="saveForm" onsubmit="return false">
+    <div class="form-group">
+        <label class="col-xs-3 col-md-3 control-label">名称<span class="required">*</span></label>
+        <div class="col-xs-8 col-md-8">
+            <input type="text" class="form-control ue-form Validform_input" id="userName"
+               name="userName" value="" placeholder="名称" datatype="s5-16" errormsg="昵称至少5个字符,最多16个字符！" nullmsg="请设置正确名称" />						
+            <span class="Validform_checktip Validform_span"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3 col-md-3 control-label">账号状态</label>
+        <div class="col-xs-8 col-md-8">
+            <select class="form-control ue-form Validform_input" name="userStatus" datatype="s" nullmsg="请设置账号状态">
+                <option value="">请选择</option>
+                <option value="N">启用</option>
+                <option value="X">停用</option>
+            </select>
+            <span class="Validform_checktip Validform_span"></span>
+        </div>
+    </div>
+    <div class="form-group">
+	    <!-- 身份证号 -->		
+    </div>
+    <div class="form-group">
+        <!-- 生日 -->	
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3 col-md-3 control-label">学历</label>
+        <div class="col-xs-8 col-md-8 text-left">
+            <input type="radio"  name="userArchiveEducation" value="0" datatype="*" nullmsg="请选择学历"/>本科 						
+            <input type="radio"  name="userArchiveEducation" value="1"/>硕士
+            <input type="radio"  name="userArchiveEducation" value="2"/>博士
+            <span class="Validform_checktip"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <!-- 学校 -->
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3 col-md-3 control-label">爱好</label>
+        <div class="col-xs-8 col-md-8 text-left">					
+            <input type="checkbox" value="0" name="archivesFavor" datatype="*" nullmsg="请填写兴趣爱好" errormsg="请填写兴趣爱好"/>篮球			    
+            <input type="checkbox" value="1" name="archivesFavor"/>足球
+            <input type="checkbox" value="2" name="archivesFavor"/>排球
+            <span class="Validform_checktip" ></span>					
+        </div>			       
+    </div>
+    <div class="form-group">
+        <!-- 电子邮件 -->
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label"></label>
+        <div class="col-sm-9">
+            <button type="button" class="btn ue-btn-primary" id="validate">保存</button>
+            <button type="button" class="btn ue-btn" id="cancel">取消</button>
+            <span id="msgdemo"></span>
+        </div>
+    </div>
+</form>
+				</pre>
+				<pre>
+$("#saveForm").uValidform({
+    btnSubmit:"#validate",
+    datatype:{ 
+          "idcard": idcard,
+          "email" : email
+    },
+    callback:function(form){
+        $.dialog({
+            type: 'confirm',
+            content: '您确定要提交表单吗？',
+            ok: function () {save();},
+            cancel: function () {}
+        });
+    }
+});
+//日期插件
+$('.input-group.date').datetimepicker({
+    container: $("#birthday"),
+    language: "zh-CN",
+    autoclose: true,
+    minView: 2,
+    format: "yyyy-mm-dd"
+}).on("changeDate",function(){
+    $(this).find("input").blur();
+});  
+				</pre>
+			</div>
+		</div>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>bootstrap.css</code>，<code>form.css</code>，<code>font-awesome</code>，<code>ui.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p> 
+		<p><code>jquery.js</code>，<code>bootstrap.js</code>，<code>ui.js</code>，<code>form.js</code></p>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">如果要使组件支持一个页面多表单的检测，在<code>form</code>表单中定义<code>id</code>选择器，调用<code>$().uValidform()</code>接口即可。</p>
+		<p style="line-height:25px"><code>$().uValidform()</code>接口是在<code>$().Validform()</code>接口基础上，对新校验格式以及返回校验信息进行的封装。</p>
+		<p>为了使校验后的信息显示在右侧,除单复选框外,文本框input(生日框input的父级元素div)需引用.Validform_input类,校验信息span需引用.Validform_span.</p>
+		<br/>
+		<p style="line-height:25px"><code>nullmsg</code>：是指定没有填入内容时出现的提示信息，不指定默认是“请填入信息！”，另外当datatype为radio、checkbox或select时，因为这三种类型只要为空值就表示出错，提示errormsg所指定信息，所以这三类不需要绑定该属性</p>
+		<p style="line-height:25px"><code>errormsg</code>：是指定验证格式不符时出现的提示信息，不指定默认是“请输入正确信息！”</p>
+		<p style="line-height:25px">凡要验证格式的元素均需添加<code>datatype</code>属性，<code>datatype</code>可选值目前有11类，用来指定不同的验证格式（具体可选值的解释如下）。</p>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>可选值名称</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>*</td>
+					<td>检测是否有输入，可以输入任何字符，不留空即可通过验证</td>
+				</tr>
+				<tr>
+					<td>*6-16</td>
+					<td>检测是否为6到16位任意字符</td>
+				</tr>
+				<tr>
+					<td>n</td>
+					<td>数字类型</td>
+				</tr>
+				<tr>
+					<td>s</td>
+					<td>字符串类型</td>
+				</tr>
+				<tr>
+					<td>s5-16</td>
+					<td>5到16位字符串</td>
+				</tr>
+				<tr>
+					<td>p</td>
+					<td>验证是否为邮政编码</td>
+				</tr>
+				<tr>
+					<td>m</td>
+					<td>手机号码格式</td>
+				</tr>
+				<tr>
+					<td>e</td>
+					<td>email格式</td>
+				</tr>
+				<tr>
+					<td>radio</td>
+					<td>如果要验证的元素为单选框，datatype设置为radio</td>
+				</tr>
+				<tr>
+					<td>checkbox</td>
+					<td>如果要验证的元素为复选框，datatype设置为checkbox</td>
+				</tr>
+				<tr>
+					<td>select</td>
+					<td>如果要验证的元素为下拉框，datatype设置为select</td>
+				</tr>
+			</tbody>
+		</table>
+		<p style="line-height:25px">注意：<code>radio</code>，<code>checkbox</code>，<code>select</code>的value值为空时不能通过检测，要非空值才能通过。<code>radio</code>和<code>checkbox</code>元素只需给该组的第一个元素绑定<code>datatype</code>属性即可</p>
+		<br/>
+		</div>
+		 
+		<div class="ue-container">
+		<p>实现<code>$().uValidform()</code>接口后需要注意的options：</p>
+		<h3>options</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>btnSubmit</td>
+					<td>指定表单下的哪一个按钮触发表单提交事件，如果表单下有submit按钮可以省略</td>
+				</tr>
+				<tr>
+					<td>tiptype</td>
+					<td>指定提示效果，可选值 1 | 2, 默认为1。 1:弹出提示框,2:表单元素右侧提示</td>
+				</tr>
+				<tr>
+					<td>postonce</td>
+					<td>指定是否开启网速慢时的二次提交防御，true开启，不指定则默认关闭</td>
+				</tr>
+				<tr>
+					<td>callback</td>
+					<td>在使用ajax提交表单数据时，数据提交后的回调函数</td>
+				</tr>
+				<tr>
+					<td>ajaxurl</td>
+					<td>指定处理ajax表单数据的后台文件，注意处理完数据输出相应反馈信息，这个页面输出的内容就是表单提交后前台页面所看到的反馈信息</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+    <!-- 需要引用的JS -->
+   <!--  <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+	<script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../dist/js/ui.js"></script>
+	<script type="text/javascript" src="../../dist/js/form.js"></script>
+	 <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+	<script type="text/javascript" src="../prettify.js"></script> -->
+	<script src="../require.js"></script>
+    <script src="../main.js"></script>
+	<script type="text/javascript">
+	require(['jquery','form/validform','form/datetimepicker','demo/prettify'], function($){
+	$(function() {
+		$("#saveForm").uValidform({
+			btnSubmit:"#validate",
+			datatype:{//传入自定义datatype类型;
+			      "idcard": idcard,
+			      "email" : email
+			},
+			callback:function(form){
+				$.dialog({
+	    			type: 'confirm',
+	    		    content: '您确定要提交表单吗？',
+	    		    ok: function () {save();},
+	    		    cancel: function () {}
+	    	    });
+			}
+		});
+		//日期插件
+		$('.input-group.date').datetimepicker({
+			container: $("#birthday"),
+			language: "zh-CN",
+			autoclose: true,
+			minView: 2,
+			format: "yyyy-mm-dd"
+		}).on("changeDate",function(){
+			$(this).find("input").blur();
+		});	 
+	});
+	//保存实例
+	function save(){
+		/* var url = "<%=request.getContextPath()%>/page/users/save";
+	    saveForm.action = url;
+	    saveForm.method = "POST";
+	    saveForm.submit(); */
+	    return false;
+	}
+	});
+	</script>
+  </body>
+</html>

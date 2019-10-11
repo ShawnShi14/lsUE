@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>表单</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css">
+    <link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	<style>
+	/*选择时间的input输入框及按钮样式*/
+	.input-group {
+		width: 100%;
+	}
+	</style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">名称</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control ue-form" id="userName"
+						name="userName" value="" placeholder="名称" />			
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">账号状态</label>
+				<div class="col-sm-9">
+					<select class="form-control ue-form" name="userStatus">
+						<option value="">请选择</option>
+						<option value="N">启用</option>
+						<option value="X">停用</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">身份证号</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control ue-form" id="id"
+						name="userArchiveId" value=""/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">生日</label>
+				<div class="col-sm-9">
+					<div class="input-group date">
+						<div id="birthday">
+							<input type="text" class="form-control ue-form"
+								name="userArchiveBirthday" placeholder="生日" datatype="*" nullmsg="请设置出生日期" />
+						</div>
+						<span class="input-group-addon ue-form-btn"><i class="fa fa-calendar"></i></span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">学历</label>
+				<div class="col-sm-9 text-left radio">
+					<label><input type="radio"  name="userArchiveEducation" value="0"/>本科 </label>					
+					<label><input type="radio"  name="userArchiveEducation" value="1"/>硕士</label>
+					<label><input type="radio"  name="userArchiveEducation" value="2"/>博士</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">学校</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control ue-form" id="school"
+						name="archivesSchool" value="" placeholder="学校"/>			
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">爱好</label>
+				<div class="col-sm-9 text-left checkbox">					
+						<label><input type="checkbox" value="0" name="archivesFavor"/>篮球</label>			    
+						<label><input type="checkbox" value="1" name="archivesFavor"/>足球</label>
+						<label><input type="checkbox" value="2" name="archivesFavor"/>排球</label>				
+				</div>			
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">电子邮件</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control ue-form" id="email"
+						name="archivesEmail" value="" placeholder="邮件地址"/>		
+				</div>			
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">简述</label>
+				<div class="col-sm-9">
+					<textarea id="sketch" class="form-control ue-form" rows="5"></textarea>	
+				</div>			
+			</div>
+			<div class="form-group" >
+				<label class="col-sm-3 control-label"></label>
+				<div class="col-sm-9">				 
+					<button type="button" class="btn ue-btn-primary" id="validate">
+						保存
+					</button>
+					<button type="button" class="btn ue-btn" id="cancel">
+						取消
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">名称</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control ue-form" id="userName" name="userName" value="" placeholder="名称" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">账号状态</label>
+        <div class="col-sm-9">
+            <select class="form-control ue-form" name="userStatus">
+                <option value="">请选择</option>
+                <option value="N">启用</option>
+                <option value="X">停用</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">身份证号</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control ue-form" id="id" name="userArchiveId" id="id" >
+        </div>
+    </div>
+    <div class="form-group">
+        <!-- 创建生日日期 -->
+    </div>
+    <div class="form-group">
+        <label for="org" class="col-sm-3 control-label">学历</label>
+        <div class="col-sm-9">
+            <div class="radio ">
+                <label><input type="radio"  name="userArchiveEducation" value="0"/>本科</label>
+                <label><input type="radio"  name="userArchiveEducation" value="1"/>硕士</label>
+                <label><input type="radio"  name="userArchiveEducation" value="2"/>博士</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">学校</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control ue-form" id="school" name="archivesSchool" value="" placeholder="学校"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">爱好</label>
+        <div class="col-sm-9 text-left checkbox">
+                <label><input type="checkbox" value="0" name="archivesFavor"/>篮球</label>
+                <label><input type="checkbox" value="1" name="archivesFavor"/>足球</label>
+                <label><input type="checkbox" value="2" name="archivesFavor"/>排球</label>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="col-sm-3 control-label">电子邮件</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control ue-form" id="email" name="archivesEmail" value="" placeholder="邮件地址"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label"></label>
+        <div class="col-sm-9">
+            <button type="button" class="btn ue-btn-primary">保存</button>
+            <button type="button" class="btn ue-btn">取消</button>
+        </div>
+    </div>
+</form>			
+				</pre>
+				<pre>
+$('.input-group.date').datetimepicker({
+	container: $("#birthday"),
+	language: "zh-CN",
+	autoclose: true,
+	minView: 2,
+	format: "yyyy-mm-dd"
+}).on("changeDate",function(){
+	$(this).find("input").blur();
+});	 
+				</pre>
+			</div>
+		</div>
+	</div>
+	<div class="ue-container">
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>bootstrap.css</code>，<code>font-awesome.css</code>，<code>form</code>，<code>ui.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p> 
+		<p><code>jquery.js</code>，<code>form.js</code>，<code>ui.js</code></p>
+		 <br/>
+	    <h3>说明</h3>
+		<p>将各个元素分别放在<code>.form-group</code>中，来调整组件格式。统一用<code>.control-lable</code>设置lable的格式。</p>
+		<p>若需要时间输入框，除了引用必须的js文件外，则需要调用<code>$().datetimepicker()</code>接口。</p>
+		<p>注意：<code>$().datetimepicker()</code>接口中的options可以参考日期时间选择器组件。</p>
+	</div>
+	
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script>
+    	<script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>
+    <script type="text/javascript">
+    $('.input-group.date').datetimepicker({
+		container: $("#birthday"),
+		language: "zh-CN",
+		autoclose: true,
+		minView: 2,
+		format: "yyyy-mm-dd"
+	}).on("changeDate",function(){
+		$(this).find("input").blur();
+	});	 
+    </script>
+  </body>
+</html>

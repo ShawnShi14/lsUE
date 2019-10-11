@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>按钮组</title>
+
+    <!-- 需要引用的CSS -->
+	<link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container clearfix">
+		<div class="btn-group pull-right" role="group">
+			<button id="add" type="button" class="btn ue-btn ">
+				<span class="fa fa-plus"></span>新增
+			</button>
+			<div class="btn-group">
+				<button type="button" class="btn ue-btn dropdown-toggle"
+					data-toggle="dropdown">
+					更多 <span class="fa fa-caret-down"></span>
+					
+				</button>
+				<ul class="dropdown-menu dropdown-menu-right ue-dropdown-menu">
+					<li><a><span class="fa fa-cog"></span>查看</a></li>
+					<!--<li class="divider"></li>-->
+					<li><a id="modify"><span class="fa fa-pencil"></span>编辑</a></li>
+					<!--<li class="divider"></li>-->
+					<li><a id="del"><span class="fa fa-minus"></span>删除</a></li>
+				</ul>
+			</div>
+		</div>
+	 </div>
+	 <!-- 代码高亮 -->
+	 <div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<div class="btn-group pull-right" role="group">
+   <button id="add" type="button" class="btn ue-btn ">
+      <span class="fa fa-plus"></span>新增
+   </button>
+   <div class="btn-group">
+       <button type="button" class="btn ue-btn dropdown-toggle"data-toggle="dropdown">更多
+           <span class="caret"></span>
+       </button>
+       <ul class="dropdown-menu dropdown-menu-right ue-dropdown-menu">
+           <li><a><span class="fa fa-cog"></span>查看</a></li>
+           <li><a id="modify"><span class="fa fa-pencil"></span>编辑</a></li>
+           <li><a id="del"><span class="fa fa-minus"></span>删除</a></li>
+       </ul>
+   </div>
+</div>				   
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>bootstrap.css</code>，<code>font-awesome</code>，<code>ui.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p> 
+		<p><code>jquery.js</code>，<code>bootstrap.js</code></p>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">通过按钮组容器<code>.btn-group</code>把一组按钮放在同一行中，为了向使用辅助技术的用户传达正确的按钮分组，
+	 			需要提供一个合适的<code>role</code>属性，对于按钮组合，应该是<code>role="group"</code>。</p>
+	 	<p style="line-height:25px"><code>data-toggle="dropdown"</code>设定批量按钮显示信息的方式为<code>dropdown</code>，下拉菜单引用使用<code>.ue-dropdown-menu</code>样式。</p>
+		<br/>
+	</div>
+ 
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>  
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>  
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>
+  </body>
+</html>

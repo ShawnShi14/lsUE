@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<title>行政区划</title>
+
+<!-- 需要引用的CSS -->
+<link rel="shortcut icon" href="../../site.ico" />
+<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css">
+<link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css"/>
+<link rel="stylesheet" type="text/css" href="../prettify.css" />
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<div class="ue-container">
+		<h4>行政区划</h4>
+		<div class="form-group ue-relative-layout">
+			<input type="text" value="请选择城市" class="form-control ue-form" id="city">
+		</div>
+	</div>
+	<!-- 代码高亮部分 -->
+	<div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<div class="form-group ue-relative-layout">
+    <input type="text" value="请选择城市" class="form-control ue-form" id="city">
+</div>
+				</pre>
+				<pre>
+				
+  $("#city").proCity();//调用proCity()接口，显示地区选择
+  
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>bootstrap.css</code>，<code>ui.css</code>,<code>form.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p> 
+		<p><code>jquery.js</code>，<code>ui.js</code>，<code>form.js</code></p>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">使用行政区划组件，整体结构上须引用<code>.ue-relative-layout</code>类 。</p>
+		<br/>
+	</div>
+	
+	<div class="ue-container">
+		<h4>BSP行政区划</h4>
+		<div class="form-group ue-relative-layout">
+			<input type="text" value="请选择城市" class="form-control ue-form" id="cityBsp">
+		</div>
+	</div>
+	<!-- 代码高亮部分 -->
+	<div class="ue-container">
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<div class="form-group ue-relative-layout">
+    <input type="text" value="请选择城市" class="form-control ue-form" id="cityBsp">
+</div>
+				</pre>
+				<pre>
+  var options = {
+	url: "../../service/bsp/cant/getChild?code=",
+	onclose: function(result) {
+	    console.log(result);
+	},
+	multiselect: true
+  }
+  $("#cityBsp").proCityBsp(options);//调用proCityBsp()接口，显示地区选择
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<p style="line-height:25px">需要引用的css文件：</p> 
+		<p><code>bootstrap.css</code>，<code>ui.css</code>,<code>form.css</code></p>
+		<p style="line-height:25px">需要引用的js文件：</p> 
+		<p><code>jquery.js</code>，<code>ui.js</code>，<code>form.js</code></p>
+		<br/>
+		<h3>说明</h3>
+		<p style="line-height:25px">使用行政区划组件，整体结构上须引用<code>.ue-relative-layout</code>类 。</p>
+		<br/>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>类型</th>
+					<th>默认值</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>url</td>
+					<td>string</td>
+					<td>---</td>
+					<td>数据请求地址</td>
+				</tr>
+				<tr>
+					<td>onclose</td>
+					<td>function</td>
+					<td>---</td>
+					<td>行政区划组件关闭时触发的函数</td>
+				</tr>
+				<tr>
+					<td>multiselect</td>
+					<td>boolean</td>
+					<td>false</td>
+					<td>是否支持选中多个地区</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>BSP行政区划组件选中地区信息保存在input的<code>data-code</code>,<code>data-name</code>和<code>data-type</code>属性中</p>
+		<pre><input type="text" value="请选择城市" class="form-control ue-form" id="cityBsp" data-code="110101,110103" data-name="北京市市辖区东城区,北京市市辖区崇文区" data-type="3,3"></pre>
+	</div>
+	  
+	<!--需要引入的js  -->
+	<!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+	<script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../dist/js/form.js"></script>
+	<script type="text/javascript" src="../../dist/js/ui.js"></script>
+	 <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+	<script type="text/javascript" src="../prettify.js"></script> -->
+	
+	<script src="../require.js"></script>
+    <script src="../main.js"></script>
+	<script type="text/javascript">
+	require(['jquery','form/procity','demo/prettify'], function($){
+		$(function() {
+			$("#city").proCity();//调用proCity()接口，显示地区选择
+			
+			var options = {
+			  url: "../../service/bsp/cant/getChild?code=",
+			  onclose: function(result) {
+			    console.log(result);
+			  },
+			  multiselect: true
+			}
+			$("#cityBsp").proCityBsp(options);
+		});
+	});
+	</script>
+
+</body>
+</html>

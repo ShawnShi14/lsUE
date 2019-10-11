@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                    http://www.springframework.org/schema/mvc
+                    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+                    ">
+
+	<bean class="org.loushang.framework.util.SpringContextHolder" lazy-init="false" />
+	
+	<!-- 异常统一处理 -->
+	<bean id="exceptionResolver"
+		class="org.loushang.framework.exception.BusinessExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.loushang.framework.exception.BusinessException">public/errorpage</prop>
+				<prop key="java.lang.Exception">public/500</prop>
+				<prop key="java.lang.Throwable">public/500</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 字典数据处理类 -->	
+	<bean id="dictProvider" class="org.loushang.framework.api.dict.DefaultDictImpl" />
+	
+	<!-- 国际化 -->
+	<!-- 配置国际化资源文件路径 -->
+    <bean id="messageSource" class="org.loushang.framework.i18n.ResourceBundleMessageSourceExt">
+		<property name="basenames">
+			 <list>
+				<value>messages/message</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

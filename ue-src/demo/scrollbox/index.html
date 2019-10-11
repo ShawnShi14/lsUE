@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	    <title>图片文字滚动插件 - jQuery Scrollbox</title>
+
+	    <!-- 需要引用的CSS -->
+		<link rel="shortcut icon" href="../../site.ico" />
+	    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+		<link rel="stylesheet" type="text/css" href="demo.css" />
+		<link rel="stylesheet" type="text/css" href="../prettify.css"/>		
+	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    <!--[if lt IE 9]>
+	      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<!-- 页面结构 -->
+		<div class="ue-container">
+			<h2>效果1：文字链接整体向上滚动</h2>
+			<div class="demo-wrap">
+	    		<div id="demo1" class="scroll-text">
+					<ul>
+						<li><a href="" target="_blank">jquery轻量级上下(左右)滚动条插件及使用方法</a></li>
+						<li><a href="" target="_blank">jquery多图tab标签切换焦点图</a></li>
+						<li><a href="" target="_blank">jquery鼠标悬停动态显示按钮效果</a></li>
+						<li><a href="" target="_blank">js模拟淘宝首页缓冲幻灯片效果</a></li>
+						<li><a href="" target="_blank">js模拟土豆官网右下角广告导航菜单</a></li>
+						<li><a href="" target="_blank">js模拟QQ震动效果</a></li>
+						<li><a href="" target="_blank">天猫官方网站左侧二级导航菜单</a></li>
+						<li><a href="" target="_blank">jquery自定义鼠标滚动条样式</a></li>
+						<li><a href="" target="_blank">跟随鼠标在图片之间不断切换的透明遮罩效果</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- 代码高亮 -->
+			<br/>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#html" data-toggle="tab">代码</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top:20px">
+				<div class="tab-pane active" id="html">
+					<pre>
+				
+.demo-wrap {
+  border: 1px solid #ddd;
+  width: 450px;
+  padding: 20px;
+}
+.scroll-text {
+  height: 100px;
+  overflow: hidden;
+}
+.scroll-text ul li {
+  height: 24px;
+  font-size: 14px;
+  font-family: 'Microsoft yahei';
+}			
+					</pre>
+					<pre>
+					
+<div class="demo-wrap">
+    <div id="demo1" class="scroll-text">
+        <ul>
+            <li><a href="">链接1</a></li>
+            <li><a href="">链接2</a></li>
+            <li><a href="">链接3</a></li>
+            <li><a href="">链接4</a></li>
+            <li><a href="">链接5</a></li>
+        </ul>
+    </div>
+</div>			
+				</pre>
+			</div>
+		</div>
+		<br />
+		<h4>js非模块化加载：</h4>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+			<div class="tab-pane active" id="JS_format">
+            	<pre>
+            	
+$('#demo1').scrollbox({	
+   linear: true,
+   step: 1,
+   delay: 0,
+   speed: 100
+});	 
+               </pre> 
+			</div>
+		</div>
+		<br />
+		<h4>js模块化加载：</h4>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+			<div class="tab-pane active" id="JS_require">
+				<pre>
+				
+require(['jquery','form/scrollbox'], function($){
+    $(function(){
+        $('#demo1').scrollbox({	
+           linear: true,
+           step: 1,
+           delay: 0,
+           speed: 100
+        });	
+    });
+});
+				</pre>
+			</div>
+		</div>
+		<h3>说明</h3>
+		<br/>
+		    <h4>非模块化加载时需要引用的js文件：</h4> 
+		    <p><code>jquery.js</code>，<code>form.js</code></p>
+		    <br/>
+		    <h4>模块化加载时在require之前需要引用的js文件：</h4>
+		    <p><code>require.js</code>，<code>main.js</code></p>
+			<p>引用方式：</p>
+			<p><code>&lt;script src="require.js路径"&gt;&lt;/script&gt;</code></p>
+			<p><code>&lt;script src="main.js路径"&gt;&lt;/script&gt;</code></p>
+			<p>之后在require中加载组件所需要的js文件，<code>jquery</code>，<code>form/scrollbox</code></p>
+			<p>将js文件放在数组里面，js的引用在非模块化中是无序的，注意文件不要加.js后缀，因为RequireJS会自动加载。</p>
+			<table class="table table-bordered">
+            	<thead>
+                	<tr>
+                    	<th>样式属性与值</th>
+                    	<th>所属样式</th>
+                    	<th>说明</th>
+					</tr>
+				</thead>
+              		<tbody>
+                   	<tr>
+                       	<td>overflow:hidden</td>
+                       	<td>.scroll-text</td>
+						<td>只显示需要显示的内容</td>
+                    </tr>                      	
+                   	<tr>
+                       	<td>height</td>
+                       	<td>.scroll-text</td>
+						<td>包裹滚动信息容器高度，<code>当取值大于子&lt;ul&gt;标签外加一个孙子&lt;li&gt;标签的高度时，滚动效果无法实现。</code></td>
+                    </tr>             
+				</tbody>
+			</table>
+		</div>
+		<br />
+		
+		<!-- DOM结构 -->
+		<div class="ue-container">
+			<h2>效果2：文字链接逐条向上滚动</h2>
+			<div class="demo-wrap">
+	    		<div id="demo2" class="scroll-text">
+					<ul>
+						<li><a href="" target="_blank">jquery轻量级上下(左右)滚动条插件及使用方法</a></li>
+						<li><a href="" target="_blank">jquery多图tab标签切换焦点图</a></li>
+						<li><a href="" target="_blank">jquery鼠标悬停动态显示按钮效果</a></li>
+						<li><a href="" target="_blank">js模拟淘宝首页缓冲幻灯片效果</a></li>
+						<li><a href="" target="_blank">js模拟土豆官网右下角广告导航菜单</a></li>
+						<li><a href="" target="_blank">js模拟QQ震动效果</a></li>
+						<li><a href="" target="_blank">天猫官方网站左侧二级导航菜单</a></li>
+						<li><a href="" target="_blank">jquery自定义鼠标滚动条样式</a></li>
+						<li><a href="" target="_blank">跟随鼠标在图片之间不断切换的透明遮罩效果</a></li>
+					</ul>
+				</div>
+			</div>
+			<br />
+			
+			<!-- 代码高亮 -->
+			<h4>js非模块化加载：</h4>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top:10px">
+				<div class="tab-pane active" id="js">
+					<pre>$('#demo2').scrollbox();</pre>
+				</div>
+			</div>
+			<br />
+			<h4>js模块化加载：</h4>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_require">
+					<pre>
+					
+require(['jquery','form/scrollbox'], function($){
+    $(function(){
+        $('#demo2').scrollbox();
+    });
+});
+					</pre>
+				</div>
+			</div>
+			<br/>
+			<p>本展示效果的<code>HTML中的DOM结构</code>、<code>CSS样式</code>以及引用的<code>JS文件</code>同上。</p>
+		</div>
+		
+		<!-- DOM结构 -->
+		<div class="ue-container">
+			<h2>效果3：按钮可控图片向左向右滚动</h2>
+    		<div id="demo3" class="scroll-img">
+				<ul>
+					<li><a href="#"><img src="images/normal_234.png"></a></li>
+					<li><a href="#"><img src="images/normal_485.png"></a></li>
+					<li><a href="#"><img src="images/normal_511.png"></a></li>
+					<li><a href="#"><img src="images/normal_725.png"></a></li>
+					<li><a href="#"><img src="images/normal_840.png"></a></li>
+					<li><a href="#"><img src="images/normal_934.png"></a></li>
+      			</ul>
+   			</div>
+   			<div id="demo3-btn" class="text-center">
+				<button class="btn ue-btn" id="demo3-backward"><i class="icon-chevron-left"></i> Backward</button>
+				<button class="btn ue-btn" id="demo3-forward">Forward <i class="icon-chevron-right"></i></button>
+			</div>
+			<br />
+			
+			<!-- 代码高亮 -->
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#css" data-toggle="tab">代码</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top:10px">
+				<div class="tab-pane active" id="css">
+				   <pre>
+				   
+<div id="demo3" class="scroll-img">
+    <ul>
+        <li><a><img src=""/></a></li>
+        <li><a><img src=""/></a></li>
+        <li><a><img src=""/></a></li>
+        <li><a><img src=""/></a></li>
+        <li><a><img src=""/></a></li>
+        <li><a><img src=""/></a></li>
+    </ul>
+</div>
+<button class="btn ue-btn" id="demo3-backward"><i class="icon-chevron-left"></i>Backward</button>
+<button class="btn ue-btn" id="demo3-forward">Forward <i class="icon-chevron-right"></i></button>
+                    </pre>
+				    <pre>
+				    
+.scroll-img {
+    border: 1px solid #ddd;
+    width: 680px;
+    height: 142px;
+    overflow: hidden;
+    font-size: 0;
+}
+.scroll-img ul {
+    width: 809px;
+}
+.scroll-img ul li {
+    display: inline-block;
+    margin: 10px 0 10px 10px;
+}					</pre>
+				</div>
+			</div>
+			<br/>
+			<h4>js非模块化加载：</h4>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_format">
+                    <pre>
+$('#demo3').scrollbox({
+    direction: 'horizontal',
+    distance: 134
+});
+$('#demo3-backward').click(function () {
+    $('#demo3').trigger('backward');
+});
+$('#demo3-forward').click(function () {
+    $('#demo3').trigger('forward');
+});					</pre>
+				</div>
+			</div>
+			<br/>
+			<h4>js模块化加载：</h4>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_require">
+					<pre>
+					
+require(['jquery','form/scrollbox'], function($){
+    $(function(){
+        $('#demo3').scrollbox({
+            direction: 'horizontal',
+            distance: 134
+        });
+        
+        $(document).on("click", "#demo3-backward", function(){
+            $('#demo3').trigger('backward');
+        });
+        
+        $(document).on("click", "#demo3-forward", function(){
+            $('#demo3').trigger('forward');
+        });
+    });
+});
+					</pre>
+                    <br/>
+					<h3>说明</h3>
+					<br/>
+					<p>为了保证滚动的流畅性，如果需要同时显示<code> X </code>张图片时，请多留出1张不同的图片做替换，即在DOM结构上至少写<code> X + 1 </code>个<code>&lt;li&gt;</code>标签。</p>
+					<p>如展示效果所示，方框中一共显示<code> 5 </code>张图片，但是在DOM结构中有<code> 6  个&lt;li&gt;</code>标签。</p>
+					<br/>
+					<table class="table table-bordered">
+		            	<thead>
+		                	<tr>
+		                    	<th>样式属性与值</th>
+		                    	<th>所属样式</th>
+		                    	<th>说明</th>
+							</tr>
+						</thead>
+		              		<tbody>
+		                   	<tr>
+		                       	<td>overflow:hidden</td>
+		                       	<td>.scroll-img</td>
+								<td>只显示需要显示的内容</td>
+		                    </tr> 
+		                   	<tr>
+                                <td>font-size: 0</td>
+                                <td>.scroll-img</td>
+                                <td>去除inline-block元素之间的空隙</td>
+                            </tr>	                     	
+                            <tr>
+                                <td>display: width</td>
+                                <td>.scroll-img ul</td>
+                                <td>ul标签宽度，为了让图片滚动能正常运行，如果需要展示<code> X </code>张图片，则此值必须大于<code> X + 1</code><code>&lt;li&gt;</code>标签的宽度之和。<br><code>此值建议往多里写。</code></td>
+                            </tr>
+	                        <tr>
+                                <td>display: inline-block</td>
+                                <td>.scroll-img ul li</td>
+                                <td>使li标签内容显示在同一行内</td>
+                            </tr>    
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 页面结构 -->
+		<div class="ue-container">
+		    <h2>效果4：图片并排向左滚动</h2>
+		    <div id="demo4" class="scroll-img">
+				<ul>
+					<li><a href="#"><img src="images/normal_234.png"></a></li>
+					<li><a href="#"><img src="images/normal_485.png"></a></li>
+					<li><a href="#"><img src="images/normal_511.png"></a></li>
+					<li><a href="#"><img src="images/normal_725.png"></a></li>
+					<li><a href="#"><img src="images/normal_840.png"></a></li>
+					<li><a href="#"><img src="images/normal_934.png"></a></li>
+					<li><a href="#"><img src="images/normal_1295.png"></a></li>
+					<li><a href="#"><img src="images/normal_1459.png"></a></li>
+					<li><a href="#"><img src="images/normal_1590.png"></a></li>
+					<li><a href="#"><img src="images/normal_1688.png"></a></li>
+				</ul>
+			</div>
+			<br />
+			
+			<!-- 代码高亮 -->
+			<div id="myTabContent" class="tab-content" style="padding-top:10px">
+				<div class="tab-pane active" id="css">
+					<p>此效果展示样式只比改动了<code>.scroll-img ul</code>的<code>width</code>值</p>
+					<pre>
+					
+<div id="demo4" class="scroll-img">
+    <ul>
+        <li><a><img src=""/></a></li>
+	    <!-- 前后一共 10个<li>标签  -->
+        <li><a><img src=""/></a></li>
+    </ul>
+</div>				
+					</pre>
+					<pre>
+					
+.scroll-img {
+    border: 1px solid red;
+    width: 680px;
+    height: 142px;
+    overflow: hidden;
+    font-size: 0;
+}
+.scroll-img ul {
+    width: 1350px;
+}
+.scroll-img ul li {
+    display: inline-block;
+    margin: 10px 0 10px 10px;
+}					</pre>
+				</div>
+			</div>
+			<br/>
+			<h4>js非模块化加载：</h4>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_format">
+                    <pre>
+                    
+$('#demo4').scrollbox({
+    direction: 'horizontal',
+    switchItems: 5,
+    distance: 670
+});					
+					</pre>
+				</div>
+			</div>
+			<br/>
+			<h4>js模块化加载：</h4>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_require">
+					<pre>
+					
+require(['jquery','from/scrollbox'], function($){
+    $(function(){
+        $('#demo4').scrollbox({
+            direction: 'horizontal',
+            switchItems: 5,
+            distance: 670
+        });	
+    });
+});
+					</pre>
+				</div>
+			</div>
+			<h3>说明</h3>
+			<br/>
+			<p>为了保证滚动的流畅性，如果需要同时显示<code> X </code>张图片时，请多留出<code> X </code>张不同的图片做替换，即在DOM结构上至少写<code> 2X </code>个<code>&lt;li&gt;</code>标签。</p>
+		</div>
+		
+		<!-- 页面结构 -->
+		<div class="ue-container">
+			<h2>效果5：图片并排向上滚动</h2>
+			<div id="demo5" class="scroll-img">
+				<ul>
+					<li><a href="#"><img src="images/normal_234.png"></a></li>
+					<li><a href="#"><img src="images/normal_485.png"></a></li>
+					<li><a href="#"><img src="images/normal_511.png"></a></li>
+					<li><a href="#"><img src="images/normal_725.png"></a></li>
+					<li><a href="#"><img src="images/normal_840.png"></a></li>
+					<li><a href="#"><img src="images/normal_934.png"></a></li>
+					<li><a href="#"><img src="images/normal_1295.png"></a></li>
+					<li><a href="#"><img src="images/normal_1459.png"></a></li>
+					<li><a href="#"><img src="images/normal_1590.png"></a></li>
+					<li><a href="#"><img src="images/normal_1688.png"></a></li>
+				</ul>
+			</div>
+			<br>
+			<!-- 代码高亮 -->
+			<div id="myTabContent" class="tab-content" style="padding-top:10px">
+				<div class="tab-pane active" id="css">
+					<p>此效果展示样式只比改动了<code>.scroll-img ul</code>的<code>width</code>值</p>
+					<pre>
+					
+.scroll-img {
+    border: 1px solid #ddd;
+    width: 680px;
+    height: 142px;
+    overflow: hidden;
+    font-size: 0;
+}
+.scroll-img ul {
+    width: 680px;
+}
+.scroll-img ul li {
+    display: inline-block;
+    margin: 10px 0 10px 10px;
+}					</pre>
+
+                    <pre>
+                    
+<div id="demo4" class="scroll-img">
+    <ul>
+        <li><a><img src=""/></a></li>
+	    <!-- 前后一共 10个<li>标签  -->
+        <li><a><img src=""/></a></li>
+    </ul>
+</div>						
+					</pre>
+				</div>
+			</div>
+			<br/>
+			<h4>js非模块化加载：</h4>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 10px">
+				<div class="tab-pane active" id="JS_format">
+					<pre>
+					
+$(function(){
+    $('#demo5').scrollbox({
+        switchItems: 5,
+        distance: 144
+    });
+});
+					</pre>
+				</div>
+			</div>
+			<br />
+			<h4>js模块化加载：</h4>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+				<div class="tab-pane active" id="JS_require">
+					<pre>
+					
+require(['jquery','form/scrollbox'], function($){
+    $(function(){
+        $('#demo5').scrollbox({
+            switchItems: 5,
+            distance: 144
+        });
+    });
+});
+					</pre>
+				</div>
+			</div>
+			<h3>说明</h3>
+			<p>本展示效果的<code>HTML中的DOM结构</code>以及引用的<code>JS文件</code>同上。</p>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>类型</th>
+						<th>默认值</th>
+						<th>说明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>linear</td>
+						<td>Boolean</td>
+						<td>false</td>
+						<td>滚动方式，是否是线性滚动。</td>
+					</tr>
+					<tr>
+						<td>step</td>
+						<td>Number</td>
+						<td>5</td>
+						<td>每次滚动的像素值，只有当<code>linear</code>选项值为<code>false</code>时，选项起有用。</td>
+					</tr>
+					<tr>
+						<td>delay</td>
+						<td>Number</td>
+						<td>2</td>
+						<td>每次滚动完毕后延迟几秒。</td>
+					</tr>
+					<tr>							
+						<td>speed</td>
+						<td>Number</td>
+						<td>32</td>
+						<td>每一步完成后延迟几毫秒。</td>
+					</tr>
+					<tr>	
+						<td>direction</td>
+						<td>String</td>
+						<td>'vertical'</td>
+						<td>滚动方向，选择'horizontal'的方向为上。</td>
+					</tr>
+					<tr>	
+						<td>switchItems</td>
+						<td>Number</td>
+						<td>1</td>
+						<td>每次滚动事件后切换的项目，当direction取值为‘horizontal’时使用。<br>
+							<code>注意：当需要将整排图片集体向左或向上翻滚时，整排显示了多少张图片，此值就设置为多少。</code>
+						</td>
+					</tr>
+					<tr>	
+						<td>distance</td>
+						<td>String/Number</td>
+						<td>'auto'</td>
+						<td>每次翻滚距离，图片翻滚时使用。</td>
+					</tr>
+				</tbody>
+			</table>			
+		</div>
+    	<!-- 需要引用的JS -->
+   <!--  <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script> 
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script> -->
+	<script src="../require.js"></script>
+    <script src="../main.js"></script>
+	<script type="text/javascript">
+	require(['jquery','form/scrollbox','demo/prettify'], function($){
+		$(document).ready(function() {
+			$('#demo1').scrollbox({
+				linear: true,
+				step: 1,
+				delay: 0,
+				speed: 100
+			});
+			
+			$('#demo2').scrollbox();
+			
+			$('#demo3').scrollbox({
+				direction: 'horizontal',
+				distance: 134
+			});
+			$(document).on("click", "#demo3-backward", function(){
+				$('#demo3').trigger('backward');
+			});
+			$(document).on("click", "#demo3-forward", function(){
+				$('#demo3').trigger('forward');
+			});
+			
+			$('#demo4').scrollbox({
+				direction: 'horizontal',
+				switchItems: 5,
+				distance: 670
+			});
+			
+			$('#demo5').scrollbox({
+				switchItems: 5,
+				distance: 144
+			});
+		});
+	 });
+		</script>
+  	</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>新手导航-传统风格</title>
+    
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+ 	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+ 	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/intro.css" />
+    <link rel="stylesheet" type="text/css" href="../prettify.css" />
+    <link rel="stylesheet" type="text/css" href=stepbystep.css />
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="container-narrow">
+    	<div class="masthead">
+        	<ul class="nav nav-pills pull-right ">
+          		<li><a href="https://github.com/usablica/intro.js">Github</a></li>
+          		<li><a href="https://twitter.com/usablica">@usablica</a></li>
+        	</ul>
+        	<h3 class="muted">新手导航</h3>
+      	</div>
+      	<hr />
+      	<div class="jumbotron">
+        	<h1 data-step="1" data-intro="<div class='step-header'>标题</div><span class='step-text'>这是第一步导航</span><hr>">基本用法</h1>
+        	<p class="lead" data-step="4" data-intro="<div class='step-header'>标题</div><span class='step-text'>这是第四步导航.</span><hr>" data-position='top'>
+        		基本用法主要包括<code>data-step</code> 和 <code>data-intro</code> 属性.
+        	</p>
+      	</div>
+      	<hr />
+      	<div class="row-fluid marketing">
+        	<div class="span6" data-step="2" data-intro="<div class='step-header'>标题</div><span class='step-text'>Ok, wasn't that fun?</span><hr>"  data-position='right'>
+          		<h4>Section One</h4>
+          		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis augue a neque cursus ac blandit orci faucibus. Phasellus nec metus purus.</p>
+          		<h4>Section Two</h4>
+          		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis augue a neque cursus ac blandit orci faucibus. Phasellus nec metus purus.</p>
+         	</div>
+
+        	<div class="span6" data-step="3" data-intro="<div class='step-header'>标题</div><span class='step-text'>More features, more fun.</span><hr>"  data-position='left'>
+          		<h4>Section Three</h4>
+          		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis augue a neque cursus ac blandit orci faucibus. Phasellus nec metus purus.</p>
+          		<h4>Section Four</h4>
+          		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis augue a neque cursus ac blandit orci faucibus. Phasellus nec metus purus.</p>
+        	</div>
+      	</div>
+    </div>
+    <hr />
+    
+	<!-- 代码高亮部分 -->
+	<div class="ue-container">
+		<br/>
+		&lt;标签 data-step="第几步" data-intro="&lt;div class='step-header'&gt;导航标题&lt;/div&gt;&lt;span class='step-text'&gt;导航内容&lt;/span&gt;&lt;hr&gt;"&gt;导航的内容&lt;/标签&gt;
+		<p>例如：</p>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<h1 data-step="1" data-intro="<div class='step-header'>标题</div><span class='step-text'>这是第一步导航</span><hr>">基本用法</h1>
+
+<div class="span6" data-step="2" data-intro="<div class='step-header'>标题</div><span class='step-text'>Ok, wasn't that fun?</span><hr>"  data-position='right'>
+    <h4>Section One</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis augue a neque cursus ac blandit orci faucibus. Phasellus nec metus purus.</p>
+    <h4>Section Two</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis augue a neque cursus ac blandit orci faucibus. Phasellus nec metus purus.</p>
+</div>
+		        </pre>
+		    </div>
+		</div>
+		<br/>
+		<h4>js非模块化加载：</h4>
+		<p style="line-height:25px">需要引用的js文件及加载顺序：</p> 
+		<p><code>jquery.js</code>，<code>bootstrap.js</code>，<code>intro.js</code></p>
+		<p>引用方式：</p>
+		<p>正常js引用方式 <code>&lt;script type="text/javascript" src="jquery.js路径"&gt;&lt;/script&gt;</code></p>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#js_format" data-toggle="tab">JS（非模块化加载）</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="js_format">
+				<pre>
+				
+$(function() {
+    introJs().setOptions({
+        'nextLabel':'下一步 ',
+        'skipLabel':'跳过',
+        'doneLabel':'完成',
+        'showStepNumbers': false,
+        'showBullets': false
+    }).start();
+});
+				</pre>
+			</div>
+		</div>
+		<br />
+		<h4>js模块化加载：</h4>
+		<p>在require之前需要引用的js文件：</p>
+		<p><code>require.js</code>，<code>main.js</code></p>
+		<p>引用方式：</p>
+		<p><code>&lt;script src="require.js路径"&gt;&lt;/script&gt;</code></p>
+		<p><code>&lt;script src="main.js路径"&gt;&lt;/script&gt;</code></p>
+		<p>之后在require中加载组件所需要的js文件，<code>jquery</code>，<code>intro</code></p>
+		<p>将js文件放在数组里面，js的引用在非模块化中是无序的，注意文件不要加.js后缀，因为RequireJS会自动加载。</p>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#js_require" data-toggle="tab">JS(js非模块化加载)</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+			<div class="tab-pane active" id="js_require">
+				<pre>
+				
+require(['jquery','form/intro'], function($){
+    $(function() {
+        introJs().setOptions({
+            'nextLabel':'下一步 ',
+            'skipLabel':'跳过',
+            'doneLabel':'完成',
+            'showStepNumbers': false,
+            'showBullets': false
+        }).start();
+    });
+}); 
+				</pre>
+			</div>
+		</div>
+	</div>
+	<div class="ue-container">
+		<p style="line-height:25px">本插件须引用的css文件:</p>
+		<p><code>bootstrap.css</code>，<code>ui.css</code>，<code>intro.css</code></p>
+		<h3>说明</h3>
+		<p style="line-height:25px"><code>data-step</code>：设置引导的第几步；</p>
+	    <p style="line-height:25px"><code>data-intro</code>：设置弹出框框里面的内容，内容可以是文本也可以是DOM结构。本实例里是DOM结构：<code>step-header</code>：设置弹出框的标题，是放在<code>data-intro</code>的DIV元素。
+	    <code>step-text</code>：设置文本内容，是放在<code>data-intro</code>的span元素。<code>&lt;hr&gt;</code>设置弹出框里的水平线，也是放在<code>data-intro</code>的元素</p>
+	    <p style="line-height:25px"><code>data-position</code>：设置弹框处于提示框的什么位置；</p>
+	    <br/>
+		<div id="table">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>字段</th>
+						<th>类型</th>
+						<th>默认值</th>
+						<th>说明</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>nextLabel</td>
+						<td>String</td>
+						<td>Next</td>
+						<td>下一步按钮标签</td>
+					</tr>
+					<tr>
+						<td>prevLabel</td>
+						<td>String</td>
+						<td>Back</td>
+						<td>返回按钮标签</td>
+					</tr>
+					<tr>
+						<td>skipLabel</td>
+						<td>Siring</td>
+						<td>Skip</td>
+						<td>跳过按钮标签</td>
+					</tr>
+					<tr>
+						<td>doneLabel</td>
+						<td>String</td>
+						<td>Done</td>
+						<td>完成按钮标签</td>
+					</tr>
+					<tr>
+						<td>exitOnEsc</td>
+						<td>Boolean</td>
+						<td>true</td>
+						<td>是否点击Esc键关闭导航</td>
+					</tr>
+					<tr>
+						<td>exitOnOverlayClick</td>
+						<td>Boolean</td>
+						<td>true</td>
+						<td>是否点击遮罩区关闭导航</td>
+					</tr>
+					<tr>
+						<td>showStepNumbers</td>
+						<td>Boolean</td>
+						<td>true</td>
+						<td>是否显示提示导航的步骤</td>
+					</tr>
+					<tr>
+						<td>overlayOpacity</td>
+						<td>number</td>
+						<td>0.8</td>
+						<td>遮罩透明度</td>
+					</tr>
+					<tr>
+						<td>showButtons</td>
+						<td>Boolean</td>
+						<td>true</td>
+						<td>是否显示按钮</td>
+					</tr>
+					<tr>
+						<td>showBullets</td>
+						<td>Boolean</td>
+						<td>false</td>
+						<td>是否显示进度</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div> 
+	<!-- 需要引用的JS -->
+    <!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/intro.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script> 
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>  -->
+    <script src="../require.js"></script>
+    <script src="../main.js"></script>
+    <script type="text/javascript">	
+    require(['jquery','intro','demo/prettify'], function($, introJs){
+    	$(function() {
+   		  	introJs().setOptions({
+   			  	'nextLabel':'下一步 ',
+   			  	'skipLabel':'跳过',
+   			  	'doneLabel':'完成',
+   			  	'showStepNumbers': false,
+   			  	'showBullets': false
+   			}).start();
+   	    });
+    }); 
+  	</script>
+  </body>
+</html>

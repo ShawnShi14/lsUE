@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>电子政务-门户</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/form.css" />
+    <link rel="stylesheet" type="text/css" href="portal.css" />
+    <style>
+    	.fa-caret-down {
+    		margin-left: 5px;
+    	 }
+	
+   </style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+      <script type="text/javascript" src="../../dist/js/PIE.js"></script>
+    <![endif]-->
+    
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<nav class="navbar ue-navbar" role="navigation">
+   		<div class="navbar-header">
+   			<a class="navbar-brand"></a>
+   		</div>
+    	<nav class="collapse navbar-collapse">
+	      	<ul class="nav navbar-nav">
+		        <li>
+		        	<a href="#">首页</a>
+		        </li>
+		        <li>
+		        	<a href="#">应用中心</a>
+		        </li>
+		        <li>
+		        	<a href="#">协作组件</a>
+		        </li>
+		        <li>
+		        	<a href="#">数据管理</a>
+		        </li>
+		     	<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">系统管理<span class="fa fa-caret-down"></span></a>
+		        	<ul class="dropdown-menu ue-dropdown-menu">
+		        		<li class="ue-dropdown-angle"></li>
+		        		<li><a href="#">基础平台</a></li>
+		        		<li><a href="#">工作流</a></li>
+		        		<li><a href="#">云表单</a></li>
+		        		<li><a href="#">云调度</a></li>
+		        		<li><a href="#">云报表</a></li>
+		        	</ul>
+		        </li>
+	      	</ul>
+	      	<ul class="nav navbar-nav navbar-right">
+		        <li class="dropdown">
+		        	<a href="#"	class="dropdown-toggle" data-toggle="dropdown"> 
+					  <span><img src="images/avatar.jpg"/></span>
+					  <span class="ue-admin-title">admin</span>
+				      <span class="fa fa-caret-down"></span>
+		        	</a>
+		        	<ul class="dropdown-menu ue-dropdown-menu">
+		        		<li class="ue-dropdown-angle"></li>
+		        		<li><a href="#" class="text-right">个人信息</a></li>
+		        		<li><a href="#" class="text-right">电子档案</a></li>
+		        		<li><a href="#" class="text-right">站内私信</a></li>
+		        		<li><a href="#" class="text-right">建议反馈</a></li>
+		        		<li><a href="#" class="text-right">退出登录</a></li>
+		        	</ul>
+		        </li>
+		    </ul>
+   		</nav>
+	</nav>
+	<div class="banner">
+		<div class="banner-left pull-left">
+			<img src="images/avatar.jpg" class="ue-pie" />
+			<div class="role">系统管理员</div>
+			<div class="dept">广州市/广州市质监局</div>
+		</div>
+		<div class="banner-right pull-right">
+			<h1>待办事项</h1>
+			<h4>特别提醒：</h4>
+			<p>您有<span class="warn-num">3</span>件催办事项，<span class="warn-num">20</span>件即将超时事项，请注意查看</p>
+			<div class="warn-list ellipsis">
+				<div class="item">
+					<span>行政审批</span>
+					<a class="ue-pie"><span class="badge ue-pie">12</span><i class="fa fa-table"></i></a>
+				</div>
+				<div class="item">
+					<span>电子证照</span>
+					<a class="ue-pie"><span class="badge ue-pie">8</span><i class="fa fa-file-pdf-o"></i></a>
+				</div>
+				<div class="item">
+					<span>事项管理</span>
+					<a class="ue-pie"><span class="badge ue-pie">2</span><i class="fa fa-header"></i></a>
+				</div>
+				<div class="item">
+					<span>网办管理</span>
+					<a class="ue-pie"><span class="badge ue-pie">7</span><i class="fa fa-windows"></i></a>
+				</div>
+				<div class="item">
+					<span>电子证照</span>
+					<a class="ue-pie"><span class="badge ue-pie">6</span><i class="fa fa-file-pdf-o"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="my clearfix">
+		<div class="panel ue-panel pull-left my-left">
+			<div class="panel-heading">
+				我的任务
+				<ul class="ue-panel-tools">
+					<li><a><i class="fa fa-refresh"></i></a></li>
+					<li><a><i class="fa fa-times"></i></a></li>
+				</ul>
+			</div>
+			<div class="panel-body">
+				<ul class="nav nav-tabs ue-tabs">
+					<li class="active"><a href="#daiban" data-toggle="tab">待办</a></li>
+					<li><a href="#duban" data-toggle="tab">督办</a></li>
+					<li><a href="#timeout" data-toggle="tab">超时</a>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="daiban">
+						<ul class="ue-list">
+							<li>
+								<span class="ue-relative-layout">
+									<span class="ue-list-facebox nodesc"></span>
+									<span class="ue-list-title">[ 手机费报销 ]</span>
+								</span>
+								<span class="pull-right">2015-7-23</span>
+								<span>7月1日维护更新公告7月1日维护更新公告7月1日维护更新公告</span>
+							</li>
+							<li>
+								<span class="ue-relative-layout">
+									<span class="ue-list-facebox nodesc"></span>
+									<span class="ue-list-title">[ 交通费报销 ]</span>
+								</span>
+								<span class="pull-right">2015-7-23</span>
+								<span>7月1日维护更新公告7月1日维护更新公告7月1日维护更新公告</span>
+							</li>
+							<li>
+								<span class="ue-relative-layout">
+									<span class="ue-list-facebox nodesc"></span>
+									<span class="ue-list-title">[ MB0填写 ]</span>
+								</span>
+								<span class="pull-right">2015-7-23</span>
+								<span>7月1日维护更新公告7月1日维护更新公告7月1日维护更新公告</span>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-pane" id="duban">
+						<ul class="ue-list">
+							<li>
+								<span class="ue-relative-layout">
+									<span class="ue-list-facebox nodesc"></span>
+									<span class="ue-list-title">[ 手机费报销 ]</span>
+								</span>
+								<span class="pull-right">2015-7-23</span>
+								<span>7月1日维护更新公告7月1日维护更新公告7月1日维护更新公告</span>
+							</li>
+							<li>
+								<span class="ue-relative-layout">
+									<span class="ue-list-facebox nodesc"></span>
+									<span class="ue-list-title">[ 交通费报销 ]</span>
+								</span>
+								<span class="pull-right">2015-7-23</span>
+								<span>7月1日维护更新公告7月1日维护更新公告7月1日维护更新公告</span>
+							</li>
+							<li>
+								<span class="ue-relative-layout">
+									<span class="ue-list-facebox nodesc"></span>
+									<span class="ue-list-title">[ MB0填写 ]</span>
+								</span>
+								<span class="pull-right">2015-7-23</span>
+								<span>7月1日维护更新公告7月1日维护更新公告7月1日维护更新公告</span>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-pane" id="timeout">
+						<ul class="ue-list">
+							<li>
+								<span class="ue-relative-layout">
+									<span class="ue-list-facebox nodesc"></span>
+									<span class="ue-list-title">[ 手机费报销 ]</span>
+								</span>
+								<span class="pull-right">2015-7-23</span>
+								<span>7月1日维护更新公告7月1日维护更新公告7月1日维护更新公告</span>
+							</li>
+							<li>
+								<span class="ue-relative-layout">
+									<span class="ue-list-facebox nodesc"></span>
+									<span class="ue-list-title">[ 交通费报销 ]</span>
+								</span>
+								<span class="pull-right">2015-7-23</span>
+								<span>7月1日维护更新公告7月1日维护更新公告7月1日维护更新公告</span>
+							</li>
+							<li>
+								<span class="ue-relative-layout">
+									<span class="ue-list-facebox nodesc"></span>
+									<span class="ue-list-title">[ MB0填写 ]</span>
+								</span>
+								<span class="pull-right">2015-7-23</span>
+								<span>7月1日维护更新公告7月1日维护更新公告7月1日维护更新公告</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel ue-panel  my-right">
+			<div class="panel-heading">
+				我的流程
+				<ul class="ue-panel-tools">
+					<li><a><i class="fa fa-refresh"></i></a></li>
+					<li><a><i class="fa fa-times"></i></a></li>
+				</ul>
+			</div>
+			<div class="panel-body">
+				<a class="ue-icon-title sx">
+					<span class="fa fa-table fa-3x ue-icon"></span>
+					<span class="ue-title">我的事项</span>
+				</a>
+				<a class="ue-icon-title bj">
+					<span class="fa fa-header fa-3x ue-icon"></span>
+					<span class="ue-title">我的办件</span>
+				</a>
+				<a class="ue-icon-title sf">
+					<span class="fa fa-list-alt fa-3x ue-icon"></span>
+					<span class="ue-title">我的收费</span>
+				</a>
+				<a class="ue-icon-title pj">
+					<span class="fa fa-arrows-alt fa-3x ue-icon"></span>
+					<span class="ue-title">我的评价</span>
+				</a>
+				<a class="ue-icon-title kq">
+					<span class="fa fa-slack fa-3x ue-icon"></span>
+					<span class="ue-title">我的考勤</span>
+				</a>
+				<a class="ue-icon-title">
+					<span class="fa fa-medium fa-3x ue-icon"></span>
+					<span class="ue-title">我的客户</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+  </body>
+</html>

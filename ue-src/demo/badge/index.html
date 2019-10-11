@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>徽章</title>
+
+    <!-- 需要引用的CSS -->
+	<link rel="shortcut icon" href="../../site.ico" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	<style type="text/css">
+	.btn.myBadge {
+		position: relative;
+		width: 40px;
+		height: 40px;
+		margin-right: 15px;	
+		padding:0;
+	}
+	.btn {
+		position: relative;
+	}
+	ul li .badge, a .badge {
+		position: relative;
+	}
+	
+	</style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+      <script type="text/javascript" src="../../dist/js/PIE.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="ue-container">
+		<a href="#">Inbox<span class="badge ue-pie">42</span></a>
+		<button class="btn btn-primary ue-pie" type="button">
+  			Messages <span class="badge ue-pie">4</span>
+		</button>
+		<hr/>
+		<ul class="nav nav-pills">
+  			<li class="active ue-pie"><a href="#" class="ue-pie">Home <span class="badge ue-pie">42</span></a></li>
+  			<li><a href="#">Profile</a></li>
+  			<li><a href="#">Messages<span class="badge ue-pie">3</span></a></li>
+		</ul>
+		<hr/>
+
+		<button type="button" class="btn btn-primary ue-pie">Primary<span class="badge ue-pie">2</span></button>
+
+		<button type="button" class="btn btn-success ue-pie">Success<span class="badge ue-pie">3</span></button>
+
+		<button type="button" class="btn btn-info ue-pie">Info<span class="badge ue-pie">1</span></button>
+
+		<button type="button" class="btn btn-warning ue-pie">Warning<span class="badge ue-pie">5</span></button>
+
+		<button type="button" class="btn btn-danger ue-pie">Danger<span class="badge ue-pie">5</span></button>
+		<hr/>
+		
+		<a class="btn myBadge"><img src="images/setting.png" width="40px" height="40px"/><span class="ue-badge tr ue-pie">1</span></a>
+		<a class="btn myBadge"><img src="images/setting.png" width="40px" height="40px"/><span class="ue-badge br ue-pie">2</span></a>
+		<a class="btn myBadge"><img src="images/setting.png" width="40px" height="40px"/><span class="ue-badge tl ue-pie">3</span></a>
+		<a class="btn myBadge"><img src="images/setting.png" width="40px" height="40px"/><span class="ue-badge bl ue-pie">4</span></a>
+		
+		
+    </div>
+	<div class="ue-container">
+		<br/>
+		<br/>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+
+.btn.myBadge {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;	
+    padding:0;
+}
+.btn {
+    position: relative;
+}
+ul li .badge, a .badge {
+    position: relative;
+}
+
+<a href="#">Inbox<span class="badge">42</span></a>
+<button class="btn btn-primary" type="button">
+    Messages
+    <span class="badge">4</span>
+</button>
+
+<ul class="nav nav-pills">
+    <li class="active"><a href="#">Home <span class="badge">42</span></a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Messages<span class="badge">3</span></a></li>
+</ul>
+
+<button type="button" class="btn btn-primary">Primary<span class="badge">2</span></button>
+<button type="button" class="btn btn-success">Success<span class="badge">3</span></button>
+<button type="button" class="btn btn-info">Info<span class="badge">1</span></button>
+<button type="button" class="btn btn-warning">Warning<span class="badge">5</span></button>
+<button type="button" class="btn btn-danger">Danger<span class="badge">5</span></button>
+		
+<a class="btn myBadge"><img src="images/setting.png" width="40px" height="40px"/><span class="ue-badge tr ue-pie">1</span></a>
+<a class="btn myBadge"><img src="images/setting.png" width="40px" height="40px"/><span class="ue-badge br ue-pie">2</span></a>
+<a class="btn myBadge"><img src="images/setting.png" width="40px" height="40px"/><span class="ue-badge tl ue-pie">3</span></a>
+<a class="btn myBadge"><img src="images/setting.png" width="40px" height="40px"/><span class="ue-badge bl ue-pie">4</span></a>
+
+			
+			    </pre>
+			 </div>
+		</div>
+		<br/>
+	</div>
+	<div class="ue-container">
+		<p style="line-height: 25px">本组件须引用的css文件:</p>
+		<p><code>bootstrap.css</code>，<code>ui.css</code></p>
+		<br />
+		<p style="line-height: 25px">若本组件支持IE8浏览器须引用的js文件:
+		<p><code>ui.js</code></p>IE8+和其他浏览器则不需要引用此js文件。
+		<h3>说明</h3>
+		<p style="line-height: 25px">徽章可以很醒目的展示新的或未读的信息条目。徽章是给链接、导航等元素嵌套
+			&lt;span
+			class="badge"&gt;元素形成的。如果使用的是ie8浏览器，须给组件加上.ue-pie样式来解决圆角的兼容性问题。</p>
+	</div>
+	<!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>
+    
+  </body>
+</html>

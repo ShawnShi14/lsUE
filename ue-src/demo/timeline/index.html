@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>时间轴</title>
+
+    <!-- 需要引用的CSS -->
+    <link rel="shortcut icon" href="../../site.ico" />
+    <link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="timeline.css" />
+	<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    	.container {
+    		padding-top: 20px;
+    	}
+    	
+		button {
+		    margin-left: 5px;
+		    margin-bottom: 10px;
+		}
+		.time-btn {
+			text-align: center;
+			margin-bottom: 14px;
+		}
+    </style>
+
+  </head>
+  <body>
+	<!-- 页面结构 -->
+	<div class="container">
+		<div class="time-btn">
+			<button type="button" class="btn ue-btn" id="daysBtn">按天生成数据</button>
+			<button type="button" class="btn ue-btn" id="monthsBtn">按月生成数据</button>
+			<button type="button" class="btn ue-btn" id="yearsBtn">按年生成数据</button>
+		</div>
+		<div id="timeline" style="height: 150px;"></div>
+	</div>
+	<!-- 代码高亮 -->
+	<div class="ue-container">
+		<p>首先要设置一个带有一定高度的容器</p>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+<div id="timeline" style="height: 150px;"></div>
+				</pre>
+			</div>
+		</div>
+		<br/>
+		<ul id="myTab" class="nav nav-tabs ue-tabs">
+			<li class="active"><a href="#html" data-toggle="tab">js</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content" style="padding-top:20px">
+			<div class="tab-pane active" id="html">
+				<pre>
+				
+$(function(){
+    var data = generateData('months');
+    $("#timeline").timeline(data, function(start, end) {
+        console.log(start + "," + end);
+    });
+});
+				</pre>
+			</div>
+		</div>
+	</div>
+	<div class="ue-container">
+		
+	</div>
+    <!-- 需要引用的JS -->
+    <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/d3.min.js"></script>
+    <script type="text/javascript" src="../../dist/js/jquery.d3.timeline.js"></script>
+    <script type="text/javascript" src="../../dist/js/timeline.js"></script>
+    <script type="text/javascript" src="moment.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+    	var DATES_RANGE = 42;
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        function getMaxValue(data, field) {
+            return Math.max.apply(Math, _.pluck(data, field));
+        }
+    	$(function() {
+    		// 生成数据,数据格式{date: , value: 事件发生次数}
+            var data = generateData('months');
+    		$("#timeline").timeline(data, function(start, end) {
+    		    console.log(start + "," + end);
+    		});
+            $("#daysBtn").on("click", function() {
+                var data = generateData('days');
+                $("#timeline").data("plugin_timeline").reload(data);
+            });
+    		$("#monthsBtn").on("click", function() {
+    			var data = generateData('months');
+    			$("#timeline").data("plugin_timeline").reload(data);
+    		});
+    		$("#yearsBtn").on("click", function() {
+    		    var data = generateData("years");
+    			$("#timeline").data("plugin_timeline").reload(data);
+    		});
+    	})
+
+        function generateData(step) {
+    		var date = moment().subtract(DATES_RANGE, step);
+            var dataset = [];
+            for (var i = 0; i < DATES_RANGE; i++) {
+    			dataset.push({
+    				date: date.valueOf(),
+    				value: getRandomInt(0, 80)
+    			});
+    			date = date.add(1, step);
+    		}
+            return dataset;
+        }
+    });
+    
+    </script>
+  </body>
+</html>

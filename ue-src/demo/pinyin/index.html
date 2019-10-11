@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	    <title>拼音  - pinyin</title>
+
+	    <!-- 需要引用的CSS -->
+	    <link rel="shortcut icon" href="../../site.ico" />
+		<link rel="stylesheet" type="text/css" href="../../dist/skin/css/bootstrap.css" />
+		  <link rel="stylesheet" type="text/css" href="../../dist/skin/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../dist/skin/css/ui.css" />
+		<link rel="stylesheet" type="text/css" href="../prettify.css"/>
+		
+	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    <!--[if lt IE 9]>
+	      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	</head>
+	<body>
+		<!-- 页面结构 -->
+		<div class="ue-container">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">输入文本:</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control ue-form" id="txtName"/>			
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">文本简拼:</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control ue-form" id="txtCharsName" readonly/>			
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">文本全拼:</label>
+					<div class="col-sm-9">
+						<textarea class="form-control ue-form" id="txtFullName" readonly></textarea>			
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		
+		<!-- 代码高亮 -->
+		<div class="ue-container">
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top:20px">
+				<div class="tab-pane active" id="html">
+					<pre>
+					
+<input type="text" id="txtName"/>
+<input type="text" id="txtCharsName" />
+<input type="text" id="txtFullName" />
+					</pre>
+				</div>
+			</div>
+					
+			<h4>js非模块化加载：</h4>
+			<p style="line-height:25px">需要引用的js文件及加载顺序：</p> 
+			<p><code>jquery.js</code>，<code>bootstrap.ja</code>，<code>form.js</code></p>
+			<p>引用方式：</p>
+			<p>正常js引用方式 <code>&lt;script type="text/javascript" src="jquery.js路径"&gt;&lt;/script&gt;</code></p>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_format" data-toggle="tab">JS(js非模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+				<div class="tab-pane active" id="JS_format">
+					<pre>
+					
+$(document).ready(function() {
+    $("#txtName").transfer({
+        target: "#txtCharsName",
+        fullcharts: false
+    });		
+    $("#txtName").transfer({
+        target: "#txtFullName",
+        callback: function(target, value) {
+            $(target).val(value.replace("/",""));
+        }
+    });		
+});     
+					</pre>
+				</div>
+			</div>
+			<br/>
+			<h4>js模块化加载：</h4>
+			<p>在require之前需要引用的js文件：</p>
+			<p><code>require.js</code>，<code>main.js</code></p>
+			<p>引用方式：</p>
+			<p><code>&lt;script src="require.js路径"&gt;&lt;/script&gt;</code></p>
+			<p><code>&lt;script src="main.js路径"&gt;&lt;/script&gt;</code></p>
+			<p>之后在require中加载组件所需要的js文件，<code>jquery</code>，<code>form/pinyin</code></p>
+			<p>将js文件放在数组里面，js的引用在非模块化中是无序的，注意文件不要加.js后缀，因为RequireJS会自动加载。</p>
+			<ul id="myTab" class="nav nav-tabs ue-tabs">
+				<li class="active"><a href="#JS_require" data-toggle="tab">JS(js模块化加载)</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content" style="padding-top: 20px">
+				<div class="tab-pane active" id="JS_require">
+					<pre>
+					
+require(['jquery','form/pinyin'], function($){
+    $(document).ready(function() {
+        $("#txtName").transfer({
+            target: "#txtCharsName",
+            fullcharts: false
+        });		
+        $("#txtName").transfer({
+            target: "#txtFullName",
+            callback: function(target, value) {
+                $(target).val(value.replace("/",""));
+            }
+        });		
+    });
+});
+					</pre>
+				</div>
+			</div>
+		    <br/>
+		    <h3>参数说明</h3>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>名称</th>
+							<th>类型</th>
+							<th>默认值</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>target</td>
+							<td>String</td>
+							<td>Null</td>
+							<td>获取拼音目标input文本框地址</td>
+						</tr>
+						<tr>
+							<td>fullcharts</td>
+							<td>Boolean</td>
+							<td>true</td>
+							<td>是否获取全拼，选项值为false时，获得简拼</td>
+						</tr>						
+						<tr>
+							<td>evt</td>
+							<td>String</td>
+							<td>"blur"</td>
+							<td>触发方法事件</td>
+						</tr>
+					</tbody>
+				</table>		
+		</div>
+		  
+	<!-- 需要引用的JS -->
+   <!-- <script type="text/javascript" src="../../dist/js/jquery.js"></script>
+    <script type="text/javascript" src="../../dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../dist/js/form.js"></script> 
+    <script type="text/javascript" src="../../dist/js/ui.js"></script>
+    <script type="text/javascript" src="../ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../prettify.js"></script> --> 
+	<script src="../require.js"></script>
+    <script src="../main.js"></script>
+	<script type="text/javascript">
+	require(['jquery','form/pinyin','demo/prettify'], function($){
+		$(document).ready(function() {
+			$("#txtName").transfer({
+				target: "#txtCharsName",
+				fullcharts: false
+			});		
+			$("#txtName").transfer({
+				target: "#txtFullName",
+				callback: function(target, value) {
+					$(target).val(value.replace("/",""));
+				}
+			});		
+		});
+	}); 
+	</script>
+	</body>
+</html>
